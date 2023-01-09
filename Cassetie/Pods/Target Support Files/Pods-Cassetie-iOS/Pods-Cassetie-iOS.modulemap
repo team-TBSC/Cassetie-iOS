@@ -1,6 +1,0 @@
-framework module Pods_Cassetie_iOS {
-  umbrella header "Pods-Cassetie-iOS-umbrella.h"
-
-  export *
-  module * { export * }
-}
