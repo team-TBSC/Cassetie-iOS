@@ -54,14 +54,70 @@
 		235E196D296BD8C0004D18AB /* Cassetie-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				235E196E296BD8C0004D18AB /* AppDelegate.swift */,
-				235E1970296BD8C0004D18AB /* SceneDelegate.swift */,
-				235E1972296BD8C0004D18AB /* ViewController.swift */,
-				235E1977296BD8C1004D18AB /* Assets.xcassets */,
-				235E1979296BD8C1004D18AB /* LaunchScreen.storyboard */,
+				235E1984296BDC4A004D18AB /* Resource */,
+				235E1983296BDC46004D18AB /* Source */,
 				235E197C296BD8C1004D18AB /* Info.plist */,
 			);
 			path = "Cassetie-iOS";
+			sourceTree = "<group>";
+		};
+		235E1983296BDC46004D18AB /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				235E1985296BDD91004D18AB /* Base */,
+				235E1987296BDDB0004D18AB /* Extension */,
+				235E1986296BDD9B004D18AB /* Network */,
+				235E1988296BDDB9004D18AB /* View */,
+				235E1989296BDDBD004D18AB /* ViewController */,
+				235E1970296BD8C0004D18AB /* SceneDelegate.swift */,
+				235E196E296BD8C0004D18AB /* AppDelegate.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		235E1984296BDC4A004D18AB /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				235E1977296BD8C1004D18AB /* Assets.xcassets */,
+				235E1979296BD8C1004D18AB /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		235E1985296BDD91004D18AB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		235E1986296BDD9B004D18AB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		235E1987296BDDB0004D18AB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		235E1988296BDDB9004D18AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		235E1989296BDDBD004D18AB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				235E1972296BD8C0004D18AB /* ViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
