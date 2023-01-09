@@ -3,24 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14D579389CE77831B81780C9 /* Pods_Cassetie_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553C76B6BE2CD591678233F2 /* Pods_Cassetie_iOS.framework */; };
 		235E196F296BD8C0004D18AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E196E296BD8C0004D18AB /* AppDelegate.swift */; };
 		235E1971296BD8C0004D18AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E1970296BD8C0004D18AB /* SceneDelegate.swift */; };
 		235E1973296BD8C0004D18AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E1972296BD8C0004D18AB /* ViewController.swift */; };
 		235E1978296BD8C1004D18AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235E1977296BD8C1004D18AB /* Assets.xcassets */; };
 		235E197B296BD8C1004D18AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 235E1979296BD8C1004D18AB /* LaunchScreen.storyboard */; };
-		235E198D296BE3B7004D18AB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 235E198C296BE3B7004D18AB /* SnapKit */; };
-		235E1990296BE3C1004D18AB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 235E198F296BE3C1004D18AB /* Then */; };
-		235E1993296BE445004D18AB /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 235E1992296BE445004D18AB /* RxCocoa */; };
-		235E1995296BE445004D18AB /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 235E1994296BE445004D18AB /* RxCocoa-Dynamic */; };
-		235E1997296BE445004D18AB /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 235E1996296BE445004D18AB /* RxSwift */; };
-		235E1999296BE445004D18AB /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 235E1998296BE445004D18AB /* RxSwift-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05CEE83C14323210F2116A80 /* Pods-Cassetie-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cassetie-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		235E196B296BD8C0004D18AB /* Cassetie-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cassetie-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		235E196E296BD8C0004D18AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235E1970296BD8C0004D18AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +24,8 @@
 		235E1977296BD8C1004D18AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		235E197A296BD8C1004D18AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		235E197C296BD8C1004D18AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		553C76B6BE2CD591678233F2 /* Pods_Cassetie_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cassetie_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7B8AEEF4D8A6D2A1CD3D691 /* Pods-Cassetie-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cassetie-iOS.release.xcconfig"; path = "Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,12 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				235E1995296BE445004D18AB /* RxCocoa-Dynamic in Frameworks */,
-				235E1993296BE445004D18AB /* RxCocoa in Frameworks */,
-				235E1997296BE445004D18AB /* RxSwift in Frameworks */,
-				235E198D296BE3B7004D18AB /* SnapKit in Frameworks */,
-				235E1999296BE445004D18AB /* RxSwift-Dynamic in Frameworks */,
-				235E1990296BE3C1004D18AB /* Then in Frameworks */,
+				14D579389CE77831B81780C9 /* Pods_Cassetie_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +45,8 @@
 			children = (
 				235E196D296BD8C0004D18AB /* Cassetie-iOS */,
 				235E196C296BD8C0004D18AB /* Products */,
+				6DFB16D32D35ECBD9343F626 /* Pods */,
+				45F991C064BBC2185F195E5C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +135,23 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		45F991C064BBC2185F195E5C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				553C76B6BE2CD591678233F2 /* Pods_Cassetie_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6DFB16D32D35ECBD9343F626 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05CEE83C14323210F2116A80 /* Pods-Cassetie-iOS.debug.xcconfig */,
+				C7B8AEEF4D8A6D2A1CD3D691 /* Pods-Cassetie-iOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 235E197F296BD8C1004D18AB /* Build configuration list for PBXNativeTarget "Cassetie-iOS" */;
 			buildPhases = (
+				F87DC36CE45CC8C91CC3563C /* [CP] Check Pods Manifest.lock */,
 				235E1967296BD8C0004D18AB /* Sources */,
 				235E1968296BD8C0004D18AB /* Frameworks */,
 				235E1969296BD8C0004D18AB /* Resources */,
+				3CA184AD81B11CDA8B6AEE12 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,12 +171,6 @@
 			);
 			name = "Cassetie-iOS";
 			packageProductDependencies = (
-				235E198C296BE3B7004D18AB /* SnapKit */,
-				235E198F296BE3C1004D18AB /* Then */,
-				235E1992296BE445004D18AB /* RxCocoa */,
-				235E1994296BE445004D18AB /* RxCocoa-Dynamic */,
-				235E1996296BE445004D18AB /* RxSwift */,
-				235E1998296BE445004D18AB /* RxSwift-Dynamic */,
 			);
 			productName = "Cassetie-iOS";
 			productReference = 235E196B296BD8C0004D18AB /* Cassetie-iOS.app */;
@@ -184,7 +192,7 @@
 				};
 			};
 			buildConfigurationList = 235E1966296BD8C0004D18AB /* Build configuration list for PBXProject "Cassetie-iOS" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -193,9 +201,6 @@
 			);
 			mainGroup = 235E1962296BD8C0004D18AB;
 			packageReferences = (
-				235E198B296BE3B7004D18AB /* XCRemoteSwiftPackageReference "SnapKit" */,
-				235E198E296BE3C1004D18AB /* XCRemoteSwiftPackageReference "Then" */,
-				235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 235E196C296BD8C0004D18AB /* Products */;
 			projectDirPath = "";
@@ -217,6 +222,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3CA184AD81B11CDA8B6AEE12 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F87DC36CE45CC8C91CC3563C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cassetie-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		235E1967296BD8C0004D18AB /* Sources */ = {
@@ -359,6 +406,7 @@
 		};
 		235E1980296BD8C1004D18AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05CEE83C14323210F2116A80 /* Pods-Cassetie-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -366,7 +414,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 272QNH7NKN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Cassetie-iOS/Info.plist";
+				INFOPLIST_FILE = "Cassetie-iOS/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -390,6 +438,7 @@
 		};
 		235E1981296BD8C1004D18AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7B8AEEF4D8A6D2A1CD3D691 /* Pods-Cassetie-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -397,7 +446,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 272QNH7NKN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Cassetie-iOS/Info.plist";
+				INFOPLIST_FILE = "Cassetie-iOS/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -441,66 +490,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		235E198B296BE3B7004D18AB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		235E198E296BE3C1004D18AB /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		235E198C296BE3B7004D18AB /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 235E198B296BE3B7004D18AB /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		235E198F296BE3C1004D18AB /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 235E198E296BE3C1004D18AB /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
-		};
-		235E1992296BE445004D18AB /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		235E1994296BE445004D18AB /* RxCocoa-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxCocoa-Dynamic";
-		};
-		235E1996296BE445004D18AB /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-		235E1998296BE445004D18AB /* RxSwift-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxSwift-Dynamic";
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 235E1963296BD8C0004D18AB /* Project object */;
 }
