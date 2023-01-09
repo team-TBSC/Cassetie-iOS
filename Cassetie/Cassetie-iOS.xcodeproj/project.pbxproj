@@ -12,6 +12,12 @@
 		235E1973296BD8C0004D18AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E1972296BD8C0004D18AB /* ViewController.swift */; };
 		235E1978296BD8C1004D18AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235E1977296BD8C1004D18AB /* Assets.xcassets */; };
 		235E197B296BD8C1004D18AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 235E1979296BD8C1004D18AB /* LaunchScreen.storyboard */; };
+		235E198D296BE3B7004D18AB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 235E198C296BE3B7004D18AB /* SnapKit */; };
+		235E1990296BE3C1004D18AB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 235E198F296BE3C1004D18AB /* Then */; };
+		235E1993296BE445004D18AB /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 235E1992296BE445004D18AB /* RxCocoa */; };
+		235E1995296BE445004D18AB /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 235E1994296BE445004D18AB /* RxCocoa-Dynamic */; };
+		235E1997296BE445004D18AB /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 235E1996296BE445004D18AB /* RxSwift */; };
+		235E1999296BE445004D18AB /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 235E1998296BE445004D18AB /* RxSwift-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +35,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235E1995296BE445004D18AB /* RxCocoa-Dynamic in Frameworks */,
+				235E1993296BE445004D18AB /* RxCocoa in Frameworks */,
+				235E1997296BE445004D18AB /* RxSwift in Frameworks */,
+				235E198D296BE3B7004D18AB /* SnapKit in Frameworks */,
+				235E1999296BE445004D18AB /* RxSwift-Dynamic in Frameworks */,
+				235E1990296BE3C1004D18AB /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,9 +66,9 @@
 		235E196D296BD8C0004D18AB /* Cassetie-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				235E198A296BE33B004D18AB /* Support */,
 				235E1984296BDC4A004D18AB /* Resource */,
 				235E1983296BDC46004D18AB /* Source */,
-				235E197C296BD8C1004D18AB /* Info.plist */,
 			);
 			path = "Cassetie-iOS";
 			sourceTree = "<group>";
@@ -120,6 +132,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		235E198A296BE33B004D18AB /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				235E197C296BD8C1004D18AB /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,6 +156,14 @@
 			dependencies = (
 			);
 			name = "Cassetie-iOS";
+			packageProductDependencies = (
+				235E198C296BE3B7004D18AB /* SnapKit */,
+				235E198F296BE3C1004D18AB /* Then */,
+				235E1992296BE445004D18AB /* RxCocoa */,
+				235E1994296BE445004D18AB /* RxCocoa-Dynamic */,
+				235E1996296BE445004D18AB /* RxSwift */,
+				235E1998296BE445004D18AB /* RxSwift-Dynamic */,
+			);
 			productName = "Cassetie-iOS";
 			productReference = 235E196B296BD8C0004D18AB /* Cassetie-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -164,6 +192,11 @@
 				Base,
 			);
 			mainGroup = 235E1962296BD8C0004D18AB;
+			packageReferences = (
+				235E198B296BE3B7004D18AB /* XCRemoteSwiftPackageReference "SnapKit" */,
+				235E198E296BE3C1004D18AB /* XCRemoteSwiftPackageReference "Then" */,
+				235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 235E196C296BD8C0004D18AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -408,6 +441,66 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		235E198B296BE3B7004D18AB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		235E198E296BE3C1004D18AB /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		235E198C296BE3B7004D18AB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 235E198B296BE3B7004D18AB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		235E198F296BE3C1004D18AB /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 235E198E296BE3C1004D18AB /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		235E1992296BE445004D18AB /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		235E1994296BE445004D18AB /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+		235E1996296BE445004D18AB /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		235E1998296BE445004D18AB /* RxSwift-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 235E1991296BE445004D18AB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxSwift-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 235E1963296BD8C0004D18AB /* Project object */;
 }
