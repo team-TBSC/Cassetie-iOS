@@ -10,4 +10,5 @@ import UIKit.UIImage
 enum Image {
     static let backgroundImg = UIImage(named: "background")!
     static let icSearch = UIImage(named: "search-normal")!
+    static let testAlbumImage = UIImage(named: "testAlbumCover")!
 }
