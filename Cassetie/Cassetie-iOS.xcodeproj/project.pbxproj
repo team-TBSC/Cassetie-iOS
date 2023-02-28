@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14D579389CE77831B81780C9 /* Pods_Cassetie_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553C76B6BE2CD591678233F2 /* Pods_Cassetie_iOS.framework */; };
+		234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */; };
+		2358F43129AC933A00AC4018 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358F43029AC933A00AC4018 /* UIStackView+.swift */; };
+		2358F43329AC941700AC4018 /* SearchSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358F43229AC941700AC4018 /* SearchSectionModel.swift */; };
+		2358F43529AC98A900AC4018 /* SearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358F43429AC98A900AC4018 /* SearchReactor.swift */; };
+		2358F43E29ACDE6E00AC4018 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2358F43D29ACDE6E00AC4018 /* Then */; };
 		235E196F296BD8C0004D18AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E196E296BD8C0004D18AB /* AppDelegate.swift */; };
 		235E1971296BD8C0004D18AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E1970296BD8C0004D18AB /* SceneDelegate.swift */; };
 		235E1973296BD8C0004D18AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E1972296BD8C0004D18AB /* ViewController.swift */; };
@@ -20,10 +24,14 @@
 		235FD3EF29A5E1BC0073E91B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD3EE29A5E1BC0073E91B /* Image.swift */; };
 		235FD3F129A5E3B40073E91B /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD3F029A5E3B40073E91B /* UIView+.swift */; };
 		235FD3F329A5E5480073E91B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD3F229A5E5480073E91B /* Color.swift */; };
+		EBEFCFAE392734F539680359 /* Pods_Cassetie_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1A4FC6AEA720F57869BA3C /* Pods_Cassetie_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05CEE83C14323210F2116A80 /* Pods-Cassetie-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cassetie-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		2358F43029AC933A00AC4018 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
+		2358F43229AC941700AC4018 /* SearchSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionModel.swift; sourceTree = "<group>"; };
+		2358F43429AC98A900AC4018 /* SearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReactor.swift; sourceTree = "<group>"; };
 		235E196B296BD8C0004D18AB /* Cassetie-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cassetie-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		235E196E296BD8C0004D18AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235E1970296BD8C0004D18AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,8 +46,9 @@
 		235FD3EE29A5E1BC0073E91B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		235FD3F029A5E3B40073E91B /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		235FD3F229A5E5480073E91B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		553C76B6BE2CD591678233F2 /* Pods_Cassetie_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cassetie_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C7B8AEEF4D8A6D2A1CD3D691 /* Pods-Cassetie-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cassetie-iOS.release.xcconfig"; path = "Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		3134774965F20CB9B9725826 /* Pods-Cassetie-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cassetie-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		52A5A4D6D18D0DF268E13BAD /* Pods-Cassetie-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cassetie-iOS.release.xcconfig"; path = "Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		6A1A4FC6AEA720F57869BA3C /* Pods_Cassetie_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cassetie_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,20 +56,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14D579389CE77831B81780C9 /* Pods_Cassetie_iOS.framework in Frameworks */,
+				EBEFCFAE392734F539680359 /* Pods_Cassetie_iOS.framework in Frameworks */,
+				2358F43E29ACDE6E00AC4018 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		234BB76729AC8D8F0039B47F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				235FD3EC29A5DDF30073E91B /* SearchViewController.swift */,
+				2358F43229AC941700AC4018 /* SearchSectionModel.swift */,
+				2358F43429AC98A900AC4018 /* SearchReactor.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		234BB76829AC8D970039B47F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		235E1962296BD8C0004D18AB = {
 			isa = PBXGroup;
 			children = (
 				235E196D296BD8C0004D18AB /* Cassetie-iOS */,
 				235E196C296BD8C0004D18AB /* Products */,
-				6DFB16D32D35ECBD9343F626 /* Pods */,
-				45F991C064BBC2185F195E5C /* Frameworks */,
+				521FA62856034BD7F8267128 /* Pods */,
+				B6D88815606EE5DE87F9562A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				235FD3F029A5E3B40073E91B /* UIView+.swift */,
+				2358F43029AC933A00AC4018 /* UIStackView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -135,6 +164,7 @@
 		235E1988296BDDB9004D18AB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				234BB76829AC8D970039B47F /* Search */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,8 +172,8 @@
 		235E1989296BDDBD004D18AB /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				234BB76729AC8D8F0039B47F /* Search */,
 				235E1972296BD8C0004D18AB /* ViewController.swift */,
-				235FD3EC29A5DDF30073E91B /* SearchViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -156,21 +186,21 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		45F991C064BBC2185F195E5C /* Frameworks */ = {
+		521FA62856034BD7F8267128 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				553C76B6BE2CD591678233F2 /* Pods_Cassetie_iOS.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6DFB16D32D35ECBD9343F626 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				05CEE83C14323210F2116A80 /* Pods-Cassetie-iOS.debug.xcconfig */,
-				C7B8AEEF4D8A6D2A1CD3D691 /* Pods-Cassetie-iOS.release.xcconfig */,
+				3134774965F20CB9B9725826 /* Pods-Cassetie-iOS.debug.xcconfig */,
+				52A5A4D6D18D0DF268E13BAD /* Pods-Cassetie-iOS.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B6D88815606EE5DE87F9562A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A1A4FC6AEA720F57869BA3C /* Pods_Cassetie_iOS.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,11 +210,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 235E197F296BD8C1004D18AB /* Build configuration list for PBXNativeTarget "Cassetie-iOS" */;
 			buildPhases = (
-				F87DC36CE45CC8C91CC3563C /* [CP] Check Pods Manifest.lock */,
+				49994725BF33F3161EAD034B /* [CP] Check Pods Manifest.lock */,
 				235E1967296BD8C0004D18AB /* Sources */,
 				235E1968296BD8C0004D18AB /* Frameworks */,
 				235E1969296BD8C0004D18AB /* Resources */,
-				3CA184AD81B11CDA8B6AEE12 /* [CP] Embed Pods Frameworks */,
+				4295C26156844BE24EB3D8AA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -192,6 +222,7 @@
 			);
 			name = "Cassetie-iOS";
 			packageProductDependencies = (
+				2358F43D29ACDE6E00AC4018 /* Then */,
 			);
 			productName = "Cassetie-iOS";
 			productReference = 235E196B296BD8C0004D18AB /* Cassetie-iOS.app */;
@@ -222,6 +253,7 @@
 			);
 			mainGroup = 235E1962296BD8C0004D18AB;
 			packageReferences = (
+				2358F43C29ACDE6E00AC4018 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 235E196C296BD8C0004D18AB /* Products */;
 			projectDirPath = "";
@@ -245,7 +277,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3CA184AD81B11CDA8B6AEE12 /* [CP] Embed Pods Frameworks */ = {
+		4295C26156844BE24EB3D8AA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -262,7 +294,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F87DC36CE45CC8C91CC3563C /* [CP] Check Pods Manifest.lock */ = {
+		49994725BF33F3161EAD034B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -297,9 +329,13 @@
 				235FD3F329A5E5480073E91B /* Color.swift in Sources */,
 				235E199B296BEB0E004D18AB /* BaseViewController.swift in Sources */,
 				235E199D296BEB29004D18AB /* BaseView.swift in Sources */,
+				234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */,
+				2358F43129AC933A00AC4018 /* UIStackView+.swift in Sources */,
 				235E196F296BD8C0004D18AB /* AppDelegate.swift in Sources */,
 				235FD3F129A5E3B40073E91B /* UIView+.swift in Sources */,
+				2358F43329AC941700AC4018 /* SearchSectionModel.swift in Sources */,
 				235E1971296BD8C0004D18AB /* SceneDelegate.swift in Sources */,
+				2358F43529AC98A900AC4018 /* SearchReactor.swift in Sources */,
 				235E199F296BEB69004D18AB /* BaseCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,7 +470,7 @@
 		};
 		235E1980296BD8C1004D18AB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 05CEE83C14323210F2116A80 /* Pods-Cassetie-iOS.debug.xcconfig */;
+			baseConfigurationReference = 3134774965F20CB9B9725826 /* Pods-Cassetie-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -448,6 +484,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,7 +503,7 @@
 		};
 		235E1981296BD8C1004D18AB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7B8AEEF4D8A6D2A1CD3D691 /* Pods-Cassetie-iOS.release.xcconfig */;
+			baseConfigurationReference = 52A5A4D6D18D0DF268E13BAD /* Pods-Cassetie-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -480,6 +517,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -518,6 +556,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2358F43C29ACDE6E00AC4018 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2358F43D29ACDE6E00AC4018 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2358F43C29ACDE6E00AC4018 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 235E1963296BD8C0004D18AB /* Project object */;
 }
