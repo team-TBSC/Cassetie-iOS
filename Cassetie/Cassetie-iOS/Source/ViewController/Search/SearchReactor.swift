@@ -60,6 +60,7 @@ class SearchReactor: Reactor {
         MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like", singer: "아이브"),
         MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like", singer: "아이브"),
         MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like", singer: "아이브"),
+        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like", singer: "아이브"),
         ]
         
         let items = testModels.map { item -> SearchItem in

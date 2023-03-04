@@ -90,6 +90,11 @@ class SearchViewController: BaseViewController, View {
         $0.backgroundColor = .clear
     }
     
+    let pageControl = UIPageControl().then {
+        $0.numberOfPages = 5
+        $0.pageIndicatorTintColor = Color.grayDL.withAlphaComponent(0.2)
+    }
+    
     init(reactor: Reactor) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
@@ -123,7 +128,14 @@ class SearchViewController: BaseViewController, View {
             $0.leading.equalTo(leftButton.snp.trailing)
             $0.trailing.equalTo(rightButton.snp.leading)
             $0.height.equalTo(330)
-            $0.top.equalToSuperview().offset(60)
+            $0.top.equalToSuperview().offset(50)
+        }
+        
+        pageControl.snp.makeConstraints {
+            $0.top.equalTo(askQuestionCollectionView.snp.bottom).offset(15)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(13)
+//            $0.width.equalTo(88)
         }
         
         searchBackgroundView.snp.makeConstraints {
@@ -161,7 +173,7 @@ class SearchViewController: BaseViewController, View {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([backgroundView, leftButton, rightButton, askQuestionCollectionView, searchBackgroundView, searchBarBackgrundView, searchIcon, textField, searchCollectionView])
+        view.addSubviews([backgroundView, leftButton, rightButton, askQuestionCollectionView, pageControl, searchBackgroundView, searchBarBackgrundView, searchIcon, textField, searchCollectionView])
     }
     
     override func setupDelegate() {
@@ -172,6 +184,40 @@ class SearchViewController: BaseViewController, View {
     }
 
     func bind(reactor: SearchReactor) {
+        rightButton.rx.tap
+            .bind { [weak self] _ in
+                guard let currentIndexPath = self?.askQuestionCollectionView.indexPathsForVisibleItems.first else {
+                    return
+                }
+                let nextIndexPath = IndexPath(item: currentIndexPath.item + 1, section: currentIndexPath.section)
+                
+                if nextIndexPath.item < self!.askQuestionCollectionView.numberOfItems(inSection: nextIndexPath.section) {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.askQuestionCollectionView.scrollToItem(at: nextIndexPath, at: .right, animated: true)
+                    }
+                    
+                    self?.pageControl.currentPage = nextIndexPath.item
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        leftButton.rx.tap
+            .bind { [weak self] _ in
+                guard let currentIndexPath = self?.askQuestionCollectionView.indexPathsForVisibleItems.first else {
+                    return
+                }
+                let nextIndexPath = IndexPath(item: currentIndexPath.item - 1, section: currentIndexPath.section)
+                
+                if nextIndexPath.item >= 0 {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.askQuestionCollectionView.scrollToItem(at: nextIndexPath, at: .left, animated: true)
+                    }
+                    
+                    self?.pageControl.currentPage = nextIndexPath.item
+                }
+            }
+            .disposed(by: disposeBag)
+    
         rx.viewWillAppear
             .map { _ in Reactor.Action.refresh }
             .bind(to: reactor.action)
