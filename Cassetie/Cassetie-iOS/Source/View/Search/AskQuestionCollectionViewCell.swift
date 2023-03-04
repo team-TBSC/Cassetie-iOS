@@ -52,8 +52,10 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
         super.setupLayout()
        
         cassetieImage.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(50)
+//            $0.leading.trailing.equalToSuperview().inset(50)
             $0.top.equalToSuperview().offset(15)
+            $0.width.equalTo(334)
+            $0.centerX.equalToSuperview()
             $0.height.equalTo(257)
         }
         

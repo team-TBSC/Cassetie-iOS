@@ -44,10 +44,16 @@ class SearchViewController: BaseViewController, View {
     
     let leftButton = UIButton().then {
         $0.setImage(Image.icLeft, for: .normal)
+        $0.isHidden = true
     }
     
     let rightButton = UIButton().then {
         $0.setImage(Image.icRight, for: .normal)
+    }
+    
+    let finalTextImage = UIImageView().then {
+        $0.image = Image.finalTextImage
+        $0.isHidden = true
     }
     
     let searchBackgroundView = UIView().then {
@@ -95,6 +101,21 @@ class SearchViewController: BaseViewController, View {
         $0.pageIndicatorTintColor = Color.grayDL.withAlphaComponent(0.2)
     }
     
+    var currentCell: Int = 0 {
+        didSet {
+            if currentCell == askQuestionCollectionView.numberOfItems(inSection: 0) - 1 {
+                rightButton.setImage(Image.icRightFinal, for: .normal)
+                finalTextImage.isHidden = false
+            } else if currentCell == 0 {
+                leftButton.isHidden = true
+            } else {
+                leftButton.isHidden = false
+                finalTextImage.isHidden = true
+                rightButton.setImage(Image.icRight, for: .normal)
+            }
+        }
+    }
+    
     init(reactor: Reactor) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
@@ -113,29 +134,35 @@ class SearchViewController: BaseViewController, View {
         }
         
         leftButton.snp.makeConstraints {
-            $0.width.height.equalTo(59)
-            $0.leading.equalToSuperview().offset(113)
-            $0.top.equalToSuperview().offset(204)
+            $0.width.height.equalTo(75)
+            $0.leading.equalToSuperview().offset(105)
+            $0.top.equalToSuperview().offset(185)
         }
         
         rightButton.snp.makeConstraints {
-            $0.width.height.equalTo(59)
-            $0.trailing.equalToSuperview().inset(113)
-            $0.top.equalToSuperview().offset(204)
+            $0.width.height.equalTo(75)
+            $0.trailing.equalToSuperview().inset(105)
+            $0.top.equalToSuperview().offset(185)
+        }
+        
+        finalTextImage.snp.makeConstraints {
+            $0.top.equalTo(rightButton.snp.bottom).offset(-18)
+            $0.leading.equalTo(rightButton.snp.leading).offset(-7)
+            $0.height.equalTo(58)
+            $0.width.equalTo(94)
         }
         
         askQuestionCollectionView.snp.makeConstraints {
             $0.leading.equalTo(leftButton.snp.trailing)
             $0.trailing.equalTo(rightButton.snp.leading)
             $0.height.equalTo(330)
-            $0.top.equalToSuperview().offset(50)
+            $0.top.equalToSuperview().offset(45)
         }
         
         pageControl.snp.makeConstraints {
             $0.top.equalTo(askQuestionCollectionView.snp.bottom).offset(15)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(13)
-//            $0.width.equalTo(88)
         }
         
         searchBackgroundView.snp.makeConstraints {
@@ -173,7 +200,7 @@ class SearchViewController: BaseViewController, View {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([backgroundView, leftButton, rightButton, askQuestionCollectionView, pageControl, searchBackgroundView, searchBarBackgrundView, searchIcon, textField, searchCollectionView])
+        view.addSubviews([backgroundView, leftButton, rightButton, finalTextImage, askQuestionCollectionView, pageControl, searchBackgroundView, searchBarBackgrundView, searchIcon, textField, searchCollectionView])
     }
     
     override func setupDelegate() {
@@ -197,6 +224,7 @@ class SearchViewController: BaseViewController, View {
                     }
                     
                     self?.pageControl.currentPage = nextIndexPath.item
+                    self?.currentCell = nextIndexPath.item
                 }
             }
             .disposed(by: disposeBag)
@@ -214,6 +242,7 @@ class SearchViewController: BaseViewController, View {
                     }
                     
                     self?.pageControl.currentPage = nextIndexPath.item
+                    self?.currentCell = nextIndexPath.item
                 }
             }
             .disposed(by: disposeBag)
