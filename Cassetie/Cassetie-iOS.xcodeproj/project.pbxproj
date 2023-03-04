@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2317305529B1D684002CF0A6 /* AskQuestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317305429B1D684002CF0A6 /* AskQuestionCollectionViewCell.swift */; };
+		2317305729B1D6DF002CF0A6 /* NsMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317305629B1D6DF002CF0A6 /* NsMutableAttributedString+.swift */; };
+		2317305929B302B4002CF0A6 /* AskQuestionSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317305829B302B4002CF0A6 /* AskQuestionSectionModel.swift */; };
 		234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */; };
 		2358F43129AC933A00AC4018 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358F43029AC933A00AC4018 /* UIStackView+.swift */; };
 		2358F43329AC941700AC4018 /* SearchSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358F43229AC941700AC4018 /* SearchSectionModel.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2317305429B1D684002CF0A6 /* AskQuestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskQuestionCollectionViewCell.swift; sourceTree = "<group>"; };
+		2317305629B1D6DF002CF0A6 /* NsMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NsMutableAttributedString+.swift"; sourceTree = "<group>"; };
+		2317305829B302B4002CF0A6 /* AskQuestionSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskQuestionSectionModel.swift; sourceTree = "<group>"; };
 		234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2358F43029AC933A00AC4018 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		2358F43229AC941700AC4018 /* SearchSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionModel.swift; sourceTree = "<group>"; };
@@ -70,6 +76,7 @@
 				235FD3EC29A5DDF30073E91B /* SearchViewController.swift */,
 				2358F43229AC941700AC4018 /* SearchSectionModel.swift */,
 				2358F43429AC98A900AC4018 /* SearchReactor.swift */,
+				2317305829B302B4002CF0A6 /* AskQuestionSectionModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -78,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */,
+				2317305429B1D684002CF0A6 /* AskQuestionCollectionViewCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -157,6 +165,7 @@
 			children = (
 				235FD3F029A5E3B40073E91B /* UIView+.swift */,
 				2358F43029AC933A00AC4018 /* UIStackView+.swift */,
+				2317305629B1D6DF002CF0A6 /* NsMutableAttributedString+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -323,13 +332,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2317305729B1D6DF002CF0A6 /* NsMutableAttributedString+.swift in Sources */,
 				235E1973296BD8C0004D18AB /* ViewController.swift in Sources */,
 				235FD3EF29A5E1BC0073E91B /* Image.swift in Sources */,
 				235FD3ED29A5DDF30073E91B /* SearchViewController.swift in Sources */,
 				235FD3F329A5E5480073E91B /* Color.swift in Sources */,
+				2317305529B1D684002CF0A6 /* AskQuestionCollectionViewCell.swift in Sources */,
 				235E199B296BEB0E004D18AB /* BaseViewController.swift in Sources */,
 				235E199D296BEB29004D18AB /* BaseView.swift in Sources */,
 				234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */,
+				2317305929B302B4002CF0A6 /* AskQuestionSectionModel.swift in Sources */,
 				2358F43129AC933A00AC4018 /* UIStackView+.swift in Sources */,
 				235E196F296BD8C0004D18AB /* AppDelegate.swift in Sources */,
 				235FD3F129A5E3B40073E91B /* UIView+.swift in Sources */,
