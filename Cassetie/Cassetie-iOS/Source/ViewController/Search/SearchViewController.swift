@@ -15,11 +15,11 @@ import RxDataSources
 import RxViewController
 
 class SearchViewController: BaseViewController, View {
-    
     typealias Reactor = SearchReactor
     typealias SearchDataSource = RxCollectionViewSectionedReloadDataSource<SearchSectionModel>
+    typealias AskQuestionDataSource = RxCollectionViewSectionedReloadDataSource<AskQuestionSectionModel>
     
-    let dataSource = SearchDataSource { _, collectionView, indexPath, item -> UICollectionViewCell in
+    let searchDataSource = SearchDataSource { _, collectionView, indexPath, item -> UICollectionViewCell in
         switch item {
         case let .musicPreview(model):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: MusicPreviewCollectionViewCell.self), for: indexPath) as? MusicPreviewCollectionViewCell else { return .init() }
@@ -28,8 +28,26 @@ class SearchViewController: BaseViewController, View {
         }
     }
     
+    let askQuestionDataSource = AskQuestionDataSource { _, collectionView, indexPath, item ->
+        UICollectionViewCell in
+        switch item {
+        case let .askQuestion(type):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AskQuestionCollectionViewCell.self), for: indexPath) as? AskQuestionCollectionViewCell else { return .init() }
+            cell.configure(type)
+            return cell
+        }
+    }
+    
     let backgroundView = UIImageView().then {
         $0.image = Image.backgroundImg
+    }
+    
+    let leftButton = UIButton().then {
+        $0.setImage(Image.icLeft, for: .normal)
+    }
+    
+    let rightButton = UIButton().then {
+        $0.setImage(Image.icRight, for: .normal)
     }
     
     let searchBackgroundView = UIView().then {
@@ -57,9 +75,18 @@ class SearchViewController: BaseViewController, View {
     
     let collectionViewFlowLayout = UICollectionViewFlowLayout().then {
         $0.minimumInteritemSpacing = 0
+        $0.scrollDirection = .vertical
     }
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout).then {
+    let askQuestionCollectionViewFlowLayout = UICollectionViewFlowLayout().then {
+        $0.scrollDirection = .horizontal
+    }
+    
+    lazy var searchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout).then {
+        $0.backgroundColor = .clear
+    }
+    
+    lazy var askQuestionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: askQuestionCollectionViewFlowLayout).then {
         $0.backgroundColor = .clear
     }
     
@@ -78,6 +105,25 @@ class SearchViewController: BaseViewController, View {
         
         backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        leftButton.snp.makeConstraints {
+            $0.width.height.equalTo(59)
+            $0.leading.equalToSuperview().offset(113)
+            $0.top.equalToSuperview().offset(204)
+        }
+        
+        rightButton.snp.makeConstraints {
+            $0.width.height.equalTo(59)
+            $0.trailing.equalToSuperview().inset(113)
+            $0.top.equalToSuperview().offset(204)
+        }
+        
+        askQuestionCollectionView.snp.makeConstraints {
+            $0.leading.equalTo(leftButton.snp.trailing)
+            $0.trailing.equalTo(rightButton.snp.leading)
+            $0.height.equalTo(330)
+            $0.top.equalToSuperview().offset(60)
         }
         
         searchBackgroundView.snp.makeConstraints {
@@ -104,9 +150,10 @@ class SearchViewController: BaseViewController, View {
             $0.trailing.equalTo(searchBarBackgrundView).inset(20)
         }
         
-        collectionView.snp.makeConstraints {
+        searchCollectionView.snp.makeConstraints {
             $0.top.equalTo(searchBarBackgrundView.snp.bottom).offset(33)
-            $0.leading.trailing.equalTo(searchBackgroundView).inset(47)
+            $0.leading.equalTo(searchBackgroundView.snp.leading).offset(47)
+            $0.trailing.equalTo(searchBackgroundView.snp.trailing).inset(47)
             $0.bottom.equalToSuperview()
         }
     }
@@ -114,13 +161,14 @@ class SearchViewController: BaseViewController, View {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([backgroundView, searchBackgroundView, searchBarBackgrundView, searchIcon, textField, collectionView])
+        view.addSubviews([backgroundView, leftButton, rightButton, askQuestionCollectionView, searchBackgroundView, searchBarBackgrundView, searchIcon, textField, searchCollectionView])
     }
     
     override func setupDelegate() {
         super.setupDelegate()
         
-        collectionView.register(MusicPreviewCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MusicPreviewCollectionViewCell.self))
+        searchCollectionView.register(MusicPreviewCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MusicPreviewCollectionViewCell.self))
+        askQuestionCollectionView.register(AskQuestionCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: AskQuestionCollectionViewCell.self))
     }
 
     func bind(reactor: SearchReactor) {
@@ -131,29 +179,36 @@ class SearchViewController: BaseViewController, View {
 
         reactor.state
             .map(\.musicPreviewSection)
-            .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .bind(to: searchCollectionView.rx.items(dataSource: searchDataSource))
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map(\.askQuestionSection)
+            .bind(to: askQuestionCollectionView.rx.items(dataSource: askQuestionDataSource))
             .disposed(by: disposeBag)
 
-        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        searchCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        askQuestionCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
 
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch dataSource[indexPath.section].model {
-        case .musicPreview:
-            let width = self.collectionView.frame.width
+        if collectionView == searchCollectionView {
+            let width = self.searchCollectionView.frame.width
             let height = 113.0
+
+            return CGSize(width: width, height: height)
+        } else {
+            let width = self.askQuestionCollectionView.frame.width
+            let height = 330.0
             
             return CGSize(width: width, height: height)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        switch dataSource[section].model {
-        case .musicPreview:
-            return 0
-        }
+        return 0
     }
 }
