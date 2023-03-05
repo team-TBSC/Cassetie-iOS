@@ -10,6 +10,7 @@ import UIKit.UIColor
 enum Color {
     static let grayL = UIColor("292541")
     static let grayD = UIColor("1C1C1C")
+    static let grayDL = UIColor("7A839B")
 }
 
 fileprivate extension UIColor {
