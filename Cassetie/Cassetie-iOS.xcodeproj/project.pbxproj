@@ -10,6 +10,7 @@
 		2317305529B1D684002CF0A6 /* AskQuestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317305429B1D684002CF0A6 /* AskQuestionCollectionViewCell.swift */; };
 		2317305729B1D6DF002CF0A6 /* NsMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317305629B1D6DF002CF0A6 /* NsMutableAttributedString+.swift */; };
 		2317305929B302B4002CF0A6 /* AskQuestionSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317305829B302B4002CF0A6 /* AskQuestionSectionModel.swift */; };
+		2317305B29B4ADBA002CF0A6 /* adjusted+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317305A29B4ADBA002CF0A6 /* adjusted+.swift */; };
 		234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */; };
 		2358F43129AC933A00AC4018 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358F43029AC933A00AC4018 /* UIStackView+.swift */; };
 		2358F43329AC941700AC4018 /* SearchSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358F43229AC941700AC4018 /* SearchSectionModel.swift */; };
@@ -34,6 +35,7 @@
 		2317305429B1D684002CF0A6 /* AskQuestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskQuestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		2317305629B1D6DF002CF0A6 /* NsMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NsMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		2317305829B302B4002CF0A6 /* AskQuestionSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskQuestionSectionModel.swift; sourceTree = "<group>"; };
+		2317305A29B4ADBA002CF0A6 /* adjusted+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "adjusted+.swift"; sourceTree = "<group>"; };
 		234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2358F43029AC933A00AC4018 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		2358F43229AC941700AC4018 /* SearchSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionModel.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				235FD3F029A5E3B40073E91B /* UIView+.swift */,
 				2358F43029AC933A00AC4018 /* UIStackView+.swift */,
 				2317305629B1D6DF002CF0A6 /* NsMutableAttributedString+.swift */,
+				2317305A29B4ADBA002CF0A6 /* adjusted+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				235E199B296BEB0E004D18AB /* BaseViewController.swift in Sources */,
 				235E199D296BEB29004D18AB /* BaseView.swift in Sources */,
 				234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */,
+				2317305B29B4ADBA002CF0A6 /* adjusted+.swift in Sources */,
 				2317305929B302B4002CF0A6 /* AskQuestionSectionModel.swift in Sources */,
 				2358F43129AC933A00AC4018 /* UIStackView+.swift in Sources */,
 				235E196F296BD8C0004D18AB /* AppDelegate.swift in Sources */,

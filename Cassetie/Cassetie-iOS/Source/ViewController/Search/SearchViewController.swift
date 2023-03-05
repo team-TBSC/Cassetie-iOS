@@ -62,7 +62,7 @@ class SearchViewController: BaseViewController, View {
         $0.cornerRound(radius: 24, direct: [.layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     
-    let searchBarBackgrundView = UIView().then {
+    let searchBarBackgroundView = UIView().then {
         $0.backgroundColor = Color.grayD
         $0.alpha = 0.2
         $0.cornerRound(radius: 23)
@@ -134,29 +134,29 @@ class SearchViewController: BaseViewController, View {
         }
         
         leftButton.snp.makeConstraints {
-            $0.width.height.equalTo(75)
-            $0.leading.equalToSuperview().offset(105)
-            $0.top.equalToSuperview().offset(185)
+            $0.width.height.equalTo(75.adjustedWidth)
+            $0.leading.equalToSuperview().offset(105.adjustedWidth)
+            $0.top.equalToSuperview().offset(185.adjustedHeight)
         }
         
         rightButton.snp.makeConstraints {
-            $0.width.height.equalTo(75)
-            $0.trailing.equalToSuperview().inset(105)
-            $0.top.equalToSuperview().offset(185)
+            $0.width.height.equalTo(75.adjustedWidth)
+            $0.trailing.equalToSuperview().inset(105.adjustedWidth)
+            $0.top.equalToSuperview().offset(185.adjustedHeight)
         }
         
         finalTextImage.snp.makeConstraints {
             $0.top.equalTo(rightButton.snp.bottom).offset(-18)
             $0.leading.equalTo(rightButton.snp.leading).offset(-7)
-            $0.height.equalTo(58)
-            $0.width.equalTo(94)
+            $0.height.equalTo(58.adjustedHeight)
+            $0.width.equalTo(94.adjustedWidth)
         }
         
         askQuestionCollectionView.snp.makeConstraints {
             $0.leading.equalTo(leftButton.snp.trailing)
             $0.trailing.equalTo(rightButton.snp.leading)
-            $0.height.equalTo(330)
-            $0.top.equalToSuperview().offset(45)
+            $0.height.equalTo(330.adjustedHeight)
+            $0.top.equalToSuperview().offset(45.adjustedHeight)
         }
         
         pageControl.snp.makeConstraints {
@@ -168,29 +168,29 @@ class SearchViewController: BaseViewController, View {
         searchBackgroundView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(694)
+            $0.height.equalTo(694.adjustedHeight)
         }
         
-        searchBarBackgrundView.snp.makeConstraints {
+        searchBarBackgroundView.snp.makeConstraints {
             $0.top.equalTo(searchBackgroundView).inset(28)
             $0.leading.trailing.equalTo(searchBackgroundView).inset(47)
-            $0.height.equalTo(46)
+            $0.height.equalTo(46.adjustedHeight)
         }
         
         searchIcon.snp.makeConstraints {
-            $0.height.width.equalTo(24)
-            $0.leading.equalTo(searchBarBackgrundView).inset(18)
-            $0.centerY.equalTo(searchBarBackgrundView)
+            $0.height.width.equalTo(24.adjustedWidth)
+            $0.leading.equalTo(searchBarBackgroundView).inset(18)
+            $0.centerY.equalTo(searchBarBackgroundView)
         }
         
         textField.snp.makeConstraints {
             $0.leading.equalTo(searchIcon).offset(40)
-            $0.top.bottom.equalTo(searchBarBackgrundView)
-            $0.trailing.equalTo(searchBarBackgrundView).inset(20)
+            $0.top.bottom.equalTo(searchBarBackgroundView)
+            $0.trailing.equalTo(searchBarBackgroundView).inset(20)
         }
         
         searchCollectionView.snp.makeConstraints {
-            $0.top.equalTo(searchBarBackgrundView.snp.bottom).offset(33)
+            $0.top.equalTo(searchBarBackgroundView.snp.bottom).offset(33.adjustedHeight)
             $0.leading.equalTo(searchBackgroundView.snp.leading).offset(47)
             $0.trailing.equalTo(searchBackgroundView.snp.trailing).inset(47)
             $0.bottom.equalToSuperview()
@@ -200,7 +200,7 @@ class SearchViewController: BaseViewController, View {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([backgroundView, leftButton, rightButton, finalTextImage, askQuestionCollectionView, pageControl, searchBackgroundView, searchBarBackgrundView, searchIcon, textField, searchCollectionView])
+        view.addSubviews([backgroundView, leftButton, rightButton, finalTextImage, askQuestionCollectionView, pageControl, searchBackgroundView, searchBarBackgroundView, searchIcon, textField, searchCollectionView])
     }
     
     override func setupDelegate() {
@@ -272,12 +272,12 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == searchCollectionView {
             let width = self.searchCollectionView.frame.width
-            let height = 113.0
+            let height = 113.adjustedHeight
 
             return CGSize(width: width, height: height)
         } else {
             let width = self.askQuestionCollectionView.frame.width
-            let height = 330.0
+            let height = 330.adjustedHeight
             
             return CGSize(width: width, height: height)
         }

@@ -34,13 +34,14 @@ class MusicPreviewCollectionViewCell: BaseCollectionViewCell {
         super.setupLayout()
         
         albumCoverImage.snp.makeConstraints {
-            $0.width.height.equalTo(92)
+            $0.width.equalTo(92.adjustedWidth)
+            $0.height.equalTo(92.adjustedWidth)
             $0.leading.equalToSuperview().offset(13)
             $0.centerY.equalToSuperview()
         }
         
         musicDetailStackView.snp.makeConstraints {
-            $0.leading.equalTo(albumCoverImage.snp.trailing).offset(20)
+            $0.leading.equalTo(albumCoverImage.snp.trailing).offset(20.adjustedWidth)
             $0.centerY.equalToSuperview()
         }
     }
