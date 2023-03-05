@@ -17,18 +17,44 @@ enum QuestionType: CaseIterable {
     case fourth
     case fivth
     
-    var text: String {
+    var firstText: String {
         switch self {
         case .first:
-            return "슬플 때"
+            return "나"
         case .second:
-            return "화날 때"
+            return "지금"
         case .third:
-            return "기분 좋을 때"
+            return "쇼핑"
         case .fourth:
-            return "착잡할 때"
+            return "내 관상"
         case .fivth:
-            return "나른할 때"
+            return "가장"
+        }
+    }
+    
+    var secondText: String {
+        switch self {
+        case .first:
+            return "를 대표하는 노래는?"
+        case .second:
+            return " 내 감정"
+        case .third:
+            return "하면서 듣기 좋은 노래는?"
+        case .fourth:
+            return "을 음악으로 표현한다면?"
+        case .fivth:
+            return " 내 취향"
+        }
+    }
+    
+    var thirdText: String {
+        switch self {
+        case .first, .third, .fourth:
+            return ""
+        case .second:
+            return "을 대변하는 노래는?"
+        case .fivth:
+            return "인 노래는?"
         }
     }
     
@@ -54,13 +80,13 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
         cassetieImage.snp.makeConstraints {
 //            $0.leading.trailing.equalToSuperview().inset(50)
             $0.top.equalToSuperview().offset(15)
-            $0.width.equalTo(334)
+            $0.width.equalTo(334.adjustedWidth)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(257)
+            $0.height.equalTo(257.adjustedHeight)
         }
         
         questionLabel.snp.makeConstraints {
-            $0.top.equalTo(cassetieImage.snp.bottom).offset(17)
+            $0.top.equalTo(cassetieImage.snp.bottom).offset(17.adjustedHeight)
             $0.centerX.equalToSuperview()
         }
     }
@@ -72,10 +98,18 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
     }
     
     func configure(_ type: QuestionType) {
-        questionLabel.attributedText = NSMutableAttributedString()
-            .regular(string: "소진님이 ", fontSize: 28)
-            .bold(string: type.text, fontSize: 28)
-            .regular(string: " 듣는 노래는?", fontSize: 28)
+        switch type {
+        case .first, .third, .fourth:
+            questionLabel.attributedText = NSMutableAttributedString()
+                .bold(string: type.firstText, fontSize: 28)
+                .regular(string: type.secondText, fontSize: 28)
+        case .second, .fivth:
+            questionLabel.attributedText = NSMutableAttributedString()
+                .regular(string: type.firstText, fontSize: 28)
+                .bold(string: type.secondText, fontSize: 28)
+                .regular(string: type.thirdText, fontSize: 28)
+        }
+        
         cassetieImage.image = type.image
     }
 }
