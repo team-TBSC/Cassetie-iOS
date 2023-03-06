@@ -251,6 +251,7 @@ class SearchViewController: BaseViewController, View {
             .bind { _ in
                 let bottomSheetViewController = BottomSheetViewController()
                 bottomSheetViewController.modalPresentationStyle = .overFullScreen
+                bottomSheetViewController.configure(singer: "아이브", title: "After Like", image: Image.testAlbumImage)
                 self.present(bottomSheetViewController, animated: false)
             }
             .disposed(by: disposeBag)
