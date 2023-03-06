@@ -13,4 +13,5 @@ target 'Cassetie-iOS' do
   pod 'Kingfisher'
   pod 'RxViewController'
   pod 'SnapKit'
+  pod 'RxGesture'
 end

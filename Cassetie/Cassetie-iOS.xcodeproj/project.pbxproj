@@ -28,6 +28,7 @@
 		235FD3EF29A5E1BC0073E91B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD3EE29A5E1BC0073E91B /* Image.swift */; };
 		235FD3F129A5E3B40073E91B /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD3F029A5E3B40073E91B /* UIView+.swift */; };
 		235FD3F329A5E5480073E91B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD3F229A5E5480073E91B /* Color.swift */; };
+		23CB524B29B603B7008FDFC9 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB524A29B603B7008FDFC9 /* BottomSheetViewController.swift */; };
 		EBEFCFAE392734F539680359 /* Pods_Cassetie_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1A4FC6AEA720F57869BA3C /* Pods_Cassetie_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		235FD3EE29A5E1BC0073E91B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		235FD3F029A5E3B40073E91B /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		235FD3F229A5E5480073E91B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		23CB524A29B603B7008FDFC9 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		3134774965F20CB9B9725826 /* Pods-Cassetie-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cassetie-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		52A5A4D6D18D0DF268E13BAD /* Pods-Cassetie-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cassetie-iOS.release.xcconfig"; path = "Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		6A1A4FC6AEA720F57869BA3C /* Pods_Cassetie_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cassetie_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 		235E1989296BDDBD004D18AB /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				23CB524929B603A5008FDFC9 /* BottomSheet */,
 				234BB76729AC8D8F0039B47F /* Search */,
 				235E1972296BD8C0004D18AB /* ViewController.swift */,
 			);
@@ -196,6 +199,14 @@
 				235E197C296BD8C1004D18AB /* Info.plist */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		23CB524929B603A5008FDFC9 /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				23CB524A29B603B7008FDFC9 /* BottomSheetViewController.swift */,
+			);
+			path = BottomSheet;
 			sourceTree = "<group>";
 		};
 		521FA62856034BD7F8267128 /* Pods */ = {
@@ -348,6 +359,7 @@
 				2317305929B302B4002CF0A6 /* AskQuestionSectionModel.swift in Sources */,
 				2358F43129AC933A00AC4018 /* UIStackView+.swift in Sources */,
 				235E196F296BD8C0004D18AB /* AppDelegate.swift in Sources */,
+				23CB524B29B603B7008FDFC9 /* BottomSheetViewController.swift in Sources */,
 				235FD3F129A5E3B40073E91B /* UIView+.swift in Sources */,
 				2358F43329AC941700AC4018 /* SearchSectionModel.swift in Sources */,
 				235E1971296BD8C0004D18AB /* SceneDelegate.swift in Sources */,
