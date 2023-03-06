@@ -16,4 +16,5 @@ enum Image {
     static let icRightFinal = UIImage(named: "ic_right_final")!
     static let testCassetieImage = UIImage(named: "test_cassetie")!
     static let finalTextImage = UIImage(named: "final_text_image")!
+    static let icBottomSheet = UIImage(named: "ic_bottom_sheet")!
 }
