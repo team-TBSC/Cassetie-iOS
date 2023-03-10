@@ -12,6 +12,7 @@ enum Color {
     static let grayD = UIColor("1C1C1C")
     static let grayDL = UIColor("7A839B")
     static let navyD = UIColor("292541")
+    static let navyL = UIColor("3E3754")
 }
 
 fileprivate extension UIColor {

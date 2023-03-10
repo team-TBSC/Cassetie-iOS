@@ -17,4 +17,5 @@ enum Image {
     static let testCassetieImage = UIImage(named: "test_cassetie")!
     static let finalTextImage = UIImage(named: "final_text_image")!
     static let icBottomSheet = UIImage(named: "ic_bottom_sheet")!
+    static let backgroundBlurImg = UIImage(named: "background_blur")!
 }
