@@ -1,5 +1,6 @@
 PODS:
   - Differentiator (5.0.0)
+  - Gifu (3.3.1)
   - Kingfisher (7.2.2)
   - ReactorKit (3.2.0):
     - RxSwift (~> 6.0)
@@ -24,6 +25,7 @@ PODS:
   - WeakMapTable (1.2.0)
 
 DEPENDENCIES:
+  - Gifu
   - Kingfisher
   - ReactorKit
   - RxCocoa (= 6.5.0)
@@ -36,6 +38,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Differentiator
+    - Gifu
     - Kingfisher
     - ReactorKit
     - RxCocoa
@@ -49,6 +52,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  Gifu: 416d4e38c4c2fed012f019e0a1d3ffcb58e5b842
   Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
   ReactorKit: e8b11d6b9c415405f381669b095c154a05b59eca
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
@@ -60,6 +64,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: a3ec0c1322aa68a6950af0719b890d51c518b916
+PODFILE CHECKSUM: 1601666392c93e64922bf1c31b5851eadb7d509b
 
 COCOAPODS: 1.11.3
