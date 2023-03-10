@@ -53,20 +53,12 @@ class BottomSheetViewController: BaseViewController {
         $0.spacing = 30.adjustedWidth
     }
     
-    private let leftButton = UIButton().then {
-        $0.setTitle("돌아가기", for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
-        $0.setTitleColor(UIColor.black, for: .normal)
-        $0.backgroundColor = .white
-        $0.cornerRound(radius: 40)
+    private let leftButton = RoundButton(title: "돌아가기", titleColor: .black, backColor: .white, round: 40).then {
+        $0.configureFont(font: .systemFont(ofSize: 24, weight: .light))
     }
     
-    private let rightButton = UIButton().then {
-        $0.setTitle("노래 선택하기", for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
-        $0.setTitleColor(UIColor.black, for: .normal)
-        $0.backgroundColor = .white
-        $0.cornerRound(radius: 40)
+    private let rightButton = RoundButton(title: "노래 선택하기", titleColor: .black, backColor: .white, round: 40).then {
+        $0.configureFont(font: .systemFont(ofSize: 24, weight: .light))
     }
     
     override func viewDidAppear(_ animated: Bool) {
