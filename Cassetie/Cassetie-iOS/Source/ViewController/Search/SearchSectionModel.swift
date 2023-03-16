@@ -15,6 +15,18 @@ struct MusicPreviewModel {
     let albumImage: UIImage
     let title: String
     let singer: String
+    
+//    init() {
+//        self.albumImage = UIImage.init()
+//        self.title = .init()
+//        self.singer = .init()
+//    }
+    
+    init(albumImage: UIImage = .init(), title: String = .init(), singer: String = .init()) {
+        self.albumImage = albumImage
+        self.title = title
+        self.singer = singer
+    }
 }
 
 enum SearchSection {

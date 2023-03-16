@@ -225,6 +225,10 @@ class SearchViewController: BaseViewController, View {
                     
                     self?.pageControl.currentPage = nextIndexPath.item
                     self?.currentCell = nextIndexPath.item
+                } else {
+                    let confirmMusicViewController = ConfirmMusicViewController(reactor: .init())
+                    confirmMusicViewController.modalPresentationStyle = .overCurrentContext
+                    self?.present(confirmMusicViewController, animated: false)
                 }
             }
             .disposed(by: disposeBag)

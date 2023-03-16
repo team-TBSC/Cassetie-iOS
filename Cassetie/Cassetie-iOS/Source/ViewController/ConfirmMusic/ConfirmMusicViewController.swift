@@ -142,6 +142,12 @@ class ConfirmMusicViewController: BaseViewController, View {
     }
     
     func bind(reactor: ConfirmMusicReactor) {
+        bottomButton.rx.tap
+            .bind { _ in
+                self.dismiss(animated: false)
+            }
+            .disposed(by: disposeBag)
+        
         rx.viewWillAppear
             .map { _ in Reactor.Action.refresh }
             .bind(to: reactor.action)
