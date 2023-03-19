@@ -89,6 +89,8 @@ class StoryTutorialViewController: BaseViewController {
     
     private let firstMentionView = TutorialMentionView(type: .first)
     
+    private let secondMentionView = TutorialMentionView(type: .second)
+    
     override func setupLayout() {
         super.setupLayout()
         
@@ -104,12 +106,25 @@ class StoryTutorialViewController: BaseViewController {
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().inset(70)
         }
+        
+        secondMentionView.snp.makeConstraints {
+            $0.width.equalTo(713.adjustedWidth)
+            $0.height.equalTo(255.adjustedHeight)
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().inset(65)
+        }
     }
     
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([tutorialImageView, firstMentionView])
+        view.addSubviews([tutorialImageView, firstMentionView, secondMentionView])
+    }
+    
+    override func setupProperty() {
+        super.setupProperty()
+        
+        secondMentionView.isHidden = true
     }
     
     override func setupBind() {
@@ -128,6 +143,10 @@ class StoryTutorialViewController: BaseViewController {
         UIView.animate(withDuration: 5.0) {
             let scale = CGAffineTransform(translationX: -490, y:0)
             self.tutorialImageView.transform = scale
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5.5) {
+            self.secondMentionView.isHidden = false
         }
     }
 }
