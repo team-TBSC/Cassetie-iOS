@@ -14,8 +14,8 @@ import RxDataSources
 import RxViewController
 
 class ConfirmMusicViewController: BaseViewController, View {
-//    private let blurEffect = UIBlurEffect(style: .dark)
-//    private lazy var backgroundEffectView = UIVisualEffectView(effect: self.blurEffect)
+    private let blurEffect = UIBlurEffect(style: .dark)
+    private lazy var backgroundEffectView = UIVisualEffectView(effect: self.blurEffect)
     
     typealias Reactor = ConfirmMusicReactor
     typealias DataSource = RxCollectionViewSectionedReloadDataSource<SearchSectionModel>
@@ -29,9 +29,9 @@ class ConfirmMusicViewController: BaseViewController, View {
         }
     }
     
-    private let backgroundBlurView = UIImageView().then {
-        $0.image = Image.backgroundBlurImg
-    }
+//    private let backgroundBlurView = UIImageView().then {
+//        $0.image = Image.backgroundBlurImg
+//    }
     private let backgroundView = UIView().then {
         $0.backgroundColor = Color.navyD.withAlphaComponent(0.9)
         $0.cornerRound(radius: 24)
@@ -69,10 +69,12 @@ class ConfirmMusicViewController: BaseViewController, View {
         backColor: .white,
         round: 40
     )
+    var navigation: UINavigationController?
     
-    init(reactor: Reactor) {
+    init(reactor: Reactor, navigationController: UINavigationController?) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
+        self.navigation = navigationController
     }
     
     @available(*, unavailable)
@@ -83,7 +85,7 @@ class ConfirmMusicViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
-        backgroundBlurView.snp.makeConstraints {
+        backgroundEffectView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
@@ -132,7 +134,7 @@ class ConfirmMusicViewController: BaseViewController, View {
         
         noticeStackView.addArrangedSubviews([noticeTopLable, noticeBottomLable])
         backgroundView.addSubviews([noticeStackView, collectionView, topButton, bottomButton])
-        view.addSubviews([backgroundBlurView, backgroundView])
+        view.addSubviews([backgroundEffectView, backgroundView])
     }
     
     override func setupDelegate() {
@@ -145,6 +147,17 @@ class ConfirmMusicViewController: BaseViewController, View {
         bottomButton.rx.tap
             .bind { _ in
                 self.dismiss(animated: false)
+            }
+            .disposed(by: disposeBag)
+        
+        topButton.rx.tap
+            .bind { _ in
+                self.dismiss(animated: false)
+                
+                let loadingViewController = LoadingViewController()
+                self.navigation?.pushViewController(loadingViewController, animated: true)
+                
+                // TODO: - 로딩화면에서의 화면 전환 생각해보기
             }
             .disposed(by: disposeBag)
         
