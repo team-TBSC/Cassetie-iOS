@@ -21,4 +21,11 @@ extension NSMutableAttributedString {
         self.append(NSAttributedString(string: string, attributes: attributes))
         return self
     }
+    
+    func light(string: String, fontSize: CGFloat) -> NSMutableAttributedString {
+        let font = UIFont.systemFont(ofSize: fontSize, weight: .light)
+        let attributes: [NSAttributedString.Key: Any] = [.font: font]
+        self.append(NSAttributedString(string: string, attributes: attributes))
+        return self
+    }
 }
