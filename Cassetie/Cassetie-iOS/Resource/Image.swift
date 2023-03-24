@@ -22,4 +22,7 @@ enum Image {
     static let backgroundStarImg = UIImage(named: "background-star")!
     static let tutorialImg = UIImage(named: "tutorial")!
     static let tutorialMentionImg = UIImage(named: "tutorial_mention_background")!
+    static let cassetieContainerImg = UIImage(named: "cassetie_container")!
+    
+    static let testCassetieImg = UIImage(named: "test_cassetie")!
 }

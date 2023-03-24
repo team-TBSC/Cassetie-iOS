@@ -22,7 +22,6 @@
 		2358F43E29ACDE6E00AC4018 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2358F43D29ACDE6E00AC4018 /* Then */; };
 		235E196F296BD8C0004D18AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E196E296BD8C0004D18AB /* AppDelegate.swift */; };
 		235E1971296BD8C0004D18AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E1970296BD8C0004D18AB /* SceneDelegate.swift */; };
-		235E1973296BD8C0004D18AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E1972296BD8C0004D18AB /* ViewController.swift */; };
 		235E1978296BD8C1004D18AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235E1977296BD8C1004D18AB /* Assets.xcassets */; };
 		235E197B296BD8C1004D18AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 235E1979296BD8C1004D18AB /* LaunchScreen.storyboard */; };
 		235E199B296BEB0E004D18AB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E199A296BEB0E004D18AB /* BaseViewController.swift */; };
@@ -39,6 +38,10 @@
 		23C6D9F329C7551B005CF5F5 /* background-star.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F229C7551B005CF5F5 /* background-star.gif */; };
 		23C6D9F529C75521005CF5F5 /* cassetie-loading-final.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F429C75521005CF5F5 /* cassetie-loading-final.gif */; };
 		23C6D9F729C75526005CF5F5 /* cassetie-fourth.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F629C75526005CF5F5 /* cassetie-fourth.gif */; };
+		23C6D9FB29C8B8C6005CF5F5 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6D9FA29C8B8C6005CF5F5 /* FinalViewController.swift */; };
+		23C6D9FE29C8C1B3005CF5F5 /* CassetieBoxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6D9FD29C8C1B3005CF5F5 /* CassetieBoxCollectionViewCell.swift */; };
+		23C6DA0029C8CA73005CF5F5 /* FinalSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6D9FF29C8CA73005CF5F5 /* FinalSectionModel.swift */; };
+		23C6DA0229C8CB47005CF5F5 /* FinalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6DA0129C8CB47005CF5F5 /* FinalReactor.swift */; };
 		23CB524B29B603B7008FDFC9 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB524A29B603B7008FDFC9 /* BottomSheetViewController.swift */; };
 		23D2813E29BB10B4002B3710 /* ConfirmMusicReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D2813D29BB10B4002B3710 /* ConfirmMusicReactor.swift */; };
 		EBEFCFAE392734F539680359 /* Pods_Cassetie_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1A4FC6AEA720F57869BA3C /* Pods_Cassetie_iOS.framework */; };
@@ -60,7 +63,6 @@
 		235E196B296BD8C0004D18AB /* Cassetie-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cassetie-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		235E196E296BD8C0004D18AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235E1970296BD8C0004D18AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		235E1972296BD8C0004D18AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		235E1977296BD8C1004D18AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		235E197A296BD8C1004D18AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		235E197C296BD8C1004D18AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +80,10 @@
 		23C6D9F229C7551B005CF5F5 /* background-star.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "background-star.gif"; sourceTree = "<group>"; };
 		23C6D9F429C75521005CF5F5 /* cassetie-loading-final.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-loading-final.gif"; sourceTree = "<group>"; };
 		23C6D9F629C75526005CF5F5 /* cassetie-fourth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-fourth.gif"; sourceTree = "<group>"; };
+		23C6D9FA29C8B8C6005CF5F5 /* FinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
+		23C6D9FD29C8C1B3005CF5F5 /* CassetieBoxCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassetieBoxCollectionViewCell.swift; sourceTree = "<group>"; };
+		23C6D9FF29C8CA73005CF5F5 /* FinalSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalSectionModel.swift; sourceTree = "<group>"; };
+		23C6DA0129C8CB47005CF5F5 /* FinalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalReactor.swift; sourceTree = "<group>"; };
 		23CB524A29B603B7008FDFC9 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		23D2813D29BB10B4002B3710 /* ConfirmMusicReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMusicReactor.swift; sourceTree = "<group>"; };
 		3134774965F20CB9B9725826 /* Pods-Cassetie-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cassetie-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Cassetie-iOS/Pods-Cassetie-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +218,7 @@
 		235E1988296BDDB9004D18AB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				23C6D9FC29C8C190005CF5F5 /* Final */,
 				234BB76829AC8D970039B47F /* Search */,
 			);
 			path = View;
@@ -220,12 +227,12 @@
 		235E1989296BDDBD004D18AB /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				23C6D9F929C8B868005CF5F5 /* Final */,
 				235EA27F29C2EB3F008E61CD /* StoryTutorial */,
 				2317ACBD29C201B5002EE6C4 /* Loading */,
 				2361CB3829BAEE2900FC86C2 /* ConfirmMusic */,
 				23CB524929B603A5008FDFC9 /* BottomSheet */,
 				234BB76729AC8D8F0039B47F /* Search */,
-				235E1972296BD8C0004D18AB /* ViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -275,6 +282,24 @@
 				23255A4429B70C9B001308A9 /* cassetie-first.gif */,
 			);
 			path = Gif;
+			sourceTree = "<group>";
+		};
+		23C6D9F929C8B868005CF5F5 /* Final */ = {
+			isa = PBXGroup;
+			children = (
+				23C6D9FA29C8B8C6005CF5F5 /* FinalViewController.swift */,
+				23C6DA0129C8CB47005CF5F5 /* FinalReactor.swift */,
+				23C6D9FF29C8CA73005CF5F5 /* FinalSectionModel.swift */,
+			);
+			path = Final;
+			sourceTree = "<group>";
+		};
+		23C6D9FC29C8C190005CF5F5 /* Final */ = {
+			isa = PBXGroup;
+			children = (
+				23C6D9FD29C8C1B3005CF5F5 /* CassetieBoxCollectionViewCell.swift */,
+			);
+			path = Final;
 			sourceTree = "<group>";
 		};
 		23CB524929B603A5008FDFC9 /* BottomSheet */ = {
@@ -431,7 +456,6 @@
 			files = (
 				235EA28129C2EB53008E61CD /* StoryTutorialViewController.swift in Sources */,
 				2317305729B1D6DF002CF0A6 /* NsMutableAttributedString+.swift in Sources */,
-				235E1973296BD8C0004D18AB /* ViewController.swift in Sources */,
 				235FD3EF29A5E1BC0073E91B /* Image.swift in Sources */,
 				235FD3ED29A5DDF30073E91B /* SearchViewController.swift in Sources */,
 				235FD3F329A5E5480073E91B /* Color.swift in Sources */,
@@ -443,6 +467,7 @@
 				2317305B29B4ADBA002CF0A6 /* adjusted+.swift in Sources */,
 				2361CB3A29BAEE4800FC86C2 /* ConfirmMusicViewController.swift in Sources */,
 				2317305929B302B4002CF0A6 /* AskQuestionSectionModel.swift in Sources */,
+				23C6D9FB29C8B8C6005CF5F5 /* FinalViewController.swift in Sources */,
 				2317ACBF29C201C7002EE6C4 /* LoadingViewController.swift in Sources */,
 				2358F43129AC933A00AC4018 /* UIStackView+.swift in Sources */,
 				235E196F296BD8C0004D18AB /* AppDelegate.swift in Sources */,
@@ -451,7 +476,10 @@
 				235FD3F129A5E3B40073E91B /* UIView+.swift in Sources */,
 				2358F43329AC941700AC4018 /* SearchSectionModel.swift in Sources */,
 				235E1971296BD8C0004D18AB /* SceneDelegate.swift in Sources */,
+				23C6DA0029C8CA73005CF5F5 /* FinalSectionModel.swift in Sources */,
+				23C6DA0229C8CB47005CF5F5 /* FinalReactor.swift in Sources */,
 				2358F43529AC98A900AC4018 /* SearchReactor.swift in Sources */,
+				23C6D9FE29C8C1B3005CF5F5 /* CassetieBoxCollectionViewCell.swift in Sources */,
 				235E199F296BEB69004D18AB /* BaseCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
