@@ -15,4 +15,5 @@ target 'Cassetie-iOS' do
   pod 'SnapKit'
   pod 'RxGesture'
   pod 'Gifu'
+  pod 'Moya/RxSwift'
 end

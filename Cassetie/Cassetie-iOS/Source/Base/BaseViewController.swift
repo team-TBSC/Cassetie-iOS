@@ -6,7 +6,9 @@
 //
 
 import UIKit
+
 import RxSwift
+import RxCocoa
 
 class BaseViewController: UIViewController, BaseViewProtocol {
     var disposeBag = DisposeBag()
