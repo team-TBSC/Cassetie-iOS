@@ -1,8 +1,8 @@
 PODS:
-  - Alamofire (5.6.1)
+  - Alamofire (5.6.4)
   - Differentiator (5.0.0)
   - Gifu (3.3.1)
-  - Kingfisher (7.2.2)
+  - Kingfisher (7.6.2)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (15.0.0):
@@ -38,7 +38,7 @@ DEPENDENCIES:
   - RxCocoa (= 6.5.0)
   - RxDataSources
   - RxGesture
-  - RxSwift (= 6.5.0)
+  - RxSwift
   - RxViewController
   - SnapKit
 
@@ -60,10 +60,10 @@ SPEC REPOS:
     - WeakMapTable
 
 SPEC CHECKSUMS:
-  Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   Gifu: 416d4e38c4c2fed012f019e0a1d3ffcb58e5b842
-  Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   ReactorKit: e8b11d6b9c415405f381669b095c154a05b59eca
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
@@ -75,6 +75,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 386e1fad881bd4475603955b2e3d3ad9a0818d4c
+PODFILE CHECKSUM: 333c2c46e8e6a951e6c614e9c82e45cc2b2ef732
 
 COCOAPODS: 1.12.0

@@ -8,12 +8,12 @@ target 'Cassetie-iOS' do
   # Pods for Cassetie-iOS
   pod 'ReactorKit'
   pod 'RxDataSources'
-  pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
   pod 'Kingfisher'
   pod 'RxViewController'
   pod 'SnapKit'
   pod 'RxGesture'
   pod 'Gifu'
+  pod 'RxSwift'
   pod 'Moya/RxSwift'
 end
