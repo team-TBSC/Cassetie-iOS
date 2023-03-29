@@ -12,7 +12,7 @@ import ReactorKit
 class ConfirmMusicReactor: Reactor {
     enum Action {
         case refresh
-        case musicSelect(Int, MusicPreviewModel)
+        case musicSelect(Int, MusicListDTO)
     }
     
     enum Mutation {
@@ -26,12 +26,8 @@ class ConfirmMusicReactor: Reactor {
     }
     
     var initialState: State
-    var selectedMusicModel: [MusicPreviewModel] = [
-        MusicPreviewModel.init(),
-        MusicPreviewModel.init(),
-        MusicPreviewModel.init(),
-        MusicPreviewModel.init(),
-        MusicPreviewModel.init()
+    var selectedMusicModel: [MusicListDTO] = [
+        MusicListDTO(track: "", artist: "", album: "", image: "", previewURL: "", id: "")
     ]
     
     init() {
@@ -61,12 +57,17 @@ class ConfirmMusicReactor: Reactor {
     }
     
     func createMusicPreviewSection() -> [SearchSectionModel] {
-        let testModels:[MusicPreviewModel] = [
-        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like 1", singer: "아이브"),
-        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like 2", singer: "아이브"),
-        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like 4", singer: "아이브"),
-        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like 1", singer: "아이브"),
-        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like ", singer: "아이브")
+//        let testModels:[MusicPreviewModel] = [
+//        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like 1", singer: "아이브"),
+//        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like 2", singer: "아이브"),
+//        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like 4", singer: "아이브"),
+//        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like 1", singer: "아이브"),
+//        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like ", singer: "아이브")
+//        ]
+        
+        let testModels: [MusicListDTO] = [
+        MusicListDTO(track: "After LIKE", artist: "IVE", album: "After Like", image: "", previewURL: "", id: ""),
+        MusicListDTO(track: "After LIKE", artist: "IVE", album: "After Like", image: "", previewURL: "", id: "")
         ]
         
         let items = testModels.map { item -> SearchItem in
@@ -78,7 +79,7 @@ class ConfirmMusicReactor: Reactor {
         return [searchSection]
     }
     
-    func updateSelectedMusicSection(index: Int, model: MusicPreviewModel) -> [SearchSectionModel] {
+    func updateSelectedMusicSection(index: Int, model: MusicListDTO) -> [SearchSectionModel] {
         selectedMusicModel[index] = model
         
         let items = selectedMusicModel.map { item -> SearchItem in

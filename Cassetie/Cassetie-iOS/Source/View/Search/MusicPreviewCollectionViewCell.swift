@@ -53,10 +53,16 @@ class MusicPreviewCollectionViewCell: BaseCollectionViewCell {
         addSubviews([albumCoverImage, musicDetailStackView])
     }
     
-    func configure(_ model: MusicPreviewModel) {
-        self.albumCoverImage.image = model.albumImage
-        self.titleLable.text = model.title
-        self.singerLable.text = model.singer
+//    func configure(_ model: MusicPreviewModel) {
+//        self.albumCoverImage.image = model.albumImage
+//        self.titleLable.text = model.title
+//        self.singerLable.text = model.singer
+//    }
+    
+    func configure(_ model: MusicListDTO) {
+//        self.albumCoverImage
+        self.titleLable.text = model.album
+        self.singerLable.text = model.artist
     }
 }
 

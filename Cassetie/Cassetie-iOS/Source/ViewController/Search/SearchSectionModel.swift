@@ -16,12 +16,6 @@ struct MusicPreviewModel {
     let title: String
     let singer: String
     
-//    init() {
-//        self.albumImage = UIImage.init()
-//        self.title = .init()
-//        self.singer = .init()
-//    }
-    
     init(albumImage: UIImage = .init(), title: String = .init(), singer: String = .init()) {
         self.albumImage = albumImage
         self.title = title
@@ -34,7 +28,7 @@ enum SearchSection {
 }
 
 enum SearchItem {
-    case musicPreview(MusicPreviewModel)
+    case musicPreview(MusicListDTO)
 }
 
 extension SearchSection: SectionModelType {
