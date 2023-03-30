@@ -28,7 +28,7 @@ struct NetworkLoggerPlugin: PluginType {
                 """
 
         /// HTTP Request Header
-        httpLog.append("HEADER: [\n")
+//        httpLog.append("HEADER: [\n")
         httpRequest.allHTTPHeaderFields?.forEach {
             httpLog.append("\t\($0): \($1)\n")
         }
@@ -38,7 +38,7 @@ struct NetworkLoggerPlugin: PluginType {
         if let body = httpRequest.httpBody, let bodyString = String(bytes: body, encoding: String.Encoding.utf8) {
             httpLog.append("BODY: \n\(bodyString)\n")
         }
-        httpLog.append("[HTTP Request End]")
+        httpLog.append("----------- [HTTP Request End] -----------")
 
         print(httpLog)
     }
@@ -53,7 +53,6 @@ struct NetworkLoggerPlugin: PluginType {
     }
 
     func onSuceed(_ response: Response, target: TargetType, isFromError: Bool) {
-        print("----------- on successed ---------")
         print(response)
         let request = response.request
         let url = request?.url?.absoluteString ?? "nil"
@@ -68,18 +67,18 @@ struct NetworkLoggerPlugin: PluginType {
                 """
 
         /// HTTP Response Header
-        httpLog.append("HEADER: [\n")
+//        httpLog.append("HEADER: [\n")
         response.response?.allHeaderFields.forEach {
             httpLog.append("\t\($0): \($1)\n")
         }
         httpLog.append("]\n")
 
         /// HTTP Response Data
-        httpLog.append("RESPONSE DATA: \n")
+        httpLog.append("✅ RESPONSE DATA: \n")
         if let responseString = String(bytes: response.data, encoding: String.Encoding.utf8) {
             httpLog.append("\(responseString)\n")
         }
-        httpLog.append("[HTTP Response End]")
+        httpLog.append("----------- [HTTP Response End] -----------")
 
         print(httpLog)
     }
@@ -97,7 +96,7 @@ struct NetworkLoggerPlugin: PluginType {
                 ERRORCODE: \(error.errorCode)\n
                 """
         httpLog.append("MESSAGE: \(error.failureReason ?? error.errorDescription ?? "unknown error")\n")
-        httpLog.append("[HTTP Error End]")
+        httpLog.append("----------- [HTTP Error End] -----------")
 
         print(httpLog)
     }

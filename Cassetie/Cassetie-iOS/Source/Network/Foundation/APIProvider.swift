@@ -28,7 +28,8 @@ extension APIProvider {
                         let data = try JSONDecoder().decode(ResponseType.self, from: response.data)
                         creater.onNext(data)
                     } catch(let err) {
-                        creater.onError(err)
+                        print(err)
+                        creater.onError(APIError.jsonParsingError)
                     }
                 case .failure(let error):
                     creater.onError(error)

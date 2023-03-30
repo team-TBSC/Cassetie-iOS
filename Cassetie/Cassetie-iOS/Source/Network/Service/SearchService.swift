@@ -20,12 +20,12 @@ protocol SearchServiceType {
     func post(text: String)
 }
 
-class SearchService: SearchServiceType, APIProvider {
+class SearchService: BaseService, SearchServiceType, APIProvider {
+    typealias Target = SearchEndPoint
+    typealias ResponseType = SearchResponseDTO
+    
     var event = PublishSubject<SearchEvent>()
     let disposedBag = DisposeBag()
-    
-    typealias ResponseType = SearchResponseDTO
-    typealias Target = SearchEndPoint
     
     func post(text: String) {
         SearchService.request(endPoint: SearchEndPoint.post(text: text))

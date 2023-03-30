@@ -16,6 +16,8 @@
 		23255A4529B70C9B001308A9 /* cassetie-second.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23255A4329B70C9B001308A9 /* cassetie-second.gif */; };
 		23255A4629B70C9B001308A9 /* cassetie-first.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23255A4429B70C9B001308A9 /* cassetie-first.gif */; };
 		234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */; };
+		2353AA2629D50D570089BD80 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353AA2529D50D570089BD80 /* BaseService.swift */; };
+		2353AA2829D5103A0089BD80 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353AA2729D5103A0089BD80 /* APIError.swift */; };
 		2358F43129AC933A00AC4018 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358F43029AC933A00AC4018 /* UIStackView+.swift */; };
 		2358F43329AC941700AC4018 /* SearchSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358F43229AC941700AC4018 /* SearchSectionModel.swift */; };
 		2358F43529AC98A900AC4018 /* SearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358F43429AC98A900AC4018 /* SearchReactor.swift */; };
@@ -63,6 +65,8 @@
 		23255A4329B70C9B001308A9 /* cassetie-second.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-second.gif"; sourceTree = "<group>"; };
 		23255A4429B70C9B001308A9 /* cassetie-first.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-first.gif"; sourceTree = "<group>"; };
 		234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		2353AA2529D50D570089BD80 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		2353AA2729D5103A0089BD80 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		2358F43029AC933A00AC4018 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		2358F43229AC941700AC4018 /* SearchSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionModel.swift; sourceTree = "<group>"; };
 		2358F43429AC98A900AC4018 /* SearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReactor.swift; sourceTree = "<group>"; };
@@ -144,12 +148,21 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		2353AA2429D50D4C0089BD80 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2353AA2529D50D570089BD80 /* BaseService.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		235A7F6729D2C88C00E594E0 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
 				235A7F6829D2C89A00E594E0 /* EndPoint.swift */,
 				235A7F6C29D310EE00E594E0 /* APIProvider.swift */,
 				235A7F6E29D3134F00E594E0 /* NetworkLoggerPlugin.swift */,
+				2353AA2729D5103A0089BD80 /* APIError.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -165,6 +178,7 @@
 		235A7F6B29D30E4100E594E0 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				2353AA2429D50D4C0089BD80 /* Base */,
 				235A7F7129D3156000E594E0 /* SearchService.swift */,
 			);
 			path = Service;
@@ -516,6 +530,8 @@
 				2361CB3D29BAF70600FC86C2 /* RoundButton.swift in Sources */,
 				235A7F6629D2C79400E594E0 /* SearchEndPoint.swift in Sources */,
 				2317305B29B4ADBA002CF0A6 /* adjusted+.swift in Sources */,
+				2353AA2629D50D570089BD80 /* BaseService.swift in Sources */,
+				2353AA2829D5103A0089BD80 /* APIError.swift in Sources */,
 				2361CB3A29BAEE4800FC86C2 /* ConfirmMusicViewController.swift in Sources */,
 				235A7F6929D2C89A00E594E0 /* EndPoint.swift in Sources */,
 				2317305929B302B4002CF0A6 /* AskQuestionSectionModel.swift in Sources */,
