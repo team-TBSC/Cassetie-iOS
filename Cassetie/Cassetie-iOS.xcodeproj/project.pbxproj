@@ -21,8 +21,8 @@
 		2358F43529AC98A900AC4018 /* SearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2358F43429AC98A900AC4018 /* SearchReactor.swift */; };
 		2358F43E29ACDE6E00AC4018 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2358F43D29ACDE6E00AC4018 /* Then */; };
 		235A7F6629D2C79400E594E0 /* SearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A7F6529D2C79400E594E0 /* SearchEndPoint.swift */; };
-		235A7F6929D2C89A00E594E0 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A7F6829D2C89A00E594E0 /* BaseTargetType.swift */; };
-		235A7F6D29D310EE00E594E0 /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A7F6C29D310EE00E594E0 /* Networkable.swift */; };
+		235A7F6929D2C89A00E594E0 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A7F6829D2C89A00E594E0 /* EndPoint.swift */; };
+		235A7F6D29D310EE00E594E0 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A7F6C29D310EE00E594E0 /* APIProvider.swift */; };
 		235A7F6F29D3134F00E594E0 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A7F6E29D3134F00E594E0 /* NetworkLoggerPlugin.swift */; };
 		235A7F7229D3156000E594E0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A7F7129D3156000E594E0 /* SearchService.swift */; };
 		235A7F7429D3169200E594E0 /* SearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A7F7329D3169200E594E0 /* SearchResponseDTO.swift */; };
@@ -67,8 +67,8 @@
 		2358F43229AC941700AC4018 /* SearchSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionModel.swift; sourceTree = "<group>"; };
 		2358F43429AC98A900AC4018 /* SearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReactor.swift; sourceTree = "<group>"; };
 		235A7F6529D2C79400E594E0 /* SearchEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndPoint.swift; sourceTree = "<group>"; };
-		235A7F6829D2C89A00E594E0 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
-		235A7F6C29D310EE00E594E0 /* Networkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networkable.swift; sourceTree = "<group>"; };
+		235A7F6829D2C89A00E594E0 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		235A7F6C29D310EE00E594E0 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		235A7F6E29D3134F00E594E0 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		235A7F7129D3156000E594E0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		235A7F7329D3169200E594E0 /* SearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseDTO.swift; sourceTree = "<group>"; };
@@ -144,14 +144,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		235A7F6729D2C88C00E594E0 /* Base */ = {
+		235A7F6729D2C88C00E594E0 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				235A7F6829D2C89A00E594E0 /* BaseTargetType.swift */,
-				235A7F6C29D310EE00E594E0 /* Networkable.swift */,
+				235A7F6829D2C89A00E594E0 /* EndPoint.swift */,
+				235A7F6C29D310EE00E594E0 /* APIProvider.swift */,
 				235A7F6E29D3134F00E594E0 /* NetworkLoggerPlugin.swift */,
 			);
-			path = Base;
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		235A7F6A29D30E1C00E594E0 /* EndPoint */ = {
@@ -249,7 +249,7 @@
 				235A7F7029D3145800E594E0 /* DTO */,
 				235A7F6B29D30E4100E594E0 /* Service */,
 				235A7F6A29D30E1C00E594E0 /* EndPoint */,
-				235A7F6729D2C88C00E594E0 /* Base */,
+				235A7F6729D2C88C00E594E0 /* Foundation */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -517,7 +517,7 @@
 				235A7F6629D2C79400E594E0 /* SearchEndPoint.swift in Sources */,
 				2317305B29B4ADBA002CF0A6 /* adjusted+.swift in Sources */,
 				2361CB3A29BAEE4800FC86C2 /* ConfirmMusicViewController.swift in Sources */,
-				235A7F6929D2C89A00E594E0 /* BaseTargetType.swift in Sources */,
+				235A7F6929D2C89A00E594E0 /* EndPoint.swift in Sources */,
 				2317305929B302B4002CF0A6 /* AskQuestionSectionModel.swift in Sources */,
 				23C6D9FB29C8B8C6005CF5F5 /* FinalViewController.swift in Sources */,
 				2317ACBF29C201C7002EE6C4 /* LoadingViewController.swift in Sources */,
@@ -535,7 +535,7 @@
 				2358F43529AC98A900AC4018 /* SearchReactor.swift in Sources */,
 				235A7F6F29D3134F00E594E0 /* NetworkLoggerPlugin.swift in Sources */,
 				23C6D9FE29C8C1B3005CF5F5 /* CassetieBoxCollectionViewCell.swift in Sources */,
-				235A7F6D29D310EE00E594E0 /* Networkable.swift in Sources */,
+				235A7F6D29D310EE00E594E0 /* APIProvider.swift in Sources */,
 				235E199F296BEB69004D18AB /* BaseCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

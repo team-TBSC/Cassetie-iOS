@@ -13,7 +13,7 @@ enum SearchEndPoint {
     case post(text: String)
 }
 
-extension SearchEndPoint: BaseTargetType {
+extension SearchEndPoint: EndPoint {
     var path: String {
         switch self {
         case .post:

@@ -9,9 +9,9 @@ import UIKit
 
 import Moya
 
-protocol BaseTargetType: TargetType {}
+protocol EndPoint: TargetType {}
 
-extension BaseTargetType {
+extension EndPoint {
     var baseURL: URL {
         return URL(string: "http://digger.works:12023")!
     }

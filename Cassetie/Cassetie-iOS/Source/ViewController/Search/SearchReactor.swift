@@ -38,7 +38,7 @@ class SearchReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            service.testPost(text: "after")
+            service.post(text: "after")
             return Observable.concat([
 //                .just(.setMusicPreviewSection(updateMusicPreviewSection())),
                 .just(.setAskQuestionSection(createAskQuestionSection()))

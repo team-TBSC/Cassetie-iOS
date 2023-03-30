@@ -17,50 +17,19 @@ enum SearchEvent {
 protocol SearchServiceType {
     var event: PublishSubject<SearchEvent> { get }
     
-//    func post(text: String) -> Observable<SearchResponseDTO>
+    func post(text: String)
 }
 
-class SearchService: SearchServiceType, Networkable {
+class SearchService: SearchServiceType, APIProvider {
     var event = PublishSubject<SearchEvent>()
     let disposedBag = DisposeBag()
     
     typealias ResponseType = SearchResponseDTO
     typealias Target = SearchEndPoint
     
-//    func post(text: String) -> Observable<SearchResponseDTO> {
-//        print("------- Search Service -------- ")
-//
-//        return Observable<SearchResponseDTO>.create { creater in
-//            print("------- observable --------")
-//            SearchService.makeProvider().request(.post(text: "after")) { result in
-//                guard self != nil else { return }
-//
-//                switch result {
-//                case .success(let response):
-//                    print("------------ response ------------")
-//                    print(response)
-//                    do {
-//                        let data = try JSONDecoder().decode(SearchResponseDTO.self, from: response.data)
-//                        creater.onNext(data)
-//                    } catch(let err) {
-//                        print("---------------- err ------------")
-//                        print(err.localizedDescription)
-//                        creater.onError(err)
-//                    }
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                    creater.onError(error)
-//                }
-//                creater.onCompleted()
-//            }
-//            return Disposables.create()
-//        }
-//    }
-    
-    func testPost(text: String) {
+    func post(text: String) {
         SearchService.request(endPoint: SearchEndPoint.post(text: text))
             .bind { [weak self] data in
-                print("-------- 🙅🏻‍♀️ testPost --------")
                 self?.event.onNext(.postMusicList(data))
             }
             .disposed(by: disposedBag)
