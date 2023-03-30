@@ -16,4 +16,5 @@ target 'Cassetie-iOS' do
   pod 'Gifu'
   pod 'RxSwift'
   pod 'Moya/RxSwift'
+  pod 'Kingfisher'
 end
