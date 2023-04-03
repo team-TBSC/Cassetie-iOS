@@ -13,6 +13,7 @@ import RxSwift
 class SearchReactor: Reactor {
     enum Action {
         case refresh
+        case update(String)
     }
     
     enum Mutation {
@@ -36,10 +37,13 @@ class SearchReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            service.post(text: "after")
             return Observable.concat([
-                .just(.setAskQuestionSection(createAskQuestionSection()))
+                .just(.setAskQuestionSection(createAskQuestionSection())),
+                .just(.setMusicPreviewSection(createMusicPreviewSection()))
             ])
+        case let .update(text):
+            service.post(text: text)
+            return Observable.empty()
         }
     }
 
@@ -67,29 +71,13 @@ class SearchReactor: Reactor {
         
         return Observable.merge(mutation, eventMutation)
     }
-   
     
-//    func createMusicPreviewSection() -> [SearchSectionModel] {
-//        postSearchMusic()
-//
-//        let testModels:[MusicPreviewModel] = [
-//        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like", singer: "아이브"),
-//        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like", singer: "아이브"),
-//        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like", singer: "아이브"),
-//        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like", singer: "아이브"),
-//        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like", singer: "아이브"),
-//        MusicPreviewModel(albumImage: Image.testAlbumImage, title: "After Like", singer: "아이브"),
-//        ]
-//
-//        let items = testModels.map { item -> SearchItem in
-//            return .musicPreview(item)
-//        }
-//
-//        let searchSection = SearchSectionModel(model: .musicPreview(items), items: items)
-//
-//        return [searchSection]
-//    }
-//
+    func createMusicPreviewSection() -> [SearchSectionModel] {
+        let item : [SearchItem] = [.emptyMusicPreview(.refresh)]
+        let searchSection = SearchSectionModel(model: .musicPreview(item), items: item)
+        
+        return [searchSection]
+    }
     
     func updateMusicPreviewSection(data: SearchResponseDTO) -> [SearchSectionModel] {
         let items = data.musicList.map { item -> SearchItem in

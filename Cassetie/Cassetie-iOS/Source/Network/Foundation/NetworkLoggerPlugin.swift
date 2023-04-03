@@ -53,7 +53,6 @@ struct NetworkLoggerPlugin: PluginType {
     }
 
     func onSuceed(_ response: Response, target: TargetType, isFromError: Bool) {
-        print(response)
         let request = response.request
         let url = request?.url?.absoluteString ?? "nil"
         let statusCode = response.statusCode

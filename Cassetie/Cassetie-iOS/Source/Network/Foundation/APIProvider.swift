@@ -20,8 +20,6 @@ extension APIProvider {
     static func request(endPoint: EndPoint) -> Observable<ResponseType> {
         return Observable<ResponseType>.create { creater in
             MoyaProvider<Target>(plugins: [NetworkLoggerPlugin()]).request(endPoint as! Self.Target) { result in
-                guard self != nil else { return }
-                
                 switch result {
                 case .success(let response):
                     do {

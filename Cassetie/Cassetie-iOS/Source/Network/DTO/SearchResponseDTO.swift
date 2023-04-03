@@ -19,7 +19,8 @@ struct SearchResponseDTO: Codable {
 // MARK: - MusicList
 struct MusicListDTO: Codable {
     let track, artist, album: String
-    let image, previewURL: String
+    let image: String
+    let previewURL: String?
     let id: String
 
     enum CodingKeys: String, CodingKey {
