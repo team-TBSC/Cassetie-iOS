@@ -26,6 +26,9 @@ class ConfirmMusicViewController: BaseViewController, View {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: MusicPreviewCollectionViewCell.self), for: indexPath) as? MusicPreviewCollectionViewCell else { return .init() }
             cell.configure(model)
             return cell
+        case .emptyMusicPreview:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: EmptyMusicCollectionViewCell.self), for: indexPath) as? EmptyMusicCollectionViewCell else { return .init() }
+            return cell
         }
     }
     
@@ -141,6 +144,7 @@ class ConfirmMusicViewController: BaseViewController, View {
         super.setupDelegate()
         
         collectionView.register(MusicPreviewCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MusicPreviewCollectionViewCell.self))
+        collectionView.register(EmptyMusicCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EmptyMusicCollectionViewCell.self))
     }
     
     func bind(reactor: ConfirmMusicReactor) {

@@ -11,6 +11,7 @@ import RxDataSources
 
 typealias SearchSectionModel = SectionModel<SearchSection, SearchItem>
 
+// TODO: - 삭제할 내용
 struct MusicPreviewModel {
     let albumImage: UIImage
     let title: String
@@ -23,12 +24,18 @@ struct MusicPreviewModel {
     }
 }
 
+enum EmptyType {
+    case refresh
+    case noMusic
+}
+
 enum SearchSection {
     case musicPreview([SearchItem])
 }
 
 enum SearchItem {
     case musicPreview(MusicListDTO)
+    case emptyMusicPreview(EmptyType)
 }
 
 extension SearchSection: SectionModelType {
