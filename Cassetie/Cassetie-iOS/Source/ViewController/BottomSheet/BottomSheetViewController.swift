@@ -11,14 +11,15 @@ import SnapKit
 import Then
 import RxSwift
 import RxGesture
+import Kingfisher
 
 class BottomSheetViewController: BaseViewController {
     private let backgroundView = UIView().then {
         $0.backgroundColor = .clear
     }
     
-    private let bottomSheetView = UIView().then {
-        $0.backgroundColor = Color.navyD
+    private let blurEffect = UIBlurEffect(style: .dark)
+    private lazy var bottomSheetView = UIVisualEffectView(effect: self.blurEffect).then {
         $0.cornerRound(radius: 40, direct: [.layerMaxXMinYCorner, .layerMinXMinYCorner])
     }
     
@@ -127,7 +128,7 @@ class BottomSheetViewController: BaseViewController {
         
         musicDetailStackView.addArrangedSubviews([titleLable, singerLable])
         buttonStackView.addArrangedSubviews([leftButton, rightButton])
-        bottomSheetView.addSubviews([bottomSheetIcon, musicDetailStackView, albumCoverImage, buttonStackView])
+        bottomSheetView.contentView.addSubviews([bottomSheetIcon, musicDetailStackView, albumCoverImage, buttonStackView])
         
         view.addSubviews([backgroundView, bottomSheetView])
     }
@@ -194,9 +195,10 @@ class BottomSheetViewController: BaseViewController {
         )
     }
     
-    func configure(singer: String, title: String, image: UIImage) {
+    func configure(singer: String, title: String, image: String) {
+        let url = URL(string: image)
+        self.albumCoverImage.kf.setImage(with: url)
         self.titleLable.text = title
         self.singerLable.text = singer
-        self.albumCoverImage.image = image
     }
 }

@@ -13,6 +13,7 @@ import ReactorKit
 import SnapKit
 import RxDataSources
 import RxViewController
+import Gifu
 
 class SearchViewController: BaseViewController, View {
     typealias Reactor = SearchReactor
@@ -24,6 +25,10 @@ class SearchViewController: BaseViewController, View {
         case let .musicPreview(model):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: MusicPreviewCollectionViewCell.self), for: indexPath) as? MusicPreviewCollectionViewCell else { return .init() }
             cell.configure(model)
+            return cell
+        case let .emptyMusicPreview(type):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: EmptyMusicCollectionViewCell.self), for: indexPath) as? EmptyMusicCollectionViewCell else { return .init() }
+            cell.configure(refresh: type)
             return cell
         }
     }
@@ -42,6 +47,8 @@ class SearchViewController: BaseViewController, View {
         $0.image = Image.backgroundImg
     }
     
+//    let backgroundStarGifView = GIFImageView()
+    
     let leftButton = UIButton().then {
         $0.setImage(Image.icLeft, for: .normal)
         $0.isHidden = true
@@ -56,10 +63,8 @@ class SearchViewController: BaseViewController, View {
         $0.isHidden = true
     }
     
-    let searchBackgroundView = UIView().then {
-        $0.backgroundColor = Color.grayL
-        $0.alpha = 0.4
-        $0.cornerRound(radius: 24, direct: [.layerMaxXMinYCorner, .layerMinXMinYCorner])
+    let searchBackgroundView = UIImageView().then {
+        $0.image = Image.backgroundSearchImg
     }
     
     let searchBarBackgroundView = UIView().then {
@@ -132,6 +137,10 @@ class SearchViewController: BaseViewController, View {
         backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
+//        backgroundStarGifView.snp.makeConstraints {
+//            $0.edges.equalToSuperview()
+//        }
         
         leftButton.snp.makeConstraints {
             $0.width.height.equalTo(75.adjustedWidth)
@@ -207,6 +216,7 @@ class SearchViewController: BaseViewController, View {
         super.setupDelegate()
         
         searchCollectionView.register(MusicPreviewCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MusicPreviewCollectionViewCell.self))
+        searchCollectionView.register(EmptyMusicCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EmptyMusicCollectionViewCell.self))
         askQuestionCollectionView.register(AskQuestionCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: AskQuestionCollectionViewCell.self))
     }
 
@@ -226,7 +236,7 @@ class SearchViewController: BaseViewController, View {
                     self?.pageControl.currentPage = nextIndexPath.item
                     self?.currentCell = nextIndexPath.item
                 } else {
-                    let confirmMusicViewController = ConfirmMusicViewController(reactor: .init())
+                    let confirmMusicViewController = ConfirmMusicViewController(reactor: .init(), navigationController: self?.navigationController)
                     confirmMusicViewController.modalPresentationStyle = .overCurrentContext
                     self?.present(confirmMusicViewController, animated: false)
                 }
@@ -251,13 +261,24 @@ class SearchViewController: BaseViewController, View {
             }
             .disposed(by: disposeBag)
         
-        searchCollectionView.rx.itemSelected
-            .bind { _ in
+        textField.rx.text
+            .compactMap { $0 }
+            .filter { !$0.isEmpty }
+            .distinctUntilChanged()
+            .debounce(.seconds(1), scheduler: MainScheduler.asyncInstance)
+            .map { text in Reactor.Action.update(text) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        searchCollectionView.rx.modelSelected(SearchItem.self)
+            .subscribe(onNext: { item in
+                guard case let .musicPreview(music) = item else { return }
+                
                 let bottomSheetViewController = BottomSheetViewController()
                 bottomSheetViewController.modalPresentationStyle = .overFullScreen
-                bottomSheetViewController.configure(singer: "아이브", title: "After Like", image: Image.testAlbumImage)
+                bottomSheetViewController.configure(singer: music.artist, title: music.album, image: music.image)
                 self.present(bottomSheetViewController, animated: false)
-            }
+            })
             .disposed(by: disposeBag)
     
         rx.viewWillAppear
@@ -277,6 +298,8 @@ class SearchViewController: BaseViewController, View {
 
         searchCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         askQuestionCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+//        backgroundStarGifView.animate(withGIFNamed: "background-star")
     }
 
 }
@@ -291,7 +314,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         } else {
             let width = self.askQuestionCollectionView.frame.width
             let height = 330.adjustedHeight
-            
+
             return CGSize(width: width, height: height)
         }
     }
