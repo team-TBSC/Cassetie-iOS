@@ -199,20 +199,19 @@ class BottomSheetViewController: BaseViewController, View {
             .map { _ in Reactor.Action.select(self.musicList, self.index) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-//
-//        reactor.state
-//            .map(\.isMusicSelected)
-//            .filter { $0 }
-//            .bind { this in
-//                print("bottom sheet ----")
-//                print(this)
-//                self.disappearBottomSheet()
-//
-//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-//                    self.dismiss(animated: true)
-//                }
-//            }
-//            .disposed(by: disposeBag)
+
+        reactor.state
+            .map(\.isSelected)
+            .filter { $0 }
+            .bind { _ in
+                self.disappearBottomSheet()
+
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                    self.dismiss(animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
+
     }
     
     private func showBottomSheet() {

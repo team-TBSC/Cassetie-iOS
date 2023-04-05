@@ -56,6 +56,7 @@ class SearchViewController: BaseViewController, View {
     
     let rightButton = UIButton().then {
         $0.setImage(Image.icRight, for: .normal)
+        $0.isEnabled = false
     }
     
     let finalTextImage = UIImageView().then {
@@ -222,30 +223,38 @@ class SearchViewController: BaseViewController, View {
 
     func bind(reactor: SearchReactor) {
         rightButton.rx.tap
-            .bind { [weak self] _ in
-                guard let currentIndexPath = self?.askQuestionCollectionView.indexPathsForVisibleItems.first else {
+            .withUnretained(self)
+            .bind { _ in
+                guard let currentIndexPath = self.askQuestionCollectionView.indexPathsForVisibleItems.first else {
                     return
                 }
                 let nextIndexPath = IndexPath(item: currentIndexPath.item + 1, section: currentIndexPath.section)
                 
-                if nextIndexPath.item < self!.askQuestionCollectionView.numberOfItems(inSection: nextIndexPath.section) {
+                if nextIndexPath.item < self.askQuestionCollectionView.numberOfItems(inSection: nextIndexPath.section) {
                     DispatchQueue.main.async { [weak self] in
                         self?.askQuestionCollectionView.scrollToItem(at: nextIndexPath, at: .right, animated: true)
                     }
                     
-                    self?.pageControl.currentPage = nextIndexPath.item
-                    self?.currentCell = nextIndexPath.item
+                    self.pageControl.currentPage = nextIndexPath.item
+                    self.currentCell = nextIndexPath.item
+                    
+                    if reactor.currentState.selectedMusicList[self.currentCell].isSelected {
+                        self.rightButton.isEnabled = true
+                    } else {
+                        self.rightButton.isEnabled = false
+                    }
                 } else {
-                    let confirmMusicViewController = ConfirmMusicViewController(reactor: .init(), navigationController: self?.navigationController)
+                    let confirmMusicViewController = ConfirmMusicViewController(reactor: .init(), navigationController: self.navigationController)
                     confirmMusicViewController.modalPresentationStyle = .overCurrentContext
-                    self?.present(confirmMusicViewController, animated: false)
+                    self.present(confirmMusicViewController, animated: false)
                 }
             }
             .disposed(by: disposeBag)
         
         leftButton.rx.tap
-            .bind { [weak self] _ in
-                guard let currentIndexPath = self?.askQuestionCollectionView.indexPathsForVisibleItems.first else {
+            .withUnretained(self)
+            .bind { _ in
+                guard let currentIndexPath = self.askQuestionCollectionView.indexPathsForVisibleItems.first else {
                     return
                 }
                 let nextIndexPath = IndexPath(item: currentIndexPath.item - 1, section: currentIndexPath.section)
@@ -255,8 +264,14 @@ class SearchViewController: BaseViewController, View {
                         self?.askQuestionCollectionView.scrollToItem(at: nextIndexPath, at: .left, animated: true)
                     }
                     
-                    self?.pageControl.currentPage = nextIndexPath.item
-                    self?.currentCell = nextIndexPath.item
+                    self.pageControl.currentPage = nextIndexPath.item
+                    self.currentCell = nextIndexPath.item
+                    
+                    if reactor.currentState.selectedMusicList[self.currentCell].isSelected {
+                        self.rightButton.isEnabled = true
+                    } else {
+                        self.rightButton.isEnabled = false
+                    }
                 }
             }
             .disposed(by: disposeBag)
@@ -274,9 +289,11 @@ class SearchViewController: BaseViewController, View {
             .subscribe(onNext: { item in
                 guard case let .musicPreview(music) = item else { return }
                 
-                let bottomSheetViewController = BottomSheetViewController()
+                let bottomSheetViewController = BottomSheetViewController(reactor: BottomSheetReactor.init())
                 bottomSheetViewController.modalPresentationStyle = .overFullScreen
                 bottomSheetViewController.configure(singer: music.artist, title: music.album, image: music.image)
+                bottomSheetViewController.musicList = music
+                bottomSheetViewController.index = self.currentCell
                 self.present(bottomSheetViewController, animated: false)
             })
             .disposed(by: disposeBag)
@@ -295,6 +312,16 @@ class SearchViewController: BaseViewController, View {
             .map(\.askQuestionSection)
             .bind(to: askQuestionCollectionView.rx.items(dataSource: askQuestionDataSource))
             .disposed(by: disposeBag)
+        
+        reactor.state
+            .map(\.selectedMusicList)
+            .bind { this in
+                if this[self.currentCell].isSelected {
+                    self.rightButton.isEnabled = true
+                } else {
+                    self.rightButton.isEnabled = false
+                }
+            }.disposed(by: disposeBag)
 
         searchCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         askQuestionCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
