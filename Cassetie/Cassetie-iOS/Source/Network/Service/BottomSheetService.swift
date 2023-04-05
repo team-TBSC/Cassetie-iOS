@@ -7,7 +7,6 @@
 
 import UIKit
 
-import Moya
 import RxSwift
 
 enum BottomSheetEvent {

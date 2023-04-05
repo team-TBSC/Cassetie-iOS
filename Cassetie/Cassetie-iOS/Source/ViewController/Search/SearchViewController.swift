@@ -247,6 +247,8 @@ class SearchViewController: BaseViewController, View {
                     let confirmMusicViewController = ConfirmMusicViewController(reactor: .init(), navigationController: self.navigationController)
                     confirmMusicViewController.modalPresentationStyle = .overCurrentContext
                     self.present(confirmMusicViewController, animated: false)
+                    
+                    reactor.action.onNext(.confirm)
                 }
             }
             .disposed(by: disposeBag)

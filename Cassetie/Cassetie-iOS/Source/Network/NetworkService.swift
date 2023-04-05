@@ -10,4 +10,5 @@ final class NetworkService {
     
     let search = SearchService()
     let bottomSheet = BottomSheetService()
+    let confirm = ConfirmMusicService()
 }

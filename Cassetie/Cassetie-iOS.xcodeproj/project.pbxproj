@@ -19,6 +19,7 @@
 		233B062029DDAEAD0049BAD8 /* BottomSheetReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B061F29DDAEAD0049BAD8 /* BottomSheetReactor.swift */; };
 		233B062229DDAF850049BAD8 /* BottomSheetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B062129DDAF850049BAD8 /* BottomSheetService.swift */; };
 		233B062429DDB5970049BAD8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B062329DDB5970049BAD8 /* NetworkService.swift */; };
+		233B062629DDC5060049BAD8 /* ConfirmMusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B062529DDC5060049BAD8 /* ConfirmMusicService.swift */; };
 		234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */; };
 		2353AA2629D50D570089BD80 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353AA2529D50D570089BD80 /* BaseService.swift */; };
 		2353AA2829D5103A0089BD80 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353AA2729D5103A0089BD80 /* APIError.swift */; };
@@ -73,6 +74,7 @@
 		233B061F29DDAEAD0049BAD8 /* BottomSheetReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetReactor.swift; sourceTree = "<group>"; };
 		233B062129DDAF850049BAD8 /* BottomSheetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetService.swift; sourceTree = "<group>"; };
 		233B062329DDB5970049BAD8 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		233B062529DDC5060049BAD8 /* ConfirmMusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMusicService.swift; sourceTree = "<group>"; };
 		234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2353AA2529D50D570089BD80 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		2353AA2729D5103A0089BD80 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				2353AA2429D50D4C0089BD80 /* Base */,
 				235A7F7129D3156000E594E0 /* SearchService.swift */,
 				233B062129DDAF850049BAD8 /* BottomSheetService.swift */,
+				233B062529DDC5060049BAD8 /* ConfirmMusicService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				235E199D296BEB29004D18AB /* BaseView.swift in Sources */,
 				234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */,
 				233B062029DDAEAD0049BAD8 /* BottomSheetReactor.swift in Sources */,
+				233B062629DDC5060049BAD8 /* ConfirmMusicService.swift in Sources */,
 				233B062429DDB5970049BAD8 /* NetworkService.swift in Sources */,
 				2361CB3D29BAF70600FC86C2 /* RoundButton.swift in Sources */,
 				235A7F6629D2C79400E594E0 /* SearchEndPoint.swift in Sources */,

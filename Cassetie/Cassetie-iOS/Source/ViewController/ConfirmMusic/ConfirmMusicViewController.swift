@@ -165,11 +165,6 @@ class ConfirmMusicViewController: BaseViewController, View {
             }
             .disposed(by: disposeBag)
         
-        rx.viewWillAppear
-            .map { _ in Reactor.Action.refresh }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-        
         reactor.state
             .map(\.musicPreviewSection)
             .bind(to: collectionView.rx.items(dataSource: dataSource))

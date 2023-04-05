@@ -14,6 +14,7 @@ class SearchReactor: Reactor {
     enum Action {
         case refresh
         case update(String)
+        case confirm
     }
     
     enum Mutation {
@@ -50,7 +51,12 @@ class SearchReactor: Reactor {
             ])
         case let .update(text):
             NetworkService.shared.search.post(text: text)
-            return Observable.empty()
+            return .empty()
+        case .confirm:
+            let musicList: [MusicListDTO] = currentState.selectedMusicList.map { $0.selectMusic }
+            print(musicList)
+            NetworkService.shared.confirm.event.onNext(.updateSelectedMusicList(musicList))
+            return .empty()
         }
     }
 
