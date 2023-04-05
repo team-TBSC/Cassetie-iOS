@@ -19,16 +19,23 @@ class SearchReactor: Reactor {
     enum Mutation {
         case setMusicPreviewSection([SearchSectionModel])
         case setAskQuestionSection([AskQuestionSectionModel])
+        case setSelectedMusicList(SelectedMusicList, Int)
     }
     
     struct State {
         var musicPreviewSection: [SearchSectionModel] = []
         var askQuestionSection: [AskQuestionSectionModel] = []
+        var selectedMusicList: [SelectedMusicList] = [
+            SelectedMusicList(selectMusic: MusicListDTO.init(), isSelected: false),
+            SelectedMusicList(selectMusic: MusicListDTO.init(), isSelected: false),
+            SelectedMusicList(selectMusic: MusicListDTO.init(), isSelected: false),
+            SelectedMusicList(selectMusic: MusicListDTO.init(), isSelected: false),
+            SelectedMusicList(selectMusic: MusicListDTO.init(), isSelected: false)
+        ]
     }
     
     var initialState: State
     let disposeBag = DisposeBag()
-    let service = SearchService()
     
     init() {
         self.initialState = State()
@@ -42,7 +49,7 @@ class SearchReactor: Reactor {
                 .just(.setMusicPreviewSection(createMusicPreviewSection()))
             ])
         case let .update(text):
-            service.post(text: text)
+            NetworkService.shared.search.post(text: text)
             return Observable.empty()
         }
     }
@@ -55,17 +62,23 @@ class SearchReactor: Reactor {
             newState.musicPreviewSection = section
         case let .setAskQuestionSection(section):
             newState.askQuestionSection = section
+        case let .setSelectedMusicList(list, index):
+            var newSelectedMusicList = newState.selectedMusicList
+            newSelectedMusicList[index] = list
+            newState.selectedMusicList = newSelectedMusicList
         }
         
         return newState
     }
     
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        let eventMutation = service.event
+        let eventMutation = NetworkService.shared.search.event
             .flatMap({ (event) -> Observable<Mutation> in
                 switch event {
                 case let .postMusicList(data):
                     return .just(.setMusicPreviewSection(self.updateMusicPreviewSection(data: data)))
+                case let .updateSelectedMusicList(list, index):
+                    return .just(.setSelectedMusicList(self.updateSelectedMusicList(musicList: list), index))
                 }
             })
         
@@ -97,6 +110,12 @@ class SearchReactor: Reactor {
         let section = AskQuestionSectionModel(model: .askQuestion(items), items: items)
         
         return [section]
+    }
+    
+    func updateSelectedMusicList(musicList: MusicListDTO) -> SelectedMusicList {
+        let musicList = SelectedMusicList(selectMusic: musicList, isSelected: true)
+
+        return musicList
     }
 }
 

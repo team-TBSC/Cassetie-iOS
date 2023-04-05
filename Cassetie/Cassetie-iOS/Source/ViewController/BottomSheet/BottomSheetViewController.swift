@@ -12,8 +12,14 @@ import Then
 import RxSwift
 import RxGesture
 import Kingfisher
+import ReactorKit
 
-class BottomSheetViewController: BaseViewController {
+class BottomSheetViewController: BaseViewController, View {
+    typealias Reactor = BottomSheetReactor
+    
+    var musicList: MusicListDTO = .init()
+    var index = Int()
+    
     private let backgroundView = UIView().then {
         $0.backgroundColor = .clear
     }
@@ -60,6 +66,16 @@ class BottomSheetViewController: BaseViewController {
     
     private let rightButton = RoundButton(title: "노래 선택하기", titleColor: .black, backColor: .white, round: 40).then {
         $0.configureFont(font: .systemFont(ofSize: 24, weight: .light))
+    }
+    
+    init(reactor: Reactor) {
+        super.init(nibName: nil, bundle: nil)
+        self.reactor = reactor
+    }
+    
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -133,9 +149,7 @@ class BottomSheetViewController: BaseViewController {
         view.addSubviews([backgroundView, bottomSheetView])
     }
     
-    override func setupBind() {
-        super.setupBind()
-        
+    func bind(reactor: BottomSheetReactor) {
         backgroundView.rx.tapGesture()
             .when(.recognized)
             .withUnretained(self)
@@ -169,6 +183,36 @@ class BottomSheetViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        leftButton.rx.tap
+            .withUnretained(self)
+            .bind { this, _ in
+                self.disappearBottomSheet()
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                    self.dismiss(animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        rightButton.rx.tap
+            .map { _ in Reactor.Action.select(self.musicList, self.index) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+//
+//        reactor.state
+//            .map(\.isMusicSelected)
+//            .filter { $0 }
+//            .bind { this in
+//                print("bottom sheet ----")
+//                print(this)
+//                self.disappearBottomSheet()
+//
+//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+//                    self.dismiss(animated: true)
+//                }
+//            }
+//            .disposed(by: disposeBag)
     }
     
     private func showBottomSheet() {

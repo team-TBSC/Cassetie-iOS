@@ -12,6 +12,7 @@ import RxSwift
 
 enum SearchEvent {
     case postMusicList(SearchResponseDTO)
+    case updateSelectedMusicList(MusicListDTO, Int)
 }
 
 protocol SearchServiceType {
