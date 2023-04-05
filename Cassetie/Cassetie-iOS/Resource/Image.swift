@@ -20,9 +20,13 @@ enum Image {
     static let icBottomSheet = UIImage(named: "ic_bottom_sheet")!
     static let backgroundBlurImg = UIImage(named: "background_blur")!
     static let backgroundStarImg = UIImage(named: "background-star")!
-    static let tutorialImg = UIImage(named: "tutorial")!
-    static let tutorialMentionImg = UIImage(named: "tutorial_mention_background")!
     static let cassetieContainerImg = UIImage(named: "cassetie_container")!
     
     static let testCassetieImg = UIImage(named: "test_cassetie")!
+    
+    static let tutorialFirstImg = UIImage(named: "tutorial_first")!
+    static let tutorialSecondImg = UIImage(named: "tutorial_second")!
+    static let tutorialThirdImg = UIImage(named: "tutorial_third")!
+    static let tutorialFourthImg = UIImage(named: "tutorial_fourth")!
+    static let tutorialMentionImg = UIImage(named: "tutorial_mention_background")!
 }
