@@ -28,5 +28,14 @@ struct MusicListDTO: Codable {
         case previewURL = "preview_url"
         case id
     }
+    
+    init() {
+        self.image = String()
+        self.track = String()
+        self.album = String()
+        self.previewURL = String()
+        self.id = String()
+        self.artist = String()
+    }
 }
 
