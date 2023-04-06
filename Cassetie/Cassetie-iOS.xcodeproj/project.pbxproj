@@ -263,8 +263,6 @@
 				235E1986296BDD9B004D18AB /* Network */,
 				235E1988296BDDB9004D18AB /* View */,
 				235E1989296BDDBD004D18AB /* ViewController */,
-				235E1970296BD8C0004D18AB /* SceneDelegate.swift */,
-				235E196E296BD8C0004D18AB /* AppDelegate.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -340,6 +338,8 @@
 		235E198A296BE33B004D18AB /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				235E1970296BD8C0004D18AB /* SceneDelegate.swift */,
+				235E196E296BD8C0004D18AB /* AppDelegate.swift */,
 				235E197C296BD8C1004D18AB /* Info.plist */,
 			);
 			path = Support;
