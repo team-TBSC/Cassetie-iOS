@@ -22,6 +22,7 @@
 		233B062629DDC5060049BAD8 /* ConfirmMusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B062529DDC5060049BAD8 /* ConfirmMusicService.swift */; };
 		233B062929DDD48B0049BAD8 /* TutorialMentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B062829DDD48B0049BAD8 /* TutorialMentionView.swift */; };
 		233B062B29DDD5120049BAD8 /* SecondStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B062A29DDD5120049BAD8 /* SecondStoryTutorialViewController.swift */; };
+		233B062D29DDE2030049BAD8 /* ThirdStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B062C29DDE2030049BAD8 /* ThirdStoryTutorialViewController.swift */; };
 		234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */; };
 		2353AA2629D50D570089BD80 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353AA2529D50D570089BD80 /* BaseService.swift */; };
 		2353AA2829D5103A0089BD80 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353AA2729D5103A0089BD80 /* APIError.swift */; };
@@ -50,6 +51,8 @@
 		2361CB3729BAEDA200FC86C2 /* cassetie-third.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2361CB3629BAEDA200FC86C2 /* cassetie-third.gif */; };
 		2361CB3A29BAEE4800FC86C2 /* ConfirmMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361CB3929BAEE4800FC86C2 /* ConfirmMusicViewController.swift */; };
 		2361CB3D29BAF70600FC86C2 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361CB3C29BAF70600FC86C2 /* RoundButton.swift */; };
+		236E1A3229DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E1A3129DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift */; };
+		236E1A3529DE922E00D8C0EA /* FivthStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */; };
 		23C6D9F329C7551B005CF5F5 /* background-star.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F229C7551B005CF5F5 /* background-star.gif */; };
 		23C6D9F529C75521005CF5F5 /* cassetie-loading-final.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F429C75521005CF5F5 /* cassetie-loading-final.gif */; };
 		23C6D9F729C75526005CF5F5 /* cassetie-fourth.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F629C75526005CF5F5 /* cassetie-fourth.gif */; };
@@ -79,6 +82,7 @@
 		233B062529DDC5060049BAD8 /* ConfirmMusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMusicService.swift; sourceTree = "<group>"; };
 		233B062829DDD48B0049BAD8 /* TutorialMentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialMentionView.swift; sourceTree = "<group>"; };
 		233B062A29DDD5120049BAD8 /* SecondStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStoryTutorialViewController.swift; sourceTree = "<group>"; };
+		233B062C29DDE2030049BAD8 /* ThirdStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdStoryTutorialViewController.swift; sourceTree = "<group>"; };
 		234BB76929AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2353AA2529D50D570089BD80 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		2353AA2729D5103A0089BD80 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 		2361CB3629BAEDA200FC86C2 /* cassetie-third.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-third.gif"; sourceTree = "<group>"; };
 		2361CB3929BAEE4800FC86C2 /* ConfirmMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMusicViewController.swift; sourceTree = "<group>"; };
 		2361CB3C29BAF70600FC86C2 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		236E1A3129DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthStoryTutorialViewController.swift; sourceTree = "<group>"; };
+		236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FivthStoryTutorialViewController.swift; sourceTree = "<group>"; };
 		23C6D9F229C7551B005CF5F5 /* background-star.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "background-star.gif"; sourceTree = "<group>"; };
 		23C6D9F429C75521005CF5F5 /* cassetie-loading-final.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-loading-final.gif"; sourceTree = "<group>"; };
 		23C6D9F629C75526005CF5F5 /* cassetie-fourth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-fourth.gif"; sourceTree = "<group>"; };
@@ -344,6 +350,9 @@
 			children = (
 				235EA28029C2EB53008E61CD /* FirstStoryTutorialViewController.swift */,
 				233B062A29DDD5120049BAD8 /* SecondStoryTutorialViewController.swift */,
+				233B062C29DDE2030049BAD8 /* ThirdStoryTutorialViewController.swift */,
+				236E1A3129DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift */,
+				236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */,
 			);
 			path = StoryTutorial;
 			sourceTree = "<group>";
@@ -552,6 +561,7 @@
 			files = (
 				235EA28129C2EB53008E61CD /* FirstStoryTutorialViewController.swift in Sources */,
 				2317305729B1D6DF002CF0A6 /* NsMutableAttributedString+.swift in Sources */,
+				236E1A3529DE922E00D8C0EA /* FivthStoryTutorialViewController.swift in Sources */,
 				235FD3EF29A5E1BC0073E91B /* Image.swift in Sources */,
 				235FD3ED29A5DDF30073E91B /* SearchViewController.swift in Sources */,
 				235FD3F329A5E5480073E91B /* Color.swift in Sources */,
@@ -560,6 +570,7 @@
 				235E199D296BEB29004D18AB /* BaseView.swift in Sources */,
 				234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */,
 				233B062029DDAEAD0049BAD8 /* BottomSheetReactor.swift in Sources */,
+				236E1A3229DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift in Sources */,
 				233B062629DDC5060049BAD8 /* ConfirmMusicService.swift in Sources */,
 				233B062429DDB5970049BAD8 /* NetworkService.swift in Sources */,
 				2361CB3D29BAF70600FC86C2 /* RoundButton.swift in Sources */,
@@ -586,6 +597,7 @@
 				23C6DA0029C8CA73005CF5F5 /* FinalSectionModel.swift in Sources */,
 				23C6DA0229C8CB47005CF5F5 /* FinalReactor.swift in Sources */,
 				233B062B29DDD5120049BAD8 /* SecondStoryTutorialViewController.swift in Sources */,
+				233B062D29DDE2030049BAD8 /* ThirdStoryTutorialViewController.swift in Sources */,
 				2358F43529AC98A900AC4018 /* SearchReactor.swift in Sources */,
 				235A7F6F29D3134F00E594E0 /* NetworkLoggerPlugin.swift in Sources */,
 				23C6D9FE29C8C1B3005CF5F5 /* CassetieBoxCollectionViewCell.swift in Sources */,

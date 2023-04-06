@@ -1,8 +1,8 @@
 //
-//  StoryTutorialViewController.swift
+//  ThirdStoryTutorialViewController.swift
 //  Cassetie-iOS
 //
-//  Created by Sojin Lee on 2023/03/16.
+//  Created by Sojin Lee on 2023/04/06.
 //
 
 import UIKit
@@ -12,14 +12,13 @@ import Then
 import RxSwift
 import RxGesture
 
-class FirstStoryTutorialViewController: BaseViewController {
+class ThirdStoryTutorialViewController: BaseViewController {
     private let tutorialImageView = UIImageView().then {
-        $0.image = Image.tutorialFirstImg
+        $0.image = Image.tutorialThirdImg
         $0.contentMode = .scaleAspectFill
     }
     
-    private let firstMentionView = TutorialMentionView(type: .first)
-    private let secondMentionView = TutorialMentionView(type: .firstSub)
+    private let mentionView = TutorialMentionView(type: .third)
     var switchFlag: Bool = false
     
     override func setupLayout() {
@@ -31,31 +30,36 @@ class FirstStoryTutorialViewController: BaseViewController {
             $0.leading.equalToSuperview().inset(230)
         }
         
-        firstMentionView.snp.makeConstraints {
+        mentionView.snp.makeConstraints {
             $0.width.equalTo(713.adjustedWidth)
             $0.height.equalTo(245.adjustedHeight)
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().inset(70)
-        }
-        
-        secondMentionView.snp.makeConstraints {
-            $0.width.equalTo(713.adjustedWidth)
-            $0.height.equalTo(250.adjustedHeight)
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset(65)
         }
     }
     
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([tutorialImageView, firstMentionView, secondMentionView])
+        view.addSubviews([tutorialImageView, mentionView])
     }
     
     override func setupProperty() {
         super.setupProperty()
         
-        secondMentionView.isHidden = true
+        mentionView.isHidden = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.remakeLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.hidesBackButton = true
     }
     
     override func setupBind() {
@@ -64,13 +68,8 @@ class FirstStoryTutorialViewController: BaseViewController {
         tutorialImageView.rx.tapGesture()
             .when(.recognized)
             .bind(onNext: {_ in
-                if self.switchFlag {
-                    let secondStoryTutorialViewController = SecondStoryTutorialViewController()
-                    self.navigationController?.pushViewController(secondStoryTutorialViewController, animated: false)
-                } else {
-                    self.firstMentionView.isHidden = true
-                    self.remakeLayout()
-                }
+                let fourthStoryTutorialViewController = FourthStoryTutorialViewController()
+                self.navigationController?.pushViewController(fourthStoryTutorialViewController, animated: false)
             })
             .disposed(by: disposeBag)
     }
@@ -82,8 +81,8 @@ class FirstStoryTutorialViewController: BaseViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.5) {
-            self.secondMentionView.isHidden = false
-            self.switchFlag = true
+            self.mentionView.isHidden = false
         }
     }
 }
+
