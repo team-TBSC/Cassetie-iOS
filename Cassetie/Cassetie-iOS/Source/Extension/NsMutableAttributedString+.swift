@@ -28,4 +28,12 @@ extension NSMutableAttributedString {
         self.append(NSAttributedString(string: string, attributes: attributes))
         return self
     }
+    
+    func paragraph(text: String, lineSpacing: CGFloat) -> NSMutableAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpacing
+        let attributes: [NSAttributedString.Key: Any] = [.paragraphStyle: paragraphStyle]
+        self.append(NSAttributedString(string: text, attributes: attributes))
+        return self
+    }
 }
