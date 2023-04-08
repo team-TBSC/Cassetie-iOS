@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Then
+import Gifu
 
 enum QuestionType: CaseIterable {
     case first
@@ -58,8 +59,19 @@ enum QuestionType: CaseIterable {
         }
     }
     
-    var image: UIImage {
-        return Image.testCassetieImage
+    var gifImage: String {
+        switch self {
+        case .first:
+            return "cassetie-first"
+        case .second:
+            return "cassetie-second"
+        case .third:
+            return "cassetie-third"
+        case .fourth:
+            return "cassetie-fourth"
+        case .fivth:
+            return "cassetie-fivth"
+        }
     }
 }
 
@@ -72,12 +84,14 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
         $0.numberOfLines = 0
     }
     
-    var cassetieImage = UIImageView()
+    var cassetieGifImageView = GIFImageView().then {
+        $0.contentMode = .scaleToFill
+    }
     
     override func setupLayout() {
         super.setupLayout()
        
-        cassetieImage.snp.makeConstraints {
+        cassetieGifImageView.snp.makeConstraints {
 //            $0.leading.trailing.equalToSuperview().inset(50)
             $0.top.equalToSuperview().offset(15)
             $0.width.equalTo(334.adjustedWidth)
@@ -86,7 +100,7 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
         }
         
         questionLabel.snp.makeConstraints {
-            $0.top.equalTo(cassetieImage.snp.bottom).offset(17.adjustedHeight)
+            $0.top.equalTo(cassetieGifImageView.snp.bottom).offset(17.adjustedHeight)
             $0.centerX.equalToSuperview()
         }
     }
@@ -94,7 +108,7 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        contentView.addSubviews([cassetieImage, questionLabel])
+        contentView.addSubviews([cassetieGifImageView, questionLabel])
     }
     
     func configure(_ type: QuestionType) {
@@ -110,6 +124,6 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
                 .regular(string: type.thirdText, fontSize: 28)
         }
         
-        cassetieImage.image = type.image
+        cassetieGifImageView.animate(withGIFNamed: type.gifImage)
     }
 }
