@@ -15,6 +15,8 @@
 		2317ACC129C201E8002EE6C4 /* cassetie-loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2317ACC029C201E8002EE6C4 /* cassetie-loading.gif */; };
 		23255A4529B70C9B001308A9 /* cassetie-second.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23255A4329B70C9B001308A9 /* cassetie-second.gif */; };
 		23255A4629B70C9B001308A9 /* cassetie-first.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23255A4429B70C9B001308A9 /* cassetie-first.gif */; };
+		2337E84829E1B20A009D1DBF /* cassetie-fourth.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2337E84729E1B20A009D1DBF /* cassetie-fourth.gif */; };
+		2337E84A29E1B217009D1DBF /* cassetie-fivth.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2337E84929E1B217009D1DBF /* cassetie-fivth.gif */; };
 		2337F4DE29D5897F0098DDD0 /* EmptyMusicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2337F4DD29D5897F0098DDD0 /* EmptyMusicCollectionViewCell.swift */; };
 		233B062029DDAEAD0049BAD8 /* BottomSheetReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B061F29DDAEAD0049BAD8 /* BottomSheetReactor.swift */; };
 		233B062229DDAF850049BAD8 /* BottomSheetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B062129DDAF850049BAD8 /* BottomSheetService.swift */; };
@@ -55,7 +57,6 @@
 		236E1A3529DE922E00D8C0EA /* FivthStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */; };
 		23C6D9F329C7551B005CF5F5 /* background-star.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F229C7551B005CF5F5 /* background-star.gif */; };
 		23C6D9F529C75521005CF5F5 /* cassetie-loading-final.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F429C75521005CF5F5 /* cassetie-loading-final.gif */; };
-		23C6D9F729C75526005CF5F5 /* cassetie-fourth.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F629C75526005CF5F5 /* cassetie-fourth.gif */; };
 		23C6D9FB29C8B8C6005CF5F5 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6D9FA29C8B8C6005CF5F5 /* FinalViewController.swift */; };
 		23C6D9FE29C8C1B3005CF5F5 /* CassetieBoxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6D9FD29C8C1B3005CF5F5 /* CassetieBoxCollectionViewCell.swift */; };
 		23C6DA0029C8CA73005CF5F5 /* FinalSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6D9FF29C8CA73005CF5F5 /* FinalSectionModel.swift */; };
@@ -75,6 +76,8 @@
 		2317ACC029C201E8002EE6C4 /* cassetie-loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-loading.gif"; sourceTree = "<group>"; };
 		23255A4329B70C9B001308A9 /* cassetie-second.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-second.gif"; sourceTree = "<group>"; };
 		23255A4429B70C9B001308A9 /* cassetie-first.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-first.gif"; sourceTree = "<group>"; };
+		2337E84729E1B20A009D1DBF /* cassetie-fourth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-fourth.gif"; sourceTree = "<group>"; };
+		2337E84929E1B217009D1DBF /* cassetie-fivth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-fivth.gif"; sourceTree = "<group>"; };
 		2337F4DD29D5897F0098DDD0 /* EmptyMusicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMusicCollectionViewCell.swift; sourceTree = "<group>"; };
 		233B061F29DDAEAD0049BAD8 /* BottomSheetReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetReactor.swift; sourceTree = "<group>"; };
 		233B062129DDAF850049BAD8 /* BottomSheetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetService.swift; sourceTree = "<group>"; };
@@ -116,7 +119,6 @@
 		236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FivthStoryTutorialViewController.swift; sourceTree = "<group>"; };
 		23C6D9F229C7551B005CF5F5 /* background-star.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "background-star.gif"; sourceTree = "<group>"; };
 		23C6D9F429C75521005CF5F5 /* cassetie-loading-final.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-loading-final.gif"; sourceTree = "<group>"; };
-		23C6D9F629C75526005CF5F5 /* cassetie-fourth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-fourth.gif"; sourceTree = "<group>"; };
 		23C6D9FA29C8B8C6005CF5F5 /* FinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
 		23C6D9FD29C8C1B3005CF5F5 /* CassetieBoxCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassetieBoxCollectionViewCell.swift; sourceTree = "<group>"; };
 		23C6D9FF29C8CA73005CF5F5 /* FinalSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalSectionModel.swift; sourceTree = "<group>"; };
@@ -377,7 +379,8 @@
 		23C6D9F829C756B3005CF5F5 /* Gif */ = {
 			isa = PBXGroup;
 			children = (
-				23C6D9F629C75526005CF5F5 /* cassetie-fourth.gif */,
+				2337E84929E1B217009D1DBF /* cassetie-fivth.gif */,
+				2337E84729E1B20A009D1DBF /* cassetie-fourth.gif */,
 				23C6D9F429C75521005CF5F5 /* cassetie-loading-final.gif */,
 				23C6D9F229C7551B005CF5F5 /* background-star.gif */,
 				2317ACC029C201E8002EE6C4 /* cassetie-loading.gif */,
@@ -498,13 +501,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2337E84829E1B20A009D1DBF /* cassetie-fourth.gif in Resources */,
 				235E197B296BD8C1004D18AB /* LaunchScreen.storyboard in Resources */,
 				23C6D9F529C75521005CF5F5 /* cassetie-loading-final.gif in Resources */,
 				23255A4629B70C9B001308A9 /* cassetie-first.gif in Resources */,
 				2317ACC129C201E8002EE6C4 /* cassetie-loading.gif in Resources */,
 				23C6D9F329C7551B005CF5F5 /* background-star.gif in Resources */,
 				2361CB3729BAEDA200FC86C2 /* cassetie-third.gif in Resources */,
-				23C6D9F729C75526005CF5F5 /* cassetie-fourth.gif in Resources */,
+				2337E84A29E1B217009D1DBF /* cassetie-fivth.gif in Resources */,
 				23255A4529B70C9B001308A9 /* cassetie-second.gif in Resources */,
 				235E1978296BD8C1004D18AB /* Assets.xcassets in Resources */,
 			);
