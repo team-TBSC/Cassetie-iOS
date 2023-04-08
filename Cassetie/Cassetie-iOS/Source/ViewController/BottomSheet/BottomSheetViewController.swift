@@ -13,12 +13,21 @@ import RxSwift
 import RxGesture
 import Kingfisher
 import ReactorKit
+import AVFoundation
 
 class BottomSheetViewController: BaseViewController, View {
     typealias Reactor = BottomSheetReactor
     
     var musicList: MusicListDTO = .init()
-    var index = Int()
+    var selectedIndex = Int()
+    private let player = AVPlayer()
+    private var url: URL? {
+      didSet {
+        guard let url = self.url else { return self.player.replaceCurrentItem(with: nil) }
+        let item = AVPlayerItem(url: url)
+        self.player.replaceCurrentItem(with: item)
+      }
+    }
     
     private let backgroundView = UIView().then {
         $0.backgroundColor = .clear
@@ -76,6 +85,18 @@ class BottomSheetViewController: BaseViewController, View {
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let musicURL = musicList.previewURL {
+            self.url = URL(string: musicURL)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            self.player.play()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -149,11 +170,13 @@ class BottomSheetViewController: BaseViewController, View {
         view.addSubviews([backgroundView, bottomSheetView])
     }
     
+    // MARK: - bind
     func bind(reactor: BottomSheetReactor) {
         backgroundView.rx.tapGesture()
             .when(.recognized)
             .withUnretained(self)
             .bind { this, gesture in
+                self.stopMusic()
                 self.disappearBottomSheet()
                 
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
@@ -187,6 +210,7 @@ class BottomSheetViewController: BaseViewController, View {
         leftButton.rx.tap
             .withUnretained(self)
             .bind { this, _ in
+                self.stopMusic()
                 self.disappearBottomSheet()
                 
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
@@ -196,8 +220,11 @@ class BottomSheetViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         rightButton.rx.tap
-            .map { _ in Reactor.Action.select(self.musicList, self.index) }
-            .bind(to: reactor.action)
+            .bind { _ in
+                self.stopMusic()
+                
+                reactor.action.onNext(.select(self.musicList, self.selectedIndex))
+            }
             .disposed(by: disposeBag)
 
         reactor.state
@@ -211,9 +238,9 @@ class BottomSheetViewController: BaseViewController, View {
                 }
             }
             .disposed(by: disposeBag)
-
     }
     
+    // MARK: - 바텀시트 열릴 때
     private func showBottomSheet() {
         bottomSheetView.snp.remakeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
@@ -226,6 +253,7 @@ class BottomSheetViewController: BaseViewController, View {
         )
     }
     
+    // MARK: - 바텀시트 닫힐 때
     private func disappearBottomSheet() {
         bottomSheetView.snp.remakeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
@@ -236,6 +264,11 @@ class BottomSheetViewController: BaseViewController, View {
             withDuration: 0.5,
             animations: self.view.layoutIfNeeded
         )
+    }
+    
+    func stopMusic() {
+        self.player.pause()
+        self.player.seek(to: .zero)
     }
     
     func configure(singer: String, title: String, image: String) {
