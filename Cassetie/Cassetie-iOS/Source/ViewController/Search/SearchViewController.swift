@@ -47,7 +47,9 @@ class SearchViewController: BaseViewController, View {
         $0.image = Image.backgroundImg
     }
     
-//    let backgroundStarGifView = GIFImageView()
+    let backgroundStarImg = UIImageView().then {
+        $0.image = Image.backgroundStarImg
+    }
     
     let leftButton = UIButton().then {
         $0.setImage(Image.icLeft, for: .normal)
@@ -139,9 +141,11 @@ class SearchViewController: BaseViewController, View {
             $0.edges.equalToSuperview()
         }
         
-//        backgroundStarGifView.snp.makeConstraints {
-//            $0.edges.equalToSuperview()
-//        }
+        backgroundStarImg.snp.makeConstraints {
+            $0.height.equalTo(self.view.frame.height)
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalToSuperview().inset(-50)
+        }
         
         leftButton.snp.makeConstraints {
             $0.width.height.equalTo(75.adjustedWidth)
@@ -210,7 +214,7 @@ class SearchViewController: BaseViewController, View {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([backgroundView, leftButton, rightButton, finalTextImage, askQuestionCollectionView, pageControl, searchBackgroundView, searchBarBackgroundView, searchIcon, textField, searchCollectionView])
+        view.addSubviews([backgroundView, backgroundStarImg, leftButton, rightButton, finalTextImage, askQuestionCollectionView, pageControl, searchBackgroundView, searchBarBackgroundView, searchIcon, textField, searchCollectionView])
     }
     
     override func setupDelegate() {
@@ -288,7 +292,7 @@ class SearchViewController: BaseViewController, View {
             .compactMap { $0 }
             .skip(1)
             .distinctUntilChanged()
-            .debounce(.seconds(2), scheduler: MainScheduler.asyncInstance)
+            .debounce(.seconds(1), scheduler: MainScheduler.asyncInstance)
             .map { text in Reactor.Action.update(text) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -333,8 +337,6 @@ class SearchViewController: BaseViewController, View {
 
         searchCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         askQuestionCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
-        
-//        backgroundStarGifView.animate(withGIFNamed: "background-star")
     }
 
 }

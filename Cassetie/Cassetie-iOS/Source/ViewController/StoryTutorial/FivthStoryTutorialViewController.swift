@@ -17,15 +17,20 @@ class FivthStoryTutorialViewController: BaseViewController {
         $0.image = Image.backgroundImg
     }
     
-//    let cassetieGifImageView = GIFImageView().then {
-//        $0.contentMode = .scaleToFill
-//    }
+    let backgroundStarImg = UIImageView().then {
+        $0.image = Image.backgroundStarImg
+    }
+    
     let mentionView = TutorialMentionView(type: .fivth)
     
     override func setupLayout() {
         super.setupLayout()
         
         backgroundView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        backgroundStarImg.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
@@ -58,7 +63,7 @@ class FivthStoryTutorialViewController: BaseViewController {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([backgroundView, mentionView])
+        view.addSubviews([backgroundView, backgroundStarImg, mentionView])
     }
     
 }

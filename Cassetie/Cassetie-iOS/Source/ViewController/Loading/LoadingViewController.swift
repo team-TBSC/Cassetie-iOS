@@ -19,6 +19,9 @@ class LoadingViewController: BaseViewController {
 //    let backgroundStarImageView = UIImageView().then {
 //        $0.image = Image.backgroundStarImg
 //    }
+    let backgroundStarImg = UIImageView().then {
+        $0.image = Image.backgroundStarImg
+    }
     
     let cassetieGifImageView = GIFImageView().then {
         $0.contentMode = .scaleToFill
@@ -61,12 +64,9 @@ class LoadingViewController: BaseViewController {
             $0.edges.equalToSuperview()
         }
         
-//        backgroundStarImageView.snp.makeConstraints {
-//            $0.top.equalToSuperview().offset(76.adjustedHeight)
-//            $0.width.equalTo(669.adjustedWidth)
-//            $0.centerX.equalToSuperview()
-//            $0.height.equalTo(174.adjustedHeight)
-//        }
+        backgroundStarImg.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
         cassetieGifImageView.snp.makeConstraints {
             $0.width.height.equalTo(650.adjustedWidth)
@@ -75,18 +75,18 @@ class LoadingViewController: BaseViewController {
         }
         
         completedGifImageView.snp.makeConstraints {
-            $0.width.height.equalTo(510.adjustedWidth)
+            $0.width.height.equalTo(460.adjustedWidth)
         }
         
         completedStackView.snp.makeConstraints {
             $0.width.equalTo(510.adjustedWidth)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(500)
+            $0.bottom.equalToSuperview().inset(150)
         }
         
         loadingLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(cassetieGifImageView.snp.bottom).inset(80)
+            $0.top.equalTo(cassetieGifImageView.snp.bottom).inset(90)
         }
     }
     
@@ -94,7 +94,7 @@ class LoadingViewController: BaseViewController {
         super.setupHierarchy()
         
         completedStackView.addArrangedSubviews([completedGifImageView, completedLabel])
-        view.addSubviews([backgroundView, cassetieGifImageView, loadingLabel, completedStackView])
+        view.addSubviews([backgroundView, backgroundStarImg, cassetieGifImageView, loadingLabel, completedStackView])
     }
     
     override func setupProperty() {
@@ -118,7 +118,7 @@ class LoadingViewController: BaseViewController {
             $0.top.equalToSuperview().offset(300.adjustedHeight)
         }
         
-        UIView.animate(withDuration: 3.0, animations: {
+        UIView.animate(withDuration: 3, animations: {
             self.view.layoutIfNeeded()
             self.completedStackView.alpha = 1
         })
