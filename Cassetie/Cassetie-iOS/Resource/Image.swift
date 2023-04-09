@@ -9,6 +9,7 @@ import UIKit.UIImage
 
 enum Image {
     static let backgroundImg = UIImage(named: "background")!
+    static let backgroundStarImg = UIImage(named: "background_star")
     static let backgroundSearchImg = UIImage(named: "background_search")!
     static let icSearch = UIImage(named: "search-normal")!
     static let testAlbumImage = UIImage(named: "testAlbumCover")!
@@ -19,7 +20,6 @@ enum Image {
     static let finalTextImage = UIImage(named: "final_text_image")!
     static let icBottomSheet = UIImage(named: "ic_bottom_sheet")!
     static let backgroundBlurImg = UIImage(named: "background_blur")!
-    static let backgroundStarImg = UIImage(named: "background-star")!
     static let cassetieContainerImg = UIImage(named: "cassetie_container")!
     
     static let testCassetieImg = UIImage(named: "test_cassetie")!
