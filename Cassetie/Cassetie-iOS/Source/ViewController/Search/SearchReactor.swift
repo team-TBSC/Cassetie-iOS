@@ -21,6 +21,8 @@ class SearchReactor: Reactor {
         case setMusicPreviewSection([SearchSectionModel])
         case setAskQuestionSection([AskQuestionSectionModel])
         case setSelectedMusicList(SelectedMusicList, Int)
+        case setSearchIndexKeyword(String, Int)
+        case setSearchKeyword(String)
     }
     
     struct State {
@@ -33,6 +35,9 @@ class SearchReactor: Reactor {
             SelectedMusicList(selectMusic: MusicListDTO.init(), isSelected: false),
             SelectedMusicList(selectMusic: MusicListDTO.init(), isSelected: false)
         ]
+        var searchKeyword: String = String()
+        var fourthSearchKeyword: String = String()
+        var fivthSearchKeyword: String = String()
     }
     
     var initialState: State
@@ -51,11 +56,10 @@ class SearchReactor: Reactor {
             ])
         case let .update(text):
             NetworkService.shared.search.post(text: text)
-            return .empty()
+            return Observable.just(.setSearchKeyword(text))
         case .confirm:
             let musicList: [MusicListDTO] = currentState.selectedMusicList.map { $0.selectMusic }
-            print(musicList)
-            NetworkService.shared.confirm.event.onNext(.updateSelectedMusicList(musicList))
+            NetworkService.shared.confirm.event.onNext(.updateSelectedMusicList(musicList, currentState.fourthSearchKeyword, currentState.fivthSearchKeyword))
             return .empty()
         }
     }
@@ -72,6 +76,14 @@ class SearchReactor: Reactor {
             var newSelectedMusicList = newState.selectedMusicList
             newSelectedMusicList[index] = list
             newState.selectedMusicList = newSelectedMusicList
+        case let .setSearchIndexKeyword(word, index):
+            if index == 4 {
+                newState.fourthSearchKeyword = word
+            } else {
+                newState.fivthSearchKeyword = word
+            }
+        case let .setSearchKeyword(text):
+            newState.searchKeyword = text
         }
         
         return newState
@@ -79,12 +91,24 @@ class SearchReactor: Reactor {
     
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
         let eventMutation = NetworkService.shared.search.event
-            .flatMap({ (event) -> Observable<Mutation> in
+            .flatMap({ [self] (event) -> Observable<Mutation> in
                 switch event {
                 case let .postMusicList(data):
                     return .just(.setMusicPreviewSection(self.updateMusicPreviewSection(data: data)))
                 case let .updateSelectedMusicList(list, index):
-                    return .just(.setSelectedMusicList(self.updateSelectedMusicList(musicList: list), index))
+                    var updateKeywordMutation: Observable<Mutation> = .empty()
+                    
+                    // MARK: - 4,5 번째 검색일 때 검색 키워드도 같이 post하기 위함
+                    if index + 1 == 4 {
+                        updateKeywordMutation = .just(.setSearchIndexKeyword(self.currentState.searchKeyword, 4))
+                    } else if index + 1 == 5 {
+                        updateKeywordMutation = .just(.setSearchIndexKeyword(self.currentState.searchKeyword, 5))
+                    }
+                    
+                    return Observable.concat([
+                        .just(.setSelectedMusicList(self.updateSelectedMusicList(musicList: list), index)),
+                        updateKeywordMutation
+                    ])
                 }
             })
         

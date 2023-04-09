@@ -11,7 +11,7 @@ import Moya
 import RxSwift
 
 enum ConfirmMusicEvent {
-    case updateSelectedMusicList([MusicListDTO])
+    case updateSelectedMusicList([MusicListDTO], String, String)
 }
 
 protocol ConfirmMusicServiceType {
