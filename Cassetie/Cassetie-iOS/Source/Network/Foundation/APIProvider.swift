@@ -22,12 +22,10 @@ extension APIProvider {
             MoyaProvider<Target>(plugins: [NetworkLoggerPlugin()]).request(endPoint as! Self.Target) { result in
                 switch result {
                 case .success(let response):
-                    do {
-                        let data = try JSONDecoder().decode(ResponseType.self, from: response.data)
+                    guard let jsonString = String(data: response.data, encoding: .utf8) else { return creater.onError(APIError.jsonParsingError) }
+                    let decoder = JSONDecoder()
+                    if let data = try? decoder.decode(ResponseType.self, from: jsonString.data(using: .utf8) ?? Data()) {
                         creater.onNext(data)
-                    } catch(let err) {
-                        print(err)
-                        creater.onError(APIError.jsonParsingError)
                     }
                 case .failure(let error):
                     creater.onError(error)

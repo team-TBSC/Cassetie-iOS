@@ -220,6 +220,12 @@ class SearchViewController: BaseViewController, View {
         searchCollectionView.register(EmptyMusicCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EmptyMusicCollectionViewCell.self))
         askQuestionCollectionView.register(AskQuestionCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: AskQuestionCollectionViewCell.self))
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.hidesBackButton = true
+    }
 
     func bind(reactor: SearchReactor) {
         rightButton.rx.tap
@@ -280,9 +286,9 @@ class SearchViewController: BaseViewController, View {
         
         textField.rx.text
             .compactMap { $0 }
-            .filter { !$0.isEmpty }
+            .skip(1)
             .distinctUntilChanged()
-            .debounce(.seconds(1), scheduler: MainScheduler.asyncInstance)
+            .debounce(.seconds(2), scheduler: MainScheduler.asyncInstance)
             .map { text in Reactor.Action.update(text) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -293,9 +299,9 @@ class SearchViewController: BaseViewController, View {
                 
                 let bottomSheetViewController = BottomSheetViewController(reactor: BottomSheetReactor.init())
                 bottomSheetViewController.modalPresentationStyle = .overFullScreen
-                bottomSheetViewController.configure(singer: music.artist, title: music.album, image: music.image)
+                bottomSheetViewController.configure(singer: music.artist, title: music.track, image: music.image)
                 bottomSheetViewController.musicList = music
-                bottomSheetViewController.index = self.currentCell
+                bottomSheetViewController.selectedIndex = self.currentCell
                 self.present(bottomSheetViewController, animated: false)
             })
             .disposed(by: disposeBag)
