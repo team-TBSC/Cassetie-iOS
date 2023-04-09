@@ -32,9 +32,6 @@ class ConfirmMusicViewController: BaseViewController, View {
         }
     }
     
-//    private let backgroundBlurView = UIImageView().then {
-//        $0.image = Image.backgroundBlurImg
-//    }
     private let backgroundView = UIView().then {
         $0.backgroundColor = Color.navyD.withAlphaComponent(0.9)
         $0.cornerRound(radius: 24)
@@ -157,6 +154,7 @@ class ConfirmMusicViewController: BaseViewController, View {
         topButton.rx.tap
             .bind { _ in
                 self.dismiss(animated: false)
+                reactor.action.onNext(.post)
                 
                 let loadingViewController = LoadingViewController()
                 self.navigation?.pushViewController(loadingViewController, animated: true)

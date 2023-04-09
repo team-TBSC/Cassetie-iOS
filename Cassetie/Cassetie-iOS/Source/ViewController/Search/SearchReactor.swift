@@ -36,6 +36,7 @@ class SearchReactor: Reactor {
             SelectedMusicList(selectMusic: MusicListDTO.init(), isSelected: false)
         ]
         var searchKeyword: String = String()
+        var thirdSearchKeyword: String = String()
         var fourthSearchKeyword: String = String()
         var fivthSearchKeyword: String = String()
     }
@@ -59,7 +60,7 @@ class SearchReactor: Reactor {
             return Observable.just(.setSearchKeyword(text))
         case .confirm:
             let musicList: [MusicListDTO] = currentState.selectedMusicList.map { $0.selectMusic }
-            NetworkService.shared.confirm.event.onNext(.updateSelectedMusicList(musicList, currentState.fourthSearchKeyword, currentState.fivthSearchKeyword))
+            NetworkService.shared.confirm.event.onNext(.updateSelectedMusicList(musicList, currentState.thirdSearchKeyword ,currentState.fourthSearchKeyword, currentState.fivthSearchKeyword))
             return .empty()
         }
     }
@@ -77,7 +78,9 @@ class SearchReactor: Reactor {
             newSelectedMusicList[index] = list
             newState.selectedMusicList = newSelectedMusicList
         case let .setSearchIndexKeyword(word, index):
-            if index == 4 {
+            if index == 3 {
+                newState.thirdSearchKeyword = word
+            } else if index == 4 {
                 newState.fourthSearchKeyword = word
             } else {
                 newState.fivthSearchKeyword = word
@@ -99,9 +102,11 @@ class SearchReactor: Reactor {
                     var updateKeywordMutation: Observable<Mutation> = .empty()
                     
                     // MARK: - 4,5 번째 검색일 때 검색 키워드도 같이 post하기 위함
-                    if index + 1 == 4 {
+                    if index + 1 == 3 {
+                        updateKeywordMutation = .just(.setSearchIndexKeyword(self.currentState.searchKeyword, 3))
+                    } else if index + 1 == 4 {
                         updateKeywordMutation = .just(.setSearchIndexKeyword(self.currentState.searchKeyword, 4))
-                    } else if index + 1 == 5 {
+                    } else {
                         updateKeywordMutation = .just(.setSearchIndexKeyword(self.currentState.searchKeyword, 5))
                     }
                     
