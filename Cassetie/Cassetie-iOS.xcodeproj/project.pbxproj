@@ -38,6 +38,7 @@
 		235A7F6F29D3134F00E594E0 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A7F6E29D3134F00E594E0 /* NetworkLoggerPlugin.swift */; };
 		235A7F7229D3156000E594E0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A7F7129D3156000E594E0 /* SearchService.swift */; };
 		235A7F7429D3169200E594E0 /* SearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A7F7329D3169200E594E0 /* SearchResponseDTO.swift */; };
+		235CC41929E2EDC000835633 /* ConfirmEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CC41829E2EDC000835633 /* ConfirmEndPoint.swift */; };
 		235E196F296BD8C0004D18AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E196E296BD8C0004D18AB /* AppDelegate.swift */; };
 		235E1971296BD8C0004D18AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235E1970296BD8C0004D18AB /* SceneDelegate.swift */; };
 		235E1978296BD8C1004D18AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235E1977296BD8C1004D18AB /* Assets.xcassets */; };
@@ -98,6 +99,7 @@
 		235A7F6E29D3134F00E594E0 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		235A7F7129D3156000E594E0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		235A7F7329D3169200E594E0 /* SearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseDTO.swift; sourceTree = "<group>"; };
+		235CC41829E2EDC000835633 /* ConfirmEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEndPoint.swift; sourceTree = "<group>"; };
 		235E196B296BD8C0004D18AB /* Cassetie-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cassetie-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		235E196E296BD8C0004D18AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235E1970296BD8C0004D18AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				235A7F6529D2C79400E594E0 /* SearchEndPoint.swift */,
+				235CC41829E2EDC000835633 /* ConfirmEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				235A7F6629D2C79400E594E0 /* SearchEndPoint.swift in Sources */,
 				2317305B29B4ADBA002CF0A6 /* adjusted+.swift in Sources */,
 				2337F4DE29D5897F0098DDD0 /* EmptyMusicCollectionViewCell.swift in Sources */,
+				235CC41929E2EDC000835633 /* ConfirmEndPoint.swift in Sources */,
 				2353AA2629D50D570089BD80 /* BaseService.swift in Sources */,
 				2353AA2829D5103A0089BD80 /* APIError.swift in Sources */,
 				2361CB3A29BAEE4800FC86C2 /* ConfirmMusicViewController.swift in Sources */,
