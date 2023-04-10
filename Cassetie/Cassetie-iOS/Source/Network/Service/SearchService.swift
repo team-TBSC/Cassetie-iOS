@@ -23,14 +23,13 @@ protocol SearchServiceType {
 
 class SearchService: BaseService, SearchServiceType, APIProvider {
     typealias Target = SearchEndPoint
-    typealias ResponseType = SearchResponseDTO
     
     var event = PublishSubject<SearchEvent>()
     let disposedBag = DisposeBag()
     
     func post(text: String) {
         SearchService.request(endPoint: SearchEndPoint.post(text: text))
-            .bind { [weak self] data in
+            .bind { [weak self] (data: SearchResponseDTO) in
                 self?.event.onNext(.postMusicList(data))
             }
             .disposed(by: disposedBag)

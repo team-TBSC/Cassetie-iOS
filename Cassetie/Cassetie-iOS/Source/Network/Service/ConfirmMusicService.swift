@@ -22,14 +22,13 @@ protocol ConfirmMusicServiceType {
 
 class ConfirmMusicService: BaseService, ConfirmMusicServiceType, APIProvider {
     typealias Target = ConfirmEndPoint
-    typealias ResponseType = SelectedRequestDTO
     
     var event = PublishSubject<ConfirmMusicEvent>()
     let disposedBag = DisposeBag()
     
     func post(data: SelectedRequestDTO) {
         ConfirmMusicService.request(endPoint: ConfirmEndPoint.post(data: data))
-            .bind { [weak self] data in
+            .bind { (data: SelectedRequestDTO) in
                 print(data)
             }
             .disposed(by: disposedBag)

@@ -13,18 +13,17 @@ import Moya
 
 protocol APIProvider {
     associatedtype Target: EndPoint
-    associatedtype ResponseType: Codable
 }
 
 extension APIProvider {
-    static func request(endPoint: EndPoint) -> Observable<ResponseType> {
-        return Observable<ResponseType>.create { creater in
+    static func request<T: Decodable>(endPoint: EndPoint) -> Observable<T> {
+        return Observable<T>.create { creater in
             MoyaProvider<Target>(plugins: [NetworkLoggerPlugin()]).request(endPoint as! Self.Target) { result in
                 switch result {
                 case .success(let response):
                     guard let jsonString = String(data: response.data, encoding: .utf8) else { return creater.onError(APIError.jsonParsingError) }
                     let decoder = JSONDecoder()
-                    if let data = try? decoder.decode(ResponseType.self, from: jsonString.data(using: .utf8) ?? Data()) {
+                    if let data = try? decoder.decode(T.self, from: jsonString.data(using: .utf8) ?? Data()) {
                         creater.onNext(data)
                     }
                 case .failure(let error):
