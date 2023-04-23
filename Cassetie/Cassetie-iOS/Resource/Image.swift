@@ -29,4 +29,5 @@ enum Image {
     static let tutorialThirdImg = UIImage(named: "tutorial_third")!
     static let tutorialFourthImg = UIImage(named: "tutorial_fourth")!
     static let tutorialMentionImg = UIImage(named: "tutorial_mention_background")!
+    static let tutorialFinal = UIImage(named: "tutorial_final")!
 }

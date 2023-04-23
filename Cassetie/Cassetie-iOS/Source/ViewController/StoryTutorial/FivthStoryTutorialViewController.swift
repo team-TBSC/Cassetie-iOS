@@ -14,11 +14,7 @@ import RxGesture
 
 class FivthStoryTutorialViewController: BaseViewController {
     let backgroundView = UIImageView().then {
-        $0.image = Image.backgroundImg
-    }
-    
-    let backgroundStarImg = UIImageView().then {
-        $0.image = Image.backgroundStarImg
+        $0.image = Image.tutorialFinal
     }
     
     let mentionView = TutorialMentionView(type: .fivth)
@@ -27,10 +23,6 @@ class FivthStoryTutorialViewController: BaseViewController {
         super.setupLayout()
         
         backgroundView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
-        backgroundStarImg.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
@@ -63,7 +55,7 @@ class FivthStoryTutorialViewController: BaseViewController {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([backgroundView, backgroundStarImg, mentionView])
+        view.addSubviews([backgroundView, mentionView])
     }
     
 }

@@ -96,10 +96,10 @@ class TutorialMentionView: BaseView {
             .paragraph(text: type.text, lineSpacing: 4)
         
         switch type {
-        case .first, .firstSub, .fourth, .fivth:
+        case .first, .firstSub, .fourth:
             mentionLabel.textColor = .white
             storyTellerLabel.textColor = .white
-        case .second, .third:
+        case .second, .third, .fivth:
             mentionLabel.textColor = .gray
             storyTellerLabel.textColor = .gray
         }
