@@ -7,6 +7,26 @@
 
 import UIKit
 
+enum RootSwitcher {
+    case search
+    case loading
+    case final
+    case storyTutorial
+    
+    var page: UIViewController {
+        switch self {
+        case .search:
+            return SearchViewController(reactor: SearchReactor.init())
+        case .loading:
+            return LoadingViewController()
+        case .final:
+            return FinalViewController(reactor: FinalReactor.init())
+        case .storyTutorial:
+            return FirstStoryTutorialViewController()
+        }
+    }
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -19,7 +39,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = ViewController() 
+        let rootViewController = UINavigationController(rootViewController: RootSwitcher.storyTutorial.page)
+        
+        window.rootViewController = rootViewController
+        
         window.makeKeyAndVisible()
         self.window = window
     }
