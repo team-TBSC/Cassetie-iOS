@@ -16,9 +16,6 @@ class LoadingViewController: BaseViewController {
         $0.image = Image.backgroundImg
     }
     
-//    let backgroundStarImageView = UIImageView().then {
-//        $0.image = Image.backgroundStarImg
-//    }
     let backgroundStarImg = UIImageView().then {
         $0.image = Image.backgroundStarImg
     }
