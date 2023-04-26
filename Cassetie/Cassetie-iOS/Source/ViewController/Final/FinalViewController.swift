@@ -31,12 +31,17 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
         switch item {
         case let .cassetieBox(model):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CassetieBoxCollectionViewCell.self), for: indexPath) as? CassetieBoxCollectionViewCell else { return .init() }
+            cell.configure(model)
             return cell
         }
     }
     
     let backgroundImage = UIImageView().then {
         $0.image = Image.backgroundImg
+    }
+    
+    let backgroundStarImg = UIImageView().then {
+        $0.image = Image.backgroundStarImg
     }
     
     let noticeTopLabel = UILabel().then {
@@ -69,7 +74,6 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
         $0.backgroundColor = .clear
     }
     
-    
     init(reactor: Reactor) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
@@ -84,6 +88,10 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
         super.setupLayout()
         
         backgroundImage.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        backgroundStarImg.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
@@ -103,7 +111,7 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
         super.setupHierarchy()
         
         noticeStackView.addArrangedSubviews([noticeTopLabel, noticeBottomLabel])
-        view.addSubviews([backgroundImage, noticeStackView, collectionView])
+        view.addSubviews([backgroundImage,backgroundStarImg, noticeStackView, collectionView])
     }
     
     override func setupProperty() {

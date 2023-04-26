@@ -31,7 +31,9 @@ class FinalReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            return .just(.setFinalSection(createSection()))
+            NetworkService.shared.final.get()
+            return .empty()
+//            return .just(.setFinalSection(createSection()))
         }
     }
     
@@ -46,14 +48,27 @@ class FinalReactor: Reactor {
         return newState
     }
     
-    func createSection() -> [FinalSectionModel] {
-        let dummyData: [FinalTestModel] = [
-            FinalTestModel(text: "첫 번째 카세티"),
-            FinalTestModel(text: "두 번째 카세티"),
-            FinalTestModel(text: "세 번째 카세티")
-        ]
-        
-        let items: [FinalItem] = dummyData.map { item in
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        let eventMutation = NetworkService.shared.final.event
+                .flatMap({ (event) -> Observable<Mutation> in
+                    switch event {
+                    case let .updateAllCassetie(data):
+                        return Observable.concat([
+                            .just(.setFinalSection(self.createSection(data: data)))
+                        ])
+                    }
+                })
+    
+            return Observable.merge(mutation, eventMutation)
+        }
+    
+    func createSection(data: FinalResponseDTO) -> [FinalSectionModel] {
+        let cassetieData: [CassetieInfoDTO] = data.dbData.map { item in
+            let genre = String(item.num[item.num.index(item.num.startIndex, offsetBy: 2)])
+            return .init(name: item.name, num: genre)
+        }
+
+        let items: [FinalItem] = cassetieData.map { item in
             return .cassetieBox(item)
         }
         
@@ -62,3 +77,4 @@ class FinalReactor: Reactor {
         return [finalSection]
     }
 }
+
