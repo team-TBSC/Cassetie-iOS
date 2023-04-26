@@ -9,6 +9,24 @@ import UIKit
 
 import ReactorKit
 
+enum SearchKeywordIndex {
+    // MARK: - 몇 번째 질문에 대한 검색 키워드인지 구분해주는 enum
+    case third
+    case fourth
+    case fivth
+    
+    var num: Int {
+        switch self {
+        case .third:
+            return 3
+        case .fourth:
+            return 4
+        case .fivth:
+            return 5
+        }
+    }
+}
+
 class ConfirmMusicReactor: Reactor {
     enum Action {
         case post
@@ -16,7 +34,7 @@ class ConfirmMusicReactor: Reactor {
     
     enum Mutation {
         case setMusicPreviewSection([SearchSectionModel])
-        case setSearchKeyword(String, Int)
+        case setSearchKeyword(String, SearchKeywordIndex)
         case setMusicList([MusicListDTO])
     }
     
@@ -41,10 +59,10 @@ class ConfirmMusicReactor: Reactor {
         switch mutation {
         case let .setMusicPreviewSection(section):
             newState.musicPreviewSection = section
-        case let .setSearchKeyword(text, index):
-            if index == 3 {
+        case let .setSearchKeyword(text, type):
+            if type.num == 3 {
                 newState.thirdKeyword = text
-            } else if index == 4 {
+            } else if type.num == 4 {
                 newState.fourthKeyword = text
             } else {
                 newState.fivthKeyword = text
@@ -64,9 +82,9 @@ class ConfirmMusicReactor: Reactor {
                     return Observable.concat([
                         .just(.setMusicPreviewSection(self.createMusicPreviewSection(musicList: list))),
                         .just(.setMusicList(list)),
-                        .just(.setSearchKeyword(keyword3, 3)),
-                        .just(.setSearchKeyword(keyword4, 4)),
-                        .just(.setSearchKeyword(keyword5, 5))
+                        .just(.setSearchKeyword(keyword3, .third)),
+                        .just(.setSearchKeyword(keyword4, .fourth)),
+                        .just(.setSearchKeyword(keyword5, .fivth))
                     ])
                 }
             })
