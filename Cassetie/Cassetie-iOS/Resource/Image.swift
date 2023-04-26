@@ -32,4 +32,12 @@ enum Image {
     static let tutorialFourthImg = UIImage(named: "tutorial_fourth")!
     static let tutorialMentionImg = UIImage(named: "tutorial_mention_background")!
     static let tutorialFinal = UIImage(named: "tutorial_final")!
+    
+    static let cassetieBallad = UIImage(named: "Ballad")!
+    static let cassetieHiphop = UIImage(named: "HipHop")!
+    static let cassetieIndie = UIImage(named: "Indie")!
+    static let cassetiePop = UIImage(named: "Pop")!
+    static let cassetieRock = UIImage(named: "Rock")!
+    static let cassetieTrot = UIImage(named: "Trot")!
+    static let cassetieDefault = UIImage(named: "default")!
 }
