@@ -56,6 +56,7 @@
 		2361CB3D29BAF70600FC86C2 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361CB3C29BAF70600FC86C2 /* RoundButton.swift */; };
 		236AA4F829F9573100CE02C7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4F729F9573100CE02C7 /* StartViewController.swift */; };
 		236AA4FA29F95A8100CE02C7 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4F929F95A8100CE02C7 /* UIButton+.swift */; };
+		236AA4FC29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4FB29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift */; };
 		236E1A3229DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E1A3129DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift */; };
 		236E1A3529DE922E00D8C0EA /* FivthStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */; };
 		23C6D9F329C7551B005CF5F5 /* background-star.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F229C7551B005CF5F5 /* background-star.gif */; };
@@ -121,6 +122,7 @@
 		2361CB3C29BAF70600FC86C2 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		236AA4F729F9573100CE02C7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		236AA4F929F95A8100CE02C7 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		236AA4FB29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMusicResponseDTO.swift; sourceTree = "<group>"; };
 		236E1A3129DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthStoryTutorialViewController.swift; sourceTree = "<group>"; };
 		236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FivthStoryTutorialViewController.swift; sourceTree = "<group>"; };
 		23C6D9F229C7551B005CF5F5 /* background-star.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "background-star.gif"; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			children = (
 				235A7F7329D3169200E594E0 /* SearchResponseDTO.swift */,
 				23DCA1F629DB298300E5B7D6 /* SelectRequestDTO.swift */,
+				236AA4FB29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 		235E1989296BDDBD004D18AB /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				236AA4FD29F9721D00CE02C7 /* CompletedCassetie */,
 				236AA4F629F9572300CE02C7 /* Start */,
 				23C6D9F929C8B868005CF5F5 /* Final */,
 				235EA27F29C2EB3F008E61CD /* StoryTutorial */,
@@ -391,6 +395,13 @@
 				236AA4F729F9573100CE02C7 /* StartViewController.swift */,
 			);
 			path = Start;
+			sourceTree = "<group>";
+		};
+		236AA4FD29F9721D00CE02C7 /* CompletedCassetie */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CompletedCassetie;
 			sourceTree = "<group>";
 		};
 		23C6D9F829C756B3005CF5F5 /* Gif */ = {
@@ -617,6 +628,7 @@
 				2358F43329AC941700AC4018 /* SearchSectionModel.swift in Sources */,
 				235E1971296BD8C0004D18AB /* SceneDelegate.swift in Sources */,
 				23DCA1F729DB298300E5B7D6 /* SelectRequestDTO.swift in Sources */,
+				236AA4FC29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift in Sources */,
 				235A7F7429D3169200E594E0 /* SearchResponseDTO.swift in Sources */,
 				23C6DA0029C8CA73005CF5F5 /* FinalSectionModel.swift in Sources */,
 				23C6DA0229C8CB47005CF5F5 /* FinalReactor.swift in Sources */,
