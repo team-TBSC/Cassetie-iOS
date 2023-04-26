@@ -225,12 +225,6 @@ class SearchViewController: BaseViewController, View {
         searchCollectionView.register(EmptyMusicCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EmptyMusicCollectionViewCell.self))
         askQuestionCollectionView.register(AskQuestionCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: AskQuestionCollectionViewCell.self))
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationItem.hidesBackButton = true
-    }
 
     func bind(reactor: SearchReactor) {
         rightButton.rx.tap

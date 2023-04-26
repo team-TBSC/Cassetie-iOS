@@ -43,12 +43,6 @@ class SecondStoryTutorialViewController: BaseViewController {
         view.addSubviews([tutorialImageView, mentionView])
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationItem.hidesBackButton = true
-    }
-    
     override func setupProperty() {
         super.setupProperty()
         

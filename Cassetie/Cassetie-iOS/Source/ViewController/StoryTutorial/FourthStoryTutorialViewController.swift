@@ -56,12 +56,6 @@ class FourthStoryTutorialViewController: BaseViewController {
         self.remakeLayout()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationItem.hidesBackButton = true
-    }
-    
     override func setupBind() {
         super.setupBind()
         

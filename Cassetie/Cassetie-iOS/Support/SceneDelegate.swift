@@ -12,9 +12,12 @@ enum RootSwitcher {
     case loading
     case final
     case storyTutorial
+    case start
     
     var page: UIViewController {
         switch self {
+        case .start:
+            return StartViewController()
         case .search:
             return SearchViewController(reactor: SearchReactor.init())
         case .loading:
@@ -39,7 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let rootViewController = UINavigationController(rootViewController: RootSwitcher.storyTutorial.page)
+        let rootViewController = UINavigationController(rootViewController: RootSwitcher.start.page)
         
         window.rootViewController = rootViewController
         

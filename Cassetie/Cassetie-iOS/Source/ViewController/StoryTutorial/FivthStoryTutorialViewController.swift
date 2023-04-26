@@ -46,12 +46,6 @@ class FivthStoryTutorialViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationItem.hidesBackButton = true
-    }
-    
     override func setupHierarchy() {
         super.setupHierarchy()
         

@@ -24,6 +24,12 @@ class BaseViewController: UIViewController, BaseViewProtocol {
         setupLayout()
         setupBind()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+         super.viewWillAppear(animated)
+        
+         self.navigationItem.hidesBackButton = true
+    }
 
     func setupProperty() { }
     
