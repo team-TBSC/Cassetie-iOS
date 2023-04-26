@@ -20,7 +20,8 @@ class EmptyMusicCollectionViewCell: BaseCollectionViewCell {
         super.setupLayout()
         
         noticeLabel.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(200.adjustedHeight)
         }
     }
     

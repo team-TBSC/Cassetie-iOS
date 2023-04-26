@@ -142,9 +142,10 @@ class SearchViewController: BaseViewController, View {
         }
         
         backgroundStarImg.snp.makeConstraints {
-            $0.height.equalTo(self.view.frame.height)
-            $0.leading.trailing.equalToSuperview()
+            $0.width.equalTo(self.view.frame.width)
+            $0.leading.equalToSuperview()
             $0.top.equalToSuperview().inset(-50)
+            $0.bottom.equalToSuperview()
         }
         
         leftButton.snp.makeConstraints {
@@ -344,10 +345,18 @@ class SearchViewController: BaseViewController, View {
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == searchCollectionView {
-            let width = self.searchCollectionView.frame.width
-            let height = 113.adjustedHeight
-
-            return CGSize(width: width, height: height)
+            switch searchDataSource[indexPath.section].items[indexPath.row] {
+            case .musicPreview:
+                let width = self.searchCollectionView.frame.width
+                let height = 113.adjustedHeight
+                
+                return CGSize(width: width, height: height)
+            case .emptyMusicPreview:
+                let width = self.searchCollectionView.frame.width
+                let height = self.searchCollectionView.frame.height
+                
+                return CGSize(width: width, height: height)
+            }
         } else {
             let width = self.askQuestionCollectionView.frame.width
             let height = 330.adjustedHeight
