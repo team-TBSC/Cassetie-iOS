@@ -64,7 +64,7 @@ enum CassetieType: Int, CaseIterable {
 class CompletedCassetieViewController: BaseViewController {
     var completedCassetie: ConfirmMusicResponseDTO?
     
-    lazy var type: CassetieType = CassetieType.allCases.filter { $0.rawValue == completedCassetie?.cassettiInfo.genre3 }.first ?? .defaultNum
+    lazy var type: CassetieType = CassetieType.allCases.filter { $0.rawValue == completedCassetie?.cassettiInfo.genre1 }.first ?? .defaultNum
     
     let backgroundView = UIImageView().then {
         $0.image = Image.backgroundImg
@@ -121,7 +121,7 @@ class CompletedCassetieViewController: BaseViewController {
         
         goBackButton.snp.makeConstraints {
             $0.top.equalTo(genreLabel.snp.bottom).offset(100)
-            $0.width.equalTo(305)
+            $0.width.equalTo(245)
             $0.height.equalTo(76)
             $0.centerX.equalToSuperview()
         }
