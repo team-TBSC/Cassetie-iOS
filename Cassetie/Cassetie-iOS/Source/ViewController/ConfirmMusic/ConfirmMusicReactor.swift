@@ -36,6 +36,7 @@ class ConfirmMusicReactor: Reactor {
         case setMusicPreviewSection([SearchSectionModel])
         case setSearchKeyword(String, SearchKeywordIndex)
         case setMusicList([MusicListDTO])
+        case updateCompleteCassetieStatus(Bool)
     }
     
     struct State {
@@ -45,9 +46,11 @@ class ConfirmMusicReactor: Reactor {
         var fivthKeyword: String = String()
         var selectRequestDTO: SelectedRequestDTO = SelectedRequestDTO.init()
         var musicList: [MusicListDTO] = []
+        var isCompleteCassetie: Bool  = false
     }
     
     var initialState: State
+    var completeCassetie: ConfirmMusicResponseDTO = ConfirmMusicResponseDTO.init()
     
     init() {
         self.initialState = State()
@@ -69,6 +72,8 @@ class ConfirmMusicReactor: Reactor {
             }
         case let .setMusicList(list):
             newState.musicList = list
+        case let .updateCompleteCassetieStatus(status):
+            newState.isCompleteCassetie = status
         }
         
         return newState
@@ -85,6 +90,12 @@ class ConfirmMusicReactor: Reactor {
                         .just(.setSearchKeyword(keyword3, .third)),
                         .just(.setSearchKeyword(keyword4, .fourth)),
                         .just(.setSearchKeyword(keyword5, .fivth))
+                    ])
+                case let .completeCassetie(data):
+                    self.completeCassetie = data
+                    return Observable.concat([
+                        .just(.updateCompleteCassetieStatus(true)),
+                        .just(.updateCompleteCassetieStatus(false))
                     ])
                 }
             })

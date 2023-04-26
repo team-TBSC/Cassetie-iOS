@@ -11,7 +11,8 @@ import Moya
 import RxSwift
 
 enum ConfirmMusicEvent {
-    case updateSelectedMusicList([MusicListDTO], String, String, String)
+    case updateSelectedMusicList([MusicListDTO], String, String, String) // MARK: - 음악 선택된 경우 List update
+    case completeCassetie(data: ConfirmMusicResponseDTO)
 }
 
 protocol ConfirmMusicServiceType {
@@ -28,8 +29,8 @@ class ConfirmMusicService: BaseService, ConfirmMusicServiceType, APIProvider {
     
     func post(data: SelectedRequestDTO) {
         ConfirmMusicService.request(endPoint: ConfirmEndPoint.post(data: data))
-            .bind { (data: SelectedRequestDTO) in
-                print(data)
+            .bind { [weak self] (data: ConfirmMusicResponseDTO) in
+                self?.event.onNext(.completeCassetie(data: data))
             }
             .disposed(by: disposedBag)
     }

@@ -57,6 +57,7 @@
 		236AA4F829F9573100CE02C7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4F729F9573100CE02C7 /* StartViewController.swift */; };
 		236AA4FA29F95A8100CE02C7 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4F929F95A8100CE02C7 /* UIButton+.swift */; };
 		236AA4FC29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4FB29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift */; };
+		236AA4FF29F9785900CE02C7 /* CompletedCassetieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4FE29F9785900CE02C7 /* CompletedCassetieViewController.swift */; };
 		236E1A3229DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E1A3129DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift */; };
 		236E1A3529DE922E00D8C0EA /* FivthStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */; };
 		23C6D9F329C7551B005CF5F5 /* background-star.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F229C7551B005CF5F5 /* background-star.gif */; };
@@ -123,6 +124,7 @@
 		236AA4F729F9573100CE02C7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		236AA4F929F95A8100CE02C7 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		236AA4FB29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMusicResponseDTO.swift; sourceTree = "<group>"; };
+		236AA4FE29F9785900CE02C7 /* CompletedCassetieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCassetieViewController.swift; sourceTree = "<group>"; };
 		236E1A3129DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthStoryTutorialViewController.swift; sourceTree = "<group>"; };
 		236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FivthStoryTutorialViewController.swift; sourceTree = "<group>"; };
 		23C6D9F229C7551B005CF5F5 /* background-star.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "background-star.gif"; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 		236AA4FD29F9721D00CE02C7 /* CompletedCassetie */ = {
 			isa = PBXGroup;
 			children = (
+				236AA4FE29F9785900CE02C7 /* CompletedCassetieViewController.swift */,
 			);
 			path = CompletedCassetie;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				236E1A3229DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift in Sources */,
 				233B062629DDC5060049BAD8 /* ConfirmMusicService.swift in Sources */,
 				233B062429DDB5970049BAD8 /* NetworkService.swift in Sources */,
+				236AA4FF29F9785900CE02C7 /* CompletedCassetieViewController.swift in Sources */,
 				2361CB3D29BAF70600FC86C2 /* RoundButton.swift in Sources */,
 				235A7F6629D2C79400E594E0 /* SearchEndPoint.swift in Sources */,
 				2317305B29B4ADBA002CF0A6 /* adjusted+.swift in Sources */,

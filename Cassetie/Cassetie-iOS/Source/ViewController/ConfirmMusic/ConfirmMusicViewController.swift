@@ -153,13 +153,22 @@ class ConfirmMusicViewController: BaseViewController, View {
         
         topButton.rx.tap
             .bind { _ in
-                self.dismiss(animated: false)
                 reactor.action.onNext(.post)
+            }
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map(\.isCompleteCassetie)
+            .filter { $0 }
+            .distinctUntilChanged()
+            .bind { _ in
+                print("--------- 🚨 isCompleteCaseetie-------")
+                print(reactor.completeCassetie)
                 
+                self.dismiss(animated: false)
                 let loadingViewController = LoadingViewController()
+                loadingViewController.completedCassetie = reactor.completeCassetie
                 self.navigation?.pushViewController(loadingViewController, animated: true)
-                
-                // TODO: - 로딩화면에서의 화면 전환 생각해보기
             }
             .disposed(by: disposeBag)
         
