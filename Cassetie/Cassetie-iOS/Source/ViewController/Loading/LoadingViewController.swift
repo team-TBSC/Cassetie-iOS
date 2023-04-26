@@ -11,7 +11,6 @@ import SnapKit
 import Then
 import Gifu
 import RxSwift
-import RxGesture
 
 class LoadingViewController: BaseViewController {
     var completedCassetie: ConfirmMusicResponseDTO?
@@ -95,7 +94,7 @@ class LoadingViewController: BaseViewController {
         }
         
         completeButton.snp.makeConstraints {
-            $0.top.equalTo(loadingLabel.snp.bottom).offset(35)
+            $0.top.equalTo(completedStackView.snp.bottom).offset(30)
             $0.width.equalTo(275)
             $0.height.equalTo(76)
             $0.centerX.equalToSuperview()
@@ -106,11 +105,10 @@ class LoadingViewController: BaseViewController {
         super.setupBind()
         
         completeButton.rx.tap
-            .bind { _ in
-                let completedCassetieViewController = CompletedCassetieViewController()
-                if let cassetie = self.completedCassetie {
-                    completedCassetieViewController.completedCassetie = cassetie
-                }
+            .bind { [weak self] in
+                let completeCassetieViewController = CompletedCassetieViewController()
+                completeCassetieViewController.completedCassetie = self?.completedCassetie
+                self?.navigationController?.pushViewController(completeCassetieViewController, animated: true)
             }
             .disposed(by: disposeBag)
     }

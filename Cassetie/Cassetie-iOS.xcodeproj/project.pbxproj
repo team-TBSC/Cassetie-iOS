@@ -58,6 +58,9 @@
 		236AA4FA29F95A8100CE02C7 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4F929F95A8100CE02C7 /* UIButton+.swift */; };
 		236AA4FC29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4FB29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift */; };
 		236AA4FF29F9785900CE02C7 /* CompletedCassetieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4FE29F9785900CE02C7 /* CompletedCassetieViewController.swift */; };
+		236AA50129F9979700CE02C7 /* FinalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA50029F9979700CE02C7 /* FinalService.swift */; };
+		236AA50329F997DF00CE02C7 /* FinalEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA50229F997DF00CE02C7 /* FinalEndPoint.swift */; };
+		236AA50529F99B3C00CE02C7 /* FinalResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA50429F99B3C00CE02C7 /* FinalResponseDTO.swift */; };
 		236E1A3229DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E1A3129DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift */; };
 		236E1A3529DE922E00D8C0EA /* FivthStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */; };
 		23C6D9F329C7551B005CF5F5 /* background-star.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F229C7551B005CF5F5 /* background-star.gif */; };
@@ -125,6 +128,9 @@
 		236AA4F929F95A8100CE02C7 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		236AA4FB29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMusicResponseDTO.swift; sourceTree = "<group>"; };
 		236AA4FE29F9785900CE02C7 /* CompletedCassetieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCassetieViewController.swift; sourceTree = "<group>"; };
+		236AA50029F9979700CE02C7 /* FinalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalService.swift; sourceTree = "<group>"; };
+		236AA50229F997DF00CE02C7 /* FinalEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalEndPoint.swift; sourceTree = "<group>"; };
+		236AA50429F99B3C00CE02C7 /* FinalResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalResponseDTO.swift; sourceTree = "<group>"; };
 		236E1A3129DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthStoryTutorialViewController.swift; sourceTree = "<group>"; };
 		236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FivthStoryTutorialViewController.swift; sourceTree = "<group>"; };
 		23C6D9F229C7551B005CF5F5 /* background-star.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "background-star.gif"; sourceTree = "<group>"; };
@@ -215,6 +221,7 @@
 			children = (
 				235A7F6529D2C79400E594E0 /* SearchEndPoint.swift */,
 				235CC41829E2EDC000835633 /* ConfirmEndPoint.swift */,
+				236AA50229F997DF00CE02C7 /* FinalEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -226,6 +233,7 @@
 				235A7F7129D3156000E594E0 /* SearchService.swift */,
 				233B062129DDAF850049BAD8 /* BottomSheetService.swift */,
 				233B062529DDC5060049BAD8 /* ConfirmMusicService.swift */,
+				236AA50029F9979700CE02C7 /* FinalService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 				235A7F7329D3169200E594E0 /* SearchResponseDTO.swift */,
 				23DCA1F629DB298300E5B7D6 /* SelectRequestDTO.swift */,
 				236AA4FB29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift */,
+				236AA50429F99B3C00CE02C7 /* FinalResponseDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -594,6 +603,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				236AA50129F9979700CE02C7 /* FinalService.swift in Sources */,
 				235EA28129C2EB53008E61CD /* FirstStoryTutorialViewController.swift in Sources */,
 				2317305729B1D6DF002CF0A6 /* NsMutableAttributedString+.swift in Sources */,
 				236E1A3529DE922E00D8C0EA /* FivthStoryTutorialViewController.swift in Sources */,
@@ -606,6 +616,7 @@
 				234BB76A29AC8DE70039B47F /* MusicPreviewCollectionViewCell.swift in Sources */,
 				233B062029DDAEAD0049BAD8 /* BottomSheetReactor.swift in Sources */,
 				236E1A3229DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift in Sources */,
+				236AA50529F99B3C00CE02C7 /* FinalResponseDTO.swift in Sources */,
 				233B062629DDC5060049BAD8 /* ConfirmMusicService.swift in Sources */,
 				233B062429DDB5970049BAD8 /* NetworkService.swift in Sources */,
 				236AA4FF29F9785900CE02C7 /* CompletedCassetieViewController.swift in Sources */,
@@ -628,6 +639,7 @@
 				23D2813E29BB10B4002B3710 /* ConfirmMusicReactor.swift in Sources */,
 				23CB524B29B603B7008FDFC9 /* BottomSheetViewController.swift in Sources */,
 				235A7F7229D3156000E594E0 /* SearchService.swift in Sources */,
+				236AA50329F997DF00CE02C7 /* FinalEndPoint.swift in Sources */,
 				235FD3F129A5E3B40073E91B /* UIView+.swift in Sources */,
 				2358F43329AC941700AC4018 /* SearchSectionModel.swift in Sources */,
 				235E1971296BD8C0004D18AB /* SceneDelegate.swift in Sources */,

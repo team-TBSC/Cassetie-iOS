@@ -31,12 +31,17 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
         switch item {
         case let .cassetieBox(model):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CassetieBoxCollectionViewCell.self), for: indexPath) as? CassetieBoxCollectionViewCell else { return .init() }
+            cell.configure(model)
             return cell
         }
     }
     
     let backgroundImage = UIImageView().then {
         $0.image = Image.backgroundImg
+    }
+    
+    let backgroundStarImg = UIImageView().then {
+        $0.image = Image.backgroundStarImg
     }
     
     let noticeTopLabel = UILabel().then {
@@ -69,6 +74,9 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
         $0.backgroundColor = .clear
     }
     
+    let refreshButton = UIButton().then {
+        $0.setImage(Image.icRefresh, for: .normal)
+    }
     
     init(reactor: Reactor) {
         super.init(nibName: nil, bundle: nil)
@@ -87,6 +95,10 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
             $0.edges.equalToSuperview()
         }
         
+        backgroundStarImg.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         noticeStackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(90.adjustedHeight)
@@ -97,13 +109,18 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
             $0.height.equalTo(780.adjustedHeight)
             $0.centerY.equalToSuperview().offset(20)
         }
+        
+        refreshButton.snp.makeConstraints {
+            $0.width.height.equalTo(37)
+            $0.trailing.bottom.equalToSuperview().inset(40)
+        }
     }
     
     override func setupHierarchy() {
         super.setupHierarchy()
         
         noticeStackView.addArrangedSubviews([noticeTopLabel, noticeBottomLabel])
-        view.addSubviews([backgroundImage, noticeStackView, collectionView])
+        view.addSubviews([backgroundImage,backgroundStarImg, noticeStackView, collectionView, refreshButton])
     }
     
     override func setupProperty() {
@@ -117,14 +134,13 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
         collectionView.register(CassetieBoxCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: CassetieBoxCollectionViewCell.self))
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        print(UIScreen.main.bounds.width)
-//        print(UIScreen.main.bounds.width / 2.0)
-//    }
-    
     func bind(reactor: FinalReactor) {
+        refreshButton.rx.tap
+            .bind(onNext: {
+                reactor.action.onNext(.refresh)
+            })
+            .disposed(by: disposeBag)
+        
         rx.viewWillAppear
             .map { _ in Reactor.Action.refresh }
             .bind(to: reactor.action)

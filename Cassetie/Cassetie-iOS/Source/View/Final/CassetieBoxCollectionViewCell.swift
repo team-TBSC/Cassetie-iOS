@@ -15,20 +15,16 @@ class CassetieBoxCollectionViewCell: BaseCollectionViewCell {
         $0.image = Image.cassetieContainerImg
     }
     
-    let cassetieImage = UIImageView().then {
-        $0.image = Image.testCassetieImg
-    }
+    let cassetieImage = UIImageView()
     
     let nameLabel = UILabel().then {
-        $0.text = "카세티 2호"
         $0.textColor = .white
         $0.font = .systemFont(ofSize: 36, weight: .bold)
     }
     
     let genreLabel = UILabel().then {
-        $0.text = "POP"
         $0.textColor = .white
-        $0.font = .systemFont(ofSize: 28, weight: .regular)
+        $0.font = .systemFont(ofSize: 28, weight: .light)
     }
     
     override func setupLayout() {
@@ -39,14 +35,13 @@ class CassetieBoxCollectionViewCell: BaseCollectionViewCell {
         }
         
         cassetieImage.snp.makeConstraints {
-            $0.width.equalTo(374)
-            $0.height.equalTo(437)
+            $0.width.height.equalTo(450.adjustedWidth)
             $0.top.equalToSuperview().offset(55.adjustedHeight)
             $0.centerX.equalToSuperview()
         }
         
         nameLabel.snp.makeConstraints {
-            $0.top.equalTo(cassetieImage.snp.bottom).offset(40)
+            $0.top.equalTo(cassetieImage.snp.bottom).offset(50)
             $0.centerX.equalToSuperview()
         }
         
@@ -60,5 +55,13 @@ class CassetieBoxCollectionViewCell: BaseCollectionViewCell {
         super.setupHierarchy()
         
         addSubviews([cassetieContainerView, cassetieImage, nameLabel, genreLabel])
+    }
+    
+    func configure(_ model: CassetieInfoDTO) {
+        let type: CassetieType = CassetieType.allCases.filter { $0.rawValue == Int(model.num) }.first ?? .defaultNum
+        
+        self.nameLabel.text = model.name
+        self.genreLabel.text = type.genre
+        self.cassetieImage.image = type.image
     }
 }
