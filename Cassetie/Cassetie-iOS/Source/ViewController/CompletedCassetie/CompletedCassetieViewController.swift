@@ -54,7 +54,7 @@ enum CassetieType: Int, CaseIterable {
         case .four:
             return "힙합/R&B"
         case .five:
-            return "댄스/팝업"
+            return "댄스/POP"
         case .six, .seven, .eight, .defaultNum:
             return "기타"
         }
