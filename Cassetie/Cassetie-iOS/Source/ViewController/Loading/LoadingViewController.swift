@@ -50,17 +50,9 @@ class LoadingViewController: BaseViewController {
         $0.text = "카세티 생성 완료!"
     }
     
-    let icConfirmImage = UIImageView().then {
-        $0.image = Image.icConfirm
+    let completeButton = RoundButton(title: "카세티 보러가기", titleColor: .black, backColor: .white, round: 40).then {
+        $0.configureFont(font: .systemFont(ofSize: 24, weight: .light))
     }
-    
-    let goToCompledtedCasstieLabel = UILabel().then {
-        $0.text = "카세티 보러가기"
-        $0.font = .systemFont(ofSize: 24, weight: .light)
-        $0.textColor = .black
-    }
-    
-    let goToCompletedCassetieView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,34 +94,24 @@ class LoadingViewController: BaseViewController {
             $0.top.equalTo(cassetieGifImageView.snp.bottom).inset(90)
         }
         
-        icConfirmImage.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
-        goToCompletedCassetieView.snp.makeConstraints {
+        completeButton.snp.makeConstraints {
             $0.top.equalTo(loadingLabel.snp.bottom).offset(35)
             $0.width.equalTo(275)
             $0.height.equalTo(76)
             $0.centerX.equalToSuperview()
-        }
-        
-        goToCompledtedCasstieLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
         }
     }
     
     override func setupBind() {
         super.setupBind()
         
-        goToCompletedCassetieView.rx.tapGesture()
-            .when(.recognized)
-            .bind(onNext: {_ in
+        completeButton.rx.tap
+            .bind { _ in
                 let completedCassetieViewController = CompletedCassetieViewController()
                 if let cassetie = self.completedCassetie {
                     completedCassetieViewController.completedCassetie = cassetie
                 }
-                self.navigationController?.pushViewController(completedCassetieViewController, animated: true)
-            })
+            }
             .disposed(by: disposeBag)
     }
     
@@ -137,8 +119,7 @@ class LoadingViewController: BaseViewController {
         super.setupHierarchy()
         
         completedStackView.addArrangedSubviews([completedGifImageView, completedLabel])
-        goToCompletedCassetieView.addSubviews([icConfirmImage, goToCompledtedCasstieLabel])
-        view.addSubviews([backgroundView, backgroundStarImg, cassetieGifImageView, loadingLabel, completedStackView, goToCompletedCassetieView])
+        view.addSubviews([backgroundView, backgroundStarImg, cassetieGifImageView, loadingLabel, completedStackView, completeButton])
     }
     
     override func setupProperty() {
@@ -148,7 +129,7 @@ class LoadingViewController: BaseViewController {
         completedGifImageView.animate(withGIFNamed: "cassetie-loading-final")
         
         completedStackView.alpha = 0
-        goToCompletedCassetieView.alpha = 0
+        completeButton.alpha = 0
     }
     
     func setCompletedConfigure() {
@@ -169,7 +150,7 @@ class LoadingViewController: BaseViewController {
         })
         
         UIView.animate(withDuration: 4, animations: {
-            self.goToCompletedCassetieView.alpha = 1
+            self.completeButton.alpha = 1
         })
     }
 }

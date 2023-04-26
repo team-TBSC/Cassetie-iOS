@@ -162,9 +162,6 @@ class ConfirmMusicViewController: BaseViewController, View {
             .filter { $0 }
             .distinctUntilChanged()
             .bind { _ in
-                print("--------- 🚨 isCompleteCaseetie-------")
-                print(reactor.completeCassetie)
-                
                 self.dismiss(animated: false)
                 let loadingViewController = LoadingViewController()
                 loadingViewController.completedCassetie = reactor.completeCassetie
