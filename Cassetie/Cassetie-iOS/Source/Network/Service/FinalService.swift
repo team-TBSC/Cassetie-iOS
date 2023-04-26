@@ -11,8 +11,6 @@ import Moya
 import RxSwift
 
 enum FinalEvent {
-//    case updateSelectedMusicList([MusicListDTO], String, String, String) // MARK: - 음악 선택된 경우 List update
-//    case completeCassetie(data: ConfirmMusicResponseDTO)
     case updateAllCassetie(data: FinalResponseDTO)
 }
 

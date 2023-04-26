@@ -12,10 +12,14 @@ import RxDataSources
 typealias FinalSectionModel = SectionModel<FinalSection, FinalItem>
 
 struct FinalTestModel {
-    let text: String
+    let name: String
+    let genre: Int
+    let cassetieType: Int
     
-    init(text: String) {
-        self.text = text
+    init(name: String , genre: Int, cassetieType: Int) {
+        self.genre = genre
+        self.name = name
+        self.cassetieType = cassetieType
     }
 }
 
@@ -24,7 +28,7 @@ enum FinalSection {
 }
 
 enum FinalItem {
-    case cassetieBox(FinalTestModel)
+    case cassetieBox(CassetieInfoDTO)
 }
 
 extension FinalSection: SectionModelType {

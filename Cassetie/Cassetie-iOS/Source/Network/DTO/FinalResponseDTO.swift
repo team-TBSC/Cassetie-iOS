@@ -7,6 +7,17 @@
 
 import UIKit
 
+// MARK: - FinalResponseDTO
 struct FinalResponseDTO: Codable {
+    let dbData: [CassetieInfoDTO]
+
+    enum CodingKeys: String, CodingKey {
+        case dbData = "db_data"
+    }
+}
+
+// MARK: - DBDatum
+struct CassetieInfoDTO: Codable {
+    let name, num: String
     
 }
