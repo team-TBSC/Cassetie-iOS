@@ -31,6 +31,13 @@ class StartViewController: BaseViewController {
         $0.setUnderline()
     }
     
+    let goToFinalButton = UIButton().then {
+        $0.setTitle("다른 카세티 확인하기", for: .normal)
+        $0.titleLabel?.textColor = .white
+        $0.titleLabel!.font = .systemFont(ofSize: 24, weight: .thin)
+        $0.setUnderline()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,34 +68,51 @@ class StartViewController: BaseViewController {
             $0.top.equalTo(logoImg.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
         }
+        
+        goToFinalButton.snp.makeConstraints {
+            $0.width.equalTo(208)
+            $0.height.equalTo(50)
+            $0.top.equalTo(startButton.snp.bottom).offset(15)
+            $0.centerX.equalToSuperview()
+        }
     }
     
     override func setupBind() {
         super.setupBind()
         
         startButton.rx.tap
-            .bind { _ in
+            .bind { [weak self] in
                 let firstStoryTutorialViewController = FirstStoryTutorialViewController()
-                self.navigationController?.pushViewController(firstStoryTutorialViewController, animated: false)
+                self?.navigationController?.pushViewController(firstStoryTutorialViewController, animated: false)
             }
             .disposed(by: disposeBag)
+        
+        goToFinalButton.rx.tap
+            .bind { [weak self] in
+                let finalViewController = RootSwitcher.final.page
+                self?.navigationController?.pushViewController(finalViewController, animated: false)
+            }
+            .disposed(by: disposeBag)
+        
     }
     
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([backgroundView, backgroundStarImg, logoImg, startButton])
+        view.addSubviews([backgroundView, backgroundStarImg, logoImg, startButton, goToFinalButton])
     }
     
     override func setupProperty() {
         super.setupProperty()
         
         self.startButton.alpha = 0
+        self.goToFinalButton.alpha = 0
     }
     
     func setButtonAnimation() {
         UIView.animate(withDuration: 4, animations: {
             self.startButton.alpha = 1
+            self.goToFinalButton.alpha = 1
         })
     }
 }
