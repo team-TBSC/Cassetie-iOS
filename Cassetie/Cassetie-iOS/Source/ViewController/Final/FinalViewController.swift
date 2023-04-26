@@ -74,6 +74,10 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
         $0.backgroundColor = .clear
     }
     
+    let refreshButton = UIButton().then {
+        $0.setImage(Image.icRefresh, for: .normal)
+    }
+    
     init(reactor: Reactor) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
@@ -105,13 +109,18 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
             $0.height.equalTo(780.adjustedHeight)
             $0.centerY.equalToSuperview().offset(20)
         }
+        
+        refreshButton.snp.makeConstraints {
+            $0.width.height.equalTo(37)
+            $0.trailing.bottom.equalToSuperview().inset(40)
+        }
     }
     
     override func setupHierarchy() {
         super.setupHierarchy()
         
         noticeStackView.addArrangedSubviews([noticeTopLabel, noticeBottomLabel])
-        view.addSubviews([backgroundImage,backgroundStarImg, noticeStackView, collectionView])
+        view.addSubviews([backgroundImage,backgroundStarImg, noticeStackView, collectionView, refreshButton])
     }
     
     override func setupProperty() {
@@ -125,14 +134,13 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
         collectionView.register(CassetieBoxCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: CassetieBoxCollectionViewCell.self))
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        print(UIScreen.main.bounds.width)
-//        print(UIScreen.main.bounds.width / 2.0)
-//    }
-    
     func bind(reactor: FinalReactor) {
+        refreshButton.rx.tap
+            .bind(onNext: {
+                reactor.action.onNext(.refresh)
+            })
+            .disposed(by: disposeBag)
+        
         rx.viewWillAppear
             .map { _ in Reactor.Action.refresh }
             .bind(to: reactor.action)
