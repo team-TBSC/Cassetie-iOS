@@ -61,6 +61,8 @@
 		236AA50129F9979700CE02C7 /* FinalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA50029F9979700CE02C7 /* FinalService.swift */; };
 		236AA50329F997DF00CE02C7 /* FinalEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA50229F997DF00CE02C7 /* FinalEndPoint.swift */; };
 		236AA50529F99B3C00CE02C7 /* FinalResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA50429F99B3C00CE02C7 /* FinalResponseDTO.swift */; };
+		236AA50729F9FF8100CE02C7 /* LoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA50629F9FF8100CE02C7 /* LoadingService.swift */; };
+		236AA50929FA002600CE02C7 /* LoadingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA50829FA002600CE02C7 /* LoadingReactor.swift */; };
 		236E1A3229DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E1A3129DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift */; };
 		236E1A3529DE922E00D8C0EA /* FivthStoryTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */; };
 		23C6D9F329C7551B005CF5F5 /* background-star.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23C6D9F229C7551B005CF5F5 /* background-star.gif */; };
@@ -131,6 +133,8 @@
 		236AA50029F9979700CE02C7 /* FinalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalService.swift; sourceTree = "<group>"; };
 		236AA50229F997DF00CE02C7 /* FinalEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalEndPoint.swift; sourceTree = "<group>"; };
 		236AA50429F99B3C00CE02C7 /* FinalResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalResponseDTO.swift; sourceTree = "<group>"; };
+		236AA50629F9FF8100CE02C7 /* LoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingService.swift; sourceTree = "<group>"; };
+		236AA50829FA002600CE02C7 /* LoadingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingReactor.swift; sourceTree = "<group>"; };
 		236E1A3129DE8F0E00D8C0EA /* FourthStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthStoryTutorialViewController.swift; sourceTree = "<group>"; };
 		236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FivthStoryTutorialViewController.swift; sourceTree = "<group>"; };
 		23C6D9F229C7551B005CF5F5 /* background-star.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "background-star.gif"; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				2317ACBE29C201C7002EE6C4 /* LoadingViewController.swift */,
+				236AA50829FA002600CE02C7 /* LoadingReactor.swift */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 				233B062129DDAF850049BAD8 /* BottomSheetService.swift */,
 				233B062529DDC5060049BAD8 /* ConfirmMusicService.swift */,
 				236AA50029F9979700CE02C7 /* FinalService.swift */,
+				236AA50629F9FF8100CE02C7 /* LoadingService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -608,6 +614,7 @@
 				2317305729B1D6DF002CF0A6 /* NsMutableAttributedString+.swift in Sources */,
 				236E1A3529DE922E00D8C0EA /* FivthStoryTutorialViewController.swift in Sources */,
 				235FD3EF29A5E1BC0073E91B /* Image.swift in Sources */,
+				236AA50929FA002600CE02C7 /* LoadingReactor.swift in Sources */,
 				235FD3ED29A5DDF30073E91B /* SearchViewController.swift in Sources */,
 				235FD3F329A5E5480073E91B /* Color.swift in Sources */,
 				2317305529B1D684002CF0A6 /* AskQuestionCollectionViewCell.swift in Sources */,
@@ -631,6 +638,7 @@
 				2361CB3A29BAEE4800FC86C2 /* ConfirmMusicViewController.swift in Sources */,
 				235A7F6929D2C89A00E594E0 /* EndPoint.swift in Sources */,
 				2317305929B302B4002CF0A6 /* AskQuestionSectionModel.swift in Sources */,
+				236AA50729F9FF8100CE02C7 /* LoadingService.swift in Sources */,
 				23C6D9FB29C8B8C6005CF5F5 /* FinalViewController.swift in Sources */,
 				2317ACBF29C201C7002EE6C4 /* LoadingViewController.swift in Sources */,
 				2358F43129AC933A00AC4018 /* UIStackView+.swift in Sources */,
