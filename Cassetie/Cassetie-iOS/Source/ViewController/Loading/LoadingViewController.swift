@@ -11,8 +11,11 @@ import SnapKit
 import Then
 import Gifu
 import RxSwift
+import ReactorKit
 
-class LoadingViewController: BaseViewController {
+class LoadingViewController: BaseViewController, View {
+    typealias Reactor = LoadingReactor
+    
     var completedCassetie: ConfirmMusicResponseDTO?
     
     let backgroundView = UIImageView().then {
@@ -51,6 +54,16 @@ class LoadingViewController: BaseViewController {
     
     let completeButton = RoundButton(title: "카세티 보러가기", titleColor: .black, backColor: .white, round: 40).then {
         $0.configureFont(font: .systemFont(ofSize: 24, weight: .light))
+    }
+    
+    init(reactor: Reactor) {
+        super.init(nibName: nil, bundle: nil)
+        self.reactor = reactor
+    }
+    
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -101,15 +114,35 @@ class LoadingViewController: BaseViewController {
         }
     }
     
-    override func setupBind() {
-        super.setupBind()
-        
+//    override func setupBind() {
+//        super.setupBind()
+//
+//        completeButton.rx.tap
+//            .bind { [weak self] in
+//                let completeCassetieViewController = CompletedCassetieViewController()
+//                completeCassetieViewController.completedCassetie = self?.completedCassetie
+//                self?.navigationController?.pushViewController(completeCassetieViewController, animated: true)
+//            }
+//            .disposed(by: disposeBag)
+//    }
+
+    func bind(reactor: LoadingReactor) {
         completeButton.rx.tap
             .bind { [weak self] in
                 let completeCassetieViewController = CompletedCassetieViewController()
                 completeCassetieViewController.completedCassetie = self?.completedCassetie
                 self?.navigationController?.pushViewController(completeCassetieViewController, animated: true)
             }
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map(\.isUpdated)
+            .filter { $0 }
+            .distinctUntilChanged()
+            .bind(onNext: { [weak self] _ in
+                self?.completedCassetie = reactor.completeCassetie
+                self?.completeButton.isEnabled = true
+            })
             .disposed(by: disposeBag)
     }
     
@@ -128,6 +161,8 @@ class LoadingViewController: BaseViewController {
         
         completedStackView.alpha = 0
         completeButton.alpha = 0
+        
+        completeButton.isEnabled = false
     }
     
     func setCompletedConfigure() {

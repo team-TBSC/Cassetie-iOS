@@ -21,7 +21,7 @@ enum RootSwitcher {
         case .search:
             return SearchViewController(reactor: SearchReactor.init())
         case .loading:
-            return LoadingViewController()
+            return LoadingViewController(reactor: LoadingReactor.init())
         case .final:
             return FinalViewController(reactor: FinalReactor.init())
         case .storyTutorial:

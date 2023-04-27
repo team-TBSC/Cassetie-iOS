@@ -29,9 +29,9 @@ class ConfirmMusicService: BaseService, ConfirmMusicServiceType, APIProvider {
     
     func post(data: SelectedRequestDTO) {
         ConfirmMusicService.request(endPoint: ConfirmEndPoint.post(data: data))
-            .bind { [weak self] (data: ConfirmMusicResponseDTO) in
-                self?.event.onNext(.completeCassetie(data: data))
-            }
+            .bind(onNext: { (data: ConfirmMusicResponseDTO) in
+                NetworkService.shared.loading.event.onNext(.getCassetieInfo(data: data))
+            })
             .disposed(by: disposedBag)
     }
 }

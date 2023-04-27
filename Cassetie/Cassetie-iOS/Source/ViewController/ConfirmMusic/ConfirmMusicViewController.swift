@@ -154,17 +154,9 @@ class ConfirmMusicViewController: BaseViewController, View {
         topButton.rx.tap
             .bind { _ in
                 reactor.action.onNext(.post)
-            }
-            .disposed(by: disposeBag)
-        
-        reactor.state
-            .map(\.isCompleteCassetie)
-            .filter { $0 }
-            .distinctUntilChanged()
-            .bind { _ in
+                
                 self.dismiss(animated: false)
-                let loadingViewController = LoadingViewController()
-                loadingViewController.completedCassetie = reactor.completeCassetie
+                let loadingViewController = RootSwitcher.loading.page
                 self.navigation?.pushViewController(loadingViewController, animated: true)
             }
             .disposed(by: disposeBag)

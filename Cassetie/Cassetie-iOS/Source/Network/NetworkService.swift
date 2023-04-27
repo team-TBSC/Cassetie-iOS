@@ -12,4 +12,5 @@ final class NetworkService {
     let bottomSheet = BottomSheetService()
     let confirm = ConfirmMusicService()
     let final = FinalService()
+    let loading = LoadingService()
 }
