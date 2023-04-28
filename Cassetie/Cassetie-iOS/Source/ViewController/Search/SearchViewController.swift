@@ -15,7 +15,7 @@ import RxDataSources
 import RxViewController
 import Gifu
 
-class SearchViewController: BaseViewController, View {
+class SearchViewController: BaseViewController, View, UITextFieldDelegate {
     typealias Reactor = SearchReactor
     typealias SearchDataSource = RxCollectionViewSectionedReloadDataSource<SearchSectionModel>
     typealias AskQuestionDataSource = RxCollectionViewSectionedReloadDataSource<AskQuestionSectionModel>
@@ -222,6 +222,7 @@ class SearchViewController: BaseViewController, View {
     override func setupDelegate() {
         super.setupDelegate()
         
+        textField.delegate = self
         searchCollectionView.register(MusicPreviewCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MusicPreviewCollectionViewCell.self))
         searchCollectionView.register(EmptyMusicCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EmptyMusicCollectionViewCell.self))
         askQuestionCollectionView.register(AskQuestionCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: AskQuestionCollectionViewCell.self))
@@ -288,13 +289,15 @@ class SearchViewController: BaseViewController, View {
             .compactMap { $0 }
             .skip(1)
             .distinctUntilChanged()
-            .debounce(.seconds(1), scheduler: MainScheduler.asyncInstance)
+//            .debounce(.seconds(1), scheduler: MainScheduler.asyncInstance)
             .map { text in Reactor.Action.update(text) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         searchCollectionView.rx.modelSelected(SearchItem.self)
             .subscribe(onNext: { item in
+                self.textField.resignFirstResponder()
+                
                 guard case let .musicPreview(music) = item else { return }
                 
                 let bottomSheetViewController = BottomSheetViewController(reactor: BottomSheetReactor.init())
