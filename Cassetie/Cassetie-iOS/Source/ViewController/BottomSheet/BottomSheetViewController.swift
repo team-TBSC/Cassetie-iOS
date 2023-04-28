@@ -195,6 +195,7 @@ class BottomSheetViewController: BaseViewController, View {
                 switch gesture.state {
                 case .ended:
                     if translation.y > self.bottomSheetHeight / 2 {
+                        self.stopMusic()
                         this.dismiss(animated: true)
                     } else {
                         self.bottomSheetView.transform = CGAffineTransform(translationX: 0, y: 0)
