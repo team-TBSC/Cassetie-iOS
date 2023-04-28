@@ -24,18 +24,12 @@ class StartViewController: BaseViewController {
         $0.image = Image.teamLogoImg
     }
     
-    let startButton = UIButton().then {
-        $0.setTitle("카세티 보러 떠나기", for: .normal)
-        $0.titleLabel?.textColor = .white
-        $0.titleLabel!.font = .systemFont(ofSize: 24, weight: .thin)
-        $0.setUnderline()
+    let startButton = RoundButton(title: "카세티 보러 떠나기", titleColor: .black, backColor: .white, round: 35).then {
+        $0.configureFont(font: .systemFont(ofSize: 20, weight: .light))
     }
     
-    let goToFinalButton = UIButton().then {
-        $0.setTitle("다른 카세티 확인하기", for: .normal)
-        $0.titleLabel?.textColor = .white
-        $0.titleLabel!.font = .systemFont(ofSize: 24, weight: .thin)
-        $0.setUnderline()
+    let goToFinalButton = RoundButton(title: "다른 카세티 확인하기", titleColor: .black, backColor: .white, round: 35).then {
+        $0.configureFont(font: .systemFont(ofSize: 20, weight: .light))
     }
     
     override func viewDidLoad() {
@@ -59,20 +53,20 @@ class StartViewController: BaseViewController {
             $0.width.equalTo(412.adjustedWidth)
             $0.height.equalTo(380.adjustedWidth)
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(370.adjustedHeight)
+            $0.top.equalToSuperview().offset(223.adjustedHeight)
         }
         
         startButton.snp.makeConstraints {
-            $0.width.equalTo(188)
-            $0.height.equalTo(50)
-            $0.top.equalTo(logoImg.snp.bottom).offset(20)
+            $0.width.equalTo(275)
+            $0.height.equalTo(72)
+            $0.top.equalTo(logoImg.snp.bottom).offset(238)
             $0.centerX.equalToSuperview()
         }
         
         goToFinalButton.snp.makeConstraints {
-            $0.width.equalTo(208)
-            $0.height.equalTo(50)
-            $0.top.equalTo(startButton.snp.bottom).offset(15)
+            $0.width.equalTo(275)
+            $0.height.equalTo(72)
+            $0.top.equalTo(startButton.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
         }
     }
@@ -110,7 +104,7 @@ class StartViewController: BaseViewController {
     }
     
     func setButtonAnimation() {
-        UIView.animate(withDuration: 4, animations: {
+        UIView.animate(withDuration: 3, animations: {
             self.startButton.alpha = 1
             self.goToFinalButton.alpha = 1
         })
