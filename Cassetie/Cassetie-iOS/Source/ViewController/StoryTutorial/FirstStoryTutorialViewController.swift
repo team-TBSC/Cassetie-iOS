@@ -20,7 +20,8 @@ class FirstStoryTutorialViewController: BaseViewController {
     
     private let firstMentionView = TutorialMentionView(type: .first)
     private let secondMentionView = TutorialMentionView(type: .firstSub)
-    var switchFlag: Bool = false
+    private var switchFlag: Bool = false
+    private let tapGesture = UITapGestureRecognizer()
     
     override func setupLayout() {
         super.setupLayout()
@@ -56,14 +57,14 @@ class FirstStoryTutorialViewController: BaseViewController {
         super.setupProperty()
         
         secondMentionView.isHidden = true
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func setupBind() {
         super.setupBind()
         
-        tutorialImageView.rx.tapGesture()
-            .when(.recognized)
-            .bind(onNext: {_ in
+        tapGesture.rx.event
+            .subscribe(onNext: { _ in
                 if self.switchFlag {
                     let secondStoryTutorialViewController = SecondStoryTutorialViewController()
                     self.navigationController?.pushViewController(secondStoryTutorialViewController, animated: false)

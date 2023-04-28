@@ -20,6 +20,7 @@ class FourthStoryTutorialViewController: BaseViewController {
     }
     
     private let mentionView = TutorialMentionView(type: .fourth)
+    private let tapGesture = UITapGestureRecognizer()
     
     override func setupLayout() {
         super.setupLayout()
@@ -48,6 +49,7 @@ class FourthStoryTutorialViewController: BaseViewController {
         super.setupProperty()
         
         mentionView.isHidden = true
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewDidLoad() {
@@ -59,9 +61,8 @@ class FourthStoryTutorialViewController: BaseViewController {
     override func setupBind() {
         super.setupBind()
         
-        tutorialImageView.rx.tapGesture()
-            .when(.recognized)
-            .bind(onNext: {_ in
+        tapGesture.rx.event
+            .subscribe(onNext: { _ in
                 let fivthStoryTutorialViewController = FivthStoryTutorialViewController()
                 self.navigationController?.pushViewController(fivthStoryTutorialViewController, animated: false)
             })

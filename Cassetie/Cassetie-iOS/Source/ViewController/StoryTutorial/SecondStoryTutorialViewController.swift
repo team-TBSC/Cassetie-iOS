@@ -10,7 +10,6 @@ import UIKit
 import SnapKit
 import Then
 import RxSwift
-import RxGesture
 
 class SecondStoryTutorialViewController: BaseViewController {
     private let tutorialImageView = UIImageView().then {
@@ -19,6 +18,7 @@ class SecondStoryTutorialViewController: BaseViewController {
     }
     
     private let mentionView = TutorialMentionView(type: .second)
+    private let tapGesture = UITapGestureRecognizer()
     
     override func setupLayout() {
         super.setupLayout()
@@ -47,6 +47,7 @@ class SecondStoryTutorialViewController: BaseViewController {
         super.setupProperty()
         
         mentionView.isHidden = true
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewDidLoad() {
@@ -57,10 +58,9 @@ class SecondStoryTutorialViewController: BaseViewController {
     
     override func setupBind() {
         super.setupBind()
-        
-        tutorialImageView.rx.tapGesture()
-            .when(.recognized)
-            .bind(onNext: {_ in
+      
+        tapGesture.rx.event
+            .subscribe(onNext: { _ in
                 let thirdStoryTutorialViewController = ThirdStoryTutorialViewController()
                 self.navigationController?.pushViewController(thirdStoryTutorialViewController, animated: false)
             })

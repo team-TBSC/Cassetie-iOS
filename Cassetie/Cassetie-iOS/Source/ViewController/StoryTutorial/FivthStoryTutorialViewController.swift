@@ -10,14 +10,14 @@ import UIKit
 import SnapKit
 import Then
 import RxSwift
-import RxGesture
 
 class FivthStoryTutorialViewController: BaseViewController {
-    let backgroundView = UIImageView().then {
+    private let backgroundView = UIImageView().then {
         $0.image = Image.tutorialFinal
     }
     
-    let mentionView = TutorialMentionView(type: .fivth)
+    private let mentionView = TutorialMentionView(type: .fivth)
+    private let tapGesture = UITapGestureRecognizer()
     
     override func setupLayout() {
         super.setupLayout()
@@ -37,13 +37,18 @@ class FivthStoryTutorialViewController: BaseViewController {
     override func setupBind() {
         super.setupBind()
         
-        backgroundView.rx.tapGesture()
-            .when(.recognized)
-            .bind(onNext: {_ in
-                let searchViewController = SearchViewController(reactor: SearchReactor.init())
+        tapGesture.rx.event
+            .subscribe(onNext: { _ in
+                let searchViewController = RootSwitcher.search.page //SearchViewController(reactor: SearchReactor.init())
                 self.navigationController?.pushViewController(searchViewController, animated: false)
             })
             .disposed(by: disposeBag)
+    }
+    
+    override func setupProperty() {
+        super.setupProperty()
+        
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func setupHierarchy() {
