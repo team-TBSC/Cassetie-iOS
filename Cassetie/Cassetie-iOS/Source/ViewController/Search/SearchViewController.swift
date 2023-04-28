@@ -102,6 +102,7 @@ class SearchViewController: BaseViewController, View {
     
     lazy var askQuestionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: askQuestionCollectionViewFlowLayout).then {
         $0.backgroundColor = .clear
+        $0.isScrollEnabled = false
     }
     
     let pageControl = UIPageControl().then {

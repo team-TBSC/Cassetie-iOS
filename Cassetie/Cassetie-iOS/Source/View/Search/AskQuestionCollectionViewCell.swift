@@ -21,13 +21,13 @@ enum QuestionType: CaseIterable {
     var firstText: String {
         switch self {
         case .first:
-            return "나"
+            return "나의"
         case .second:
-            return "지금"
+            return "나의"
         case .third:
-            return "쇼핑"
+            return "나를 가장 잘"
         case .fourth:
-            return "내 관상"
+            return "내"
         case .fivth:
             return "가장"
         }
@@ -36,13 +36,13 @@ enum QuestionType: CaseIterable {
     var secondText: String {
         switch self {
         case .first:
-            return "를 대표하는 노래는?"
+            return " 에너지"
         case .second:
-            return " 내 감정"
+            return " 감정"
         case .third:
-            return "하면서 듣기 좋은 노래는?"
+            return " 표현하는"
         case .fourth:
-            return "을 음악으로 표현한다면?"
+            return " 관상"
         case .fivth:
             return " 내 취향"
         }
@@ -50,10 +50,14 @@ enum QuestionType: CaseIterable {
     
     var thirdText: String {
         switch self {
-        case .first, .third, .fourth:
-            return ""
+        case .first:
+            return "를 표현하는 음악은?"
         case .second:
-            return "을 대변하는 노래는?"
+            return "을 표현하는 음악은?"
+        case .third:
+            return " 음악은?"
+        case .fourth:
+            return "을 음악으로 표현한다면?"
         case .fivth:
             return "인 노래는?"
         }
@@ -92,7 +96,6 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
         super.setupLayout()
        
         cassetieGifImageView.snp.makeConstraints {
-//            $0.leading.trailing.equalToSuperview().inset(50)
             $0.top.equalToSuperview().offset(15)
             $0.width.equalTo(334.adjustedWidth)
             $0.centerX.equalToSuperview()
@@ -112,17 +115,10 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
     }
     
     func configure(_ type: QuestionType) {
-        switch type {
-        case .first, .third, .fourth:
-            questionLabel.attributedText = NSMutableAttributedString()
-                .bold(string: type.firstText, fontSize: 28)
-                .regular(string: type.secondText, fontSize: 28)
-        case .second, .fivth:
-            questionLabel.attributedText = NSMutableAttributedString()
-                .regular(string: type.firstText, fontSize: 28)
-                .bold(string: type.secondText, fontSize: 28)
-                .regular(string: type.thirdText, fontSize: 28)
-        }
+        questionLabel.attributedText = NSMutableAttributedString()
+            .regular(string: type.firstText, fontSize: 28)
+            .bold(string: type.secondText, fontSize: 28)
+            .regular(string: type.thirdText, fontSize: 28)
         
         cassetieGifImageView.animate(withGIFNamed: type.gifImage)
     }
