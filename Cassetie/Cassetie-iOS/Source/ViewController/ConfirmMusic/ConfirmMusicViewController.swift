@@ -64,7 +64,7 @@ class ConfirmMusicViewController: BaseViewController, View {
         round: 40
     )
     private let topButton = RoundButton(
-        title: "카세티 보러가기!",
+        title: "다음 단계로",
         titleColor: .black,
         backColor: .white,
         round: 40
