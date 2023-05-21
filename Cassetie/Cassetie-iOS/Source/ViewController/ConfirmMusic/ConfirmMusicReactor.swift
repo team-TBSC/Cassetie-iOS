@@ -30,6 +30,7 @@ enum SearchKeywordIndex {
 class ConfirmMusicReactor: Reactor {
     enum Action {
         case post
+        case update
     }
     
     enum Mutation {
@@ -108,12 +109,16 @@ class ConfirmMusicReactor: Reactor {
         case .post:
             NetworkService.shared.confirm.post(data: createSelectRequestDTO())
             return .empty()
+        case .update:
+            NetworkService.shared.info.event.onNext(.update(data: createSelectRequestDTO()))
+            
+            return .empty()
         }
     }
     
     func createSelectRequestDTO() -> SelectedRequestDTO {
         let musicList: [MusicListDTO] = currentState.musicList
-        let requestDTO = SelectedRequestDTO(name: "카세티1호", song1ID: musicList[0].id, song2ID: musicList[1].id, song3ID: musicList[2].id, song3Search: currentState.thirdKeyword, song4ID: musicList[3].id, song4Search: currentState.fourthKeyword, song5ID: musicList[4].id, text: "안녕하세요 반가워요")
+        let requestDTO = SelectedRequestDTO(name: "", song1ID: musicList[0].id, song2ID: musicList[1].id, song3ID: musicList[2].id, song3Search: currentState.thirdKeyword, song4ID: musicList[3].id, song4Search: currentState.fourthKeyword, song5ID: musicList[4].id, text: "")
         
         return requestDTO
     }
