@@ -53,12 +53,10 @@ class InfoViewController: BaseViewController, View {
         backColor: .white,
         round: 40
     )
-//    var navigation: UINavigationController?
-//
+    
     init(reactor: Reactor) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
-//        self.navigation = navigationController
     }
 
     @available(*, unavailable)
@@ -123,6 +121,30 @@ class InfoViewController: BaseViewController, View {
     }
     
     func bind(reactor: InfoReactor) {
+        goToLoadingButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.dismiss(animated: false)
+                let loadingViewController = RootSwitcher.loading.page
+                self?.navigationController?.pushViewController(loadingViewController, animated: false)
+                
+                reactor.action.onNext(.post)
+            })
+            .disposed(by: disposeBag)
         
+        nameTextField.textField.rx.text
+            .compactMap { $0 }
+            .skip(1)
+            .distinctUntilChanged()
+            .map { text in Reactor.Action.updateName(text) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        mentionTextField.textField.rx.text
+            .compactMap { $0 }
+            .skip(1)
+            .distinctUntilChanged()
+            .map { text in Reactor.Action.updateMentionText(text) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }
