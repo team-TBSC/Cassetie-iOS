@@ -61,19 +61,25 @@ class BottomSheetViewController: BaseViewController, View {
     }
     
     private let albumCoverImage = UIImageView().then {
-        $0.cornerRound(radius: 3)
+        $0.cornerRound(radius: 5)
     }
     
-    private let buttonStackView = UIStackView().then {
-        $0.axis = .horizontal
-        $0.spacing = 30.adjustedWidth
+    private let selectedLabel = UILabel().then {
+        $0.text = "선택완료"
+        $0.textColor = .white
+        $0.font = .systemFont(ofSize: 24, weight: .light)
     }
     
-    private let leftButton = RoundButton(title: "돌아가기", titleColor: .black, backColor: .white, round: 40).then {
-        $0.configureFont(font: .systemFont(ofSize: 24, weight: .light))
+    private let icSelectedImg = UIImageView().then {
+        $0.image = Image.icSelected
     }
     
-    private let rightButton = RoundButton(title: "노래 선택하기", titleColor: .black, backColor: .white, round: 40).then {
+    private let selectedAlbumCoverView = UIView().then {
+        $0.cornerRound(radius: 5)
+        $0.backgroundColor = .black.withAlphaComponent(0.7)
+    }
+    
+    private let goBackButton = RoundButton(title: "돌아가기", titleColor: .black, backColor: .white, round: 40).then {
         $0.configureFont(font: .systemFont(ofSize: 24, weight: .light))
     }
     
@@ -115,6 +121,7 @@ class BottomSheetViewController: BaseViewController, View {
         super.setupProperty()
         
         self.view.backgroundColor = .clear
+        selectedAlbumCoverView.alpha = 0
     }
     
     override func setupLayout() {
@@ -147,25 +154,38 @@ class BottomSheetViewController: BaseViewController, View {
             $0.top.equalTo(musicDetailStackView.snp.bottom).offset(60.adjustedHeight)
         }
         
-        [leftButton, rightButton].forEach {
-            $0.snp.makeConstraints {
-                $0.width.equalTo(243)
-                $0.height.equalTo(76)
-            }
+        selectedAlbumCoverView.snp.makeConstraints {
+            $0.width.height.equalTo(238.adjustedWidth)
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(musicDetailStackView.snp.bottom).offset(60.adjustedHeight)
         }
         
-        buttonStackView.snp.makeConstraints {
-            $0.top.equalTo(albumCoverImage.snp.bottom).offset(110.adjustedHeight)
+        icSelectedImg.snp.makeConstraints {
+            $0.width.height.equalTo(68)
+            $0.top.equalTo(selectedAlbumCoverView).offset(69)
             $0.centerX.equalToSuperview()
         }
+        
+        selectedLabel.snp.makeConstraints {
+            $0.top.equalTo(icSelectedImg.snp.bottom).offset(9)
+            $0.centerX.equalToSuperview()
+        }
+        
+        goBackButton.snp.makeConstraints {
+            $0.width.equalTo(243)
+            $0.height.equalTo(76)
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(albumCoverImage.snp.bottom).offset(110.adjustedHeight)
+        }
+        
     }
     
     override func setupHierarchy() {
         super.setupHierarchy()
         
         musicDetailStackView.addArrangedSubviews([titleLable, singerLable])
-        buttonStackView.addArrangedSubviews([leftButton, rightButton])
-        bottomSheetView.contentView.addSubviews([bottomSheetIcon, musicDetailStackView, albumCoverImage, buttonStackView])
+        selectedAlbumCoverView.addSubviews([icSelectedImg, selectedLabel])
+        bottomSheetView.contentView.addSubviews([bottomSheetIcon, musicDetailStackView, albumCoverImage, goBackButton, selectedAlbumCoverView])
         
         view.addSubviews([backgroundView, bottomSheetView])
     }
@@ -208,7 +228,7 @@ class BottomSheetViewController: BaseViewController, View {
             }
             .disposed(by: disposeBag)
         
-        leftButton.rx.tap
+        goBackButton.rx.tap
             .withUnretained(self)
             .bind { this, _ in
                 self.stopMusic()
@@ -219,26 +239,17 @@ class BottomSheetViewController: BaseViewController, View {
                 }
             }
             .disposed(by: disposeBag)
-        
-        rightButton.rx.tap
-            .bind { _ in
+      
+        albumCoverImage.rx.tapGesture()
+            .when(.recognized)
+            .withUnretained(self)
+            .bind { this, _ in
+                self.selectedAlbumCoverView.alpha = 1
                 self.stopMusic()
-                
                 reactor.action.onNext(.select(self.musicList, self.selectedIndex))
             }
             .disposed(by: disposeBag)
-
-        reactor.state
-            .map(\.isSelected)
-            .filter { $0 }
-            .bind { _ in
-                self.disappearBottomSheet()
-
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                    self.dismiss(animated: true)
-                }
-            }
-            .disposed(by: disposeBag)
+        
     }
     
     // MARK: - 바텀시트 열릴 때

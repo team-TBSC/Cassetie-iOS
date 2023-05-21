@@ -24,6 +24,7 @@ enum Image {
     static let cassetieContainerImg = UIImage(named: "cassetie_container")!
     static let teamLogoImg = UIImage(named: "team_logo")!
     static let icRefresh = UIImage(named: "ic_refresh")!
+    static let icSelected = UIImage(named: "ic_selected")
     
     static let testCassetieImg = UIImage(named: "test_cassetie")!
     

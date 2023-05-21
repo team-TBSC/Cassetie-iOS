@@ -16,11 +16,11 @@ class BottomSheetReactor: Reactor {
     }
     
     enum Mutation {
-        case setIsSelected(Bool)
+        
     }
     
     struct State {
-        var isSelected: Bool = false
+        
     }
     
     var initialState: State
@@ -34,21 +34,7 @@ class BottomSheetReactor: Reactor {
         switch action {
         case let .select(list, index):
             NetworkService.shared.search.event.onNext(.updateSelectedMusicList(list, index))
-            return Observable.concat([
-                .just(.setIsSelected(true)),
-                .just(.setIsSelected(false))
-            ])
+            return .empty()
         }
-    }
-    
-    func reduce(state: State, mutation: Mutation) -> State {
-        var newState = state
-        
-        switch mutation {
-        case let .setIsSelected(status):
-            newState.isSelected = status
-        }
-        
-        return newState
     }
 }
