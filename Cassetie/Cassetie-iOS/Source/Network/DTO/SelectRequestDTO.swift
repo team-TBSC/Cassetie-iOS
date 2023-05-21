@@ -9,9 +9,9 @@ import Foundation
 
 // MARK: - SelectedRequestDTO
 struct SelectedRequestDTO: Codable {
-    let name, song1ID, song2ID, song3ID: String
+    let song1ID, song2ID, song3ID: String
     let song3Search, song4ID, song4Search, song5ID: String
-    let text: String
+    var name, text: String
 
     enum CodingKeys: String, CodingKey {
         case name

@@ -57,6 +57,7 @@
 		2363FE772A1A06F50052EAC4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363FE762A1A06F50052EAC4 /* InfoViewController.swift */; };
 		2363FE7B2A1A085C0052EAC4 /* InfoReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363FE7A2A1A085C0052EAC4 /* InfoReactor.swift */; };
 		2363FE7E2A1A0D080052EAC4 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363FE7D2A1A0D080052EAC4 /* CustomTextFieldView.swift */; };
+		2363FE802A1A20D70052EAC4 /* InfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363FE7F2A1A20D70052EAC4 /* InfoService.swift */; };
 		236AA4F829F9573100CE02C7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4F729F9573100CE02C7 /* StartViewController.swift */; };
 		236AA4FA29F95A8100CE02C7 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4F929F95A8100CE02C7 /* UIButton+.swift */; };
 		236AA4FC29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236AA4FB29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift */; };
@@ -132,6 +133,7 @@
 		2363FE762A1A06F50052EAC4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		2363FE7A2A1A085C0052EAC4 /* InfoReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoReactor.swift; sourceTree = "<group>"; };
 		2363FE7D2A1A0D080052EAC4 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
+		2363FE7F2A1A20D70052EAC4 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
 		236AA4F729F9573100CE02C7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		236AA4F929F95A8100CE02C7 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		236AA4FB29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMusicResponseDTO.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				233B062529DDC5060049BAD8 /* ConfirmMusicService.swift */,
 				236AA50029F9979700CE02C7 /* FinalService.swift */,
 				236AA50629F9FF8100CE02C7 /* LoadingService.swift */,
+				2363FE7F2A1A20D70052EAC4 /* InfoService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				236AA4FC29F9624F00CE02C7 /* ConfirmMusicResponseDTO.swift in Sources */,
 				235A7F7429D3169200E594E0 /* SearchResponseDTO.swift in Sources */,
 				23C6DA0029C8CA73005CF5F5 /* FinalSectionModel.swift in Sources */,
+				2363FE802A1A20D70052EAC4 /* InfoService.swift in Sources */,
 				23C6DA0229C8CB47005CF5F5 /* FinalReactor.swift in Sources */,
 				233B062B29DDD5120049BAD8 /* SecondStoryTutorialViewController.swift in Sources */,
 				233B062D29DDE2030049BAD8 /* ThirdStoryTutorialViewController.swift in Sources */,
