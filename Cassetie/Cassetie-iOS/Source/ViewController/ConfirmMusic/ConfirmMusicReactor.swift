@@ -113,7 +113,7 @@ class ConfirmMusicReactor: Reactor {
     
     func createSelectRequestDTO() -> SelectedRequestDTO {
         let musicList: [MusicListDTO] = currentState.musicList
-        let requestDTO = SelectedRequestDTO(name: "카세티2호", song1ID: musicList[0].id, song2ID: musicList[1].id, song3ID: musicList[2].id, song3Search: currentState.thirdKeyword, song4ID: musicList[3].id, song4Search: currentState.fourthKeyword, song5ID: musicList[4].id, song5Search: currentState.fivthKeyword)
+        let requestDTO = SelectedRequestDTO(name: "카세티1호", song1ID: musicList[0].id, song2ID: musicList[1].id, song3ID: musicList[2].id, song3Search: currentState.thirdKeyword, song4ID: musicList[3].id, song4Search: currentState.fourthKeyword, song5ID: musicList[4].id, text: "안녕하세요 반가워요")
         
         return requestDTO
     }

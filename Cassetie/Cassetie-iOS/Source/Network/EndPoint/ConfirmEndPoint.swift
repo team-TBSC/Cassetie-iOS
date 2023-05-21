@@ -41,7 +41,7 @@ extension ConfirmEndPoint: EndPoint {
                     "song4_id": data.song4ID,
                     "song4_search": data.song4Search,
                     "song5_id": data.song5ID,
-                    "song5_search": data.song5Search,
+                    "text": data.text
                 ], encoding: JSONEncoding.default)
         }
     }
