@@ -40,11 +40,14 @@ class InfoViewController: BaseViewController, View {
         $0.textColor = .white
     }
     
-    private let nameTextField = CustomTextFieldView(labelText: "이름")
-    private let mentionTextField = CustomTextFieldView(labelText: "오늘의 한 마디")
+    private let nameTextField = CustomTextFieldView(labelText: "이름", placeHolder: "이름을 작성해주세요.")
+    private let mentionTextField = CustomTextFieldView(labelText: "오늘의 한 마디", placeHolder: "하고싶은 말을 적어주세요.")
     
     private let infoStackView = UIStackView().then {
         $0.axis = .vertical
+    }
+    private let casseiteImage = UIImageView().then {
+        $0.image = Image.cassetieBallad
     }
     
     private let goToLoadingButton = RoundButton(
@@ -54,9 +57,12 @@ class InfoViewController: BaseViewController, View {
         round: 40
     )
     
-    init(reactor: Reactor) {
+    var navigation: UINavigationController?
+    
+    init(reactor: Reactor, navigationController: UINavigationController) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
+        self.navigation = navigationController
     }
 
     @available(*, unavailable)
@@ -103,6 +109,12 @@ class InfoViewController: BaseViewController, View {
             $0.height.equalTo(135)
             $0.top.equalTo(nameTextField.snp.bottom).offset(10)
         }
+        
+        casseiteImage.snp.makeConstraints {
+            $0.width.height.equalTo(370)
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(mentionTextField.snp.bottom).offset(50)
+        }
     }
     
     override func viewDidLoad() {
@@ -116,18 +128,19 @@ class InfoViewController: BaseViewController, View {
         
         noticeStackView.addArrangedSubviews([noticeTopLable, noticeBottomLable])
         
-        backgroundView.addSubviews([noticeStackView, nameTextField, mentionTextField, goToLoadingButton])
+        backgroundView.addSubviews([noticeStackView, nameTextField, mentionTextField, casseiteImage, goToLoadingButton])
         view.addSubviews([backgroundEffectView, backgroundView])
     }
     
     func bind(reactor: InfoReactor) {
         goToLoadingButton.rx.tap
             .bind(onNext: { [weak self] in
-                self?.dismiss(animated: false)
-                let loadingViewController = RootSwitcher.loading.page
-                self?.navigationController?.pushViewController(loadingViewController, animated: false)
-                
-                reactor.action.onNext(.post)
+                self?.dismiss(animated: false) {
+                    let loadingViewController = RootSwitcher.loading.page
+                    self?.navigation?.pushViewController(loadingViewController, animated: false)
+
+                    reactor.action.onNext(.post)
+                }
             })
             .disposed(by: disposeBag)
         

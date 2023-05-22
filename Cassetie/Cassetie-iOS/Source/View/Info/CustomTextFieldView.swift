@@ -10,6 +10,11 @@ import UIKit
 import SnapKit
 import Then
 
+enum textFieldType {
+    case name
+    case mention
+}
+
 class CustomTextFieldView: BaseView {
     let label = UILabel().then {
         $0.font = .systemFont(ofSize: 28, weight: .bold)
@@ -33,9 +38,10 @@ class CustomTextFieldView: BaseView {
         $0.distribution = .fill
     }
     
-    init(labelText: String) {
+    init(labelText: String, placeHolder: String) {
         super.init(frame: .zero)
         self.label.text = labelText
+        self.textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white.withAlphaComponent(0.5)])
     }
     
     override func setupHierarchy() {
