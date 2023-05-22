@@ -19,7 +19,7 @@ struct ConfirmMusicResponseDTO: Codable, Equatable {
     }
     
     init() {
-        self.cassettiInfo = CassettiInfo(name: String(), energy: Int(), emotion: Int(), genre1: Int(), genre2: Int(), songName: String())
+        self.cassettiInfo = CassettiInfo(name: String(), energy: Int(), emotion: Int(), genre1: Int(), genre2: Int(), songName: String(), text: String())
     }
 }
 
@@ -27,6 +27,7 @@ struct CassettiInfo: Codable, Equatable {
     let name: String
     let energy, emotion, genre1, genre2: Int
     let songName: String
+    let text: String
 
     static func ==(lhs: CassettiInfo, rhs: CassettiInfo) -> Bool {
         return lhs.name == rhs.name &&
@@ -34,7 +35,8 @@ struct CassettiInfo: Codable, Equatable {
             lhs.emotion == rhs.emotion &&
             lhs.genre1 == rhs.genre1 &&
             lhs.genre2 == rhs.genre2 &&
-            lhs.songName == rhs.songName
+            lhs.songName == rhs.songName &&
+            lhs.text == rhs.text
     }
 }
 
