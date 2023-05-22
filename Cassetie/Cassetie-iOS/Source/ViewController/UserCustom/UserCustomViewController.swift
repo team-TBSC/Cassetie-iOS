@@ -13,42 +13,49 @@ import ReactorKit
 import RxDataSources
 import RxViewController
 
-class UserCustomViewController: BaseViewController, View {
+class UserCustomViewController: BaseViewController {
     private let blurEffect = UIBlurEffect(style: .dark)
     private lazy var backgroundEffectView = UIVisualEffectView(effect: self.blurEffect)
-    
-//    typealias Reactor = ConfirmMusicReactor
-    typealias DataSource = RxCollectionViewSectionedReloadDataSource<SearchSectionModel>
 
-    let dataSource = DataSource { _, collectionView, indexPath, item -> UICollectionViewCell in
-        switch item {
-        case let .musicPreview(model):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: MusicPreviewCollectionViewCell.self), for: indexPath) as? MusicPreviewCollectionViewCell else { return .init() }
-            cell.configure(model)
-            return cell
-        case .emptyMusicPreview:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: EmptyMusicCollectionViewCell.self), for: indexPath) as? EmptyMusicCollectionViewCell else { return .init() }
-            return cell
-        }
-    }
-    
     private let backgroundView = UIView().then {
         $0.backgroundColor = Color.navyD.withAlphaComponent(0.9)
         $0.cornerRound(radius: 24)
     }
-    private let noticeStackView = UIStackView().then {
+    private let mentionStackView = UIStackView().then {
         $0.axis = .vertical
-        $0.spacing = 6
+        $0.spacing = 4
         $0.alignment = .center
     }
-    private let noticeTopLable = UILabel().then {
-        $0.text = "선택하신 음악이에요."
-        $0.font = .systemFont(ofSize: 32, weight: .bold)
+    private let firstTextLabel = UILabel().then {
+        $0.text = "감정"
+    }
+    private let secondTextLabel = UILabel().then {
+        $0.text = "텐션"
+    }
+    private let thirdTextLabel = UILabel().then {
+        $0.text = "외형"
+    }
+    private let fourthTextLabel = UILabel().then {
+        $0.text = "커스텀"
+    }
+    private let fivthTextLabel = UILabel().then {
+        $0.text = "대표 노래"
+    }
+    private let customTextStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.distribution = .fillEqually
+        $0.alignment = .center
+    }
+    private let totalStackView = UIStackView().then {
+        $0.axis = .horizontal
+    }
+    private let mentionTopLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 28, weight: .bold)
         $0.textColor = .white
     }
-    private let noticeBottomLable = UILabel().then {
-        $0.text = "이 음악들을 카세티한테 전할까요?"
-        $0.font = .systemFont(ofSize: 24, weight: .light)
+    private let mentionBottomLabel = UILabel().then {
+        $0.text = "음악 목록"
+        $0.font = .systemFont(ofSize: 28, weight: .medium)
         $0.textColor = .white
     }
     private let collectionViewFlowLayout = UICollectionViewFlowLayout().then {
@@ -57,30 +64,14 @@ class UserCustomViewController: BaseViewController, View {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout).then {
         $0.backgroundColor = .clear
     }
-    private let bottomButton = RoundButton(
-        title: "좀 더 고민해보기",
+    private let backButton = RoundButton(
+        title: "돌아가기",
         titleColor: .white,
         backColor: Color.navyL,
         round: 40
     )
-    private let topButton = RoundButton(
-        title: "다음 단계로",
-        titleColor: .black,
-        backColor: .white,
-        round: 40
-    )
-    var navigation: UINavigationController?
-    
-    init(reactor: Reactor, navigationController: UINavigationController?) {
-        super.init(nibName: nil, bundle: nil)
-        self.reactor = reactor
-        self.navigation = navigationController
-    }
-    
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var songDTO: [Song]?
+    var userName: String?
     
     override func setupLayout() {
         super.setupLayout()
@@ -90,36 +81,39 @@ class UserCustomViewController: BaseViewController, View {
         }
         
         backgroundView.snp.makeConstraints {
-            $0.width.equalTo(603)
-            $0.height.equalTo(1004)
+            $0.width.equalTo(633)
+            $0.height.equalTo(904)
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview()
         }
         
-        noticeStackView.snp.makeConstraints {
+        mentionStackView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(43)
             $0.centerX.equalToSuperview()
         }
         
         collectionView.snp.makeConstraints {
-            $0.width.equalTo(503)
-            $0.height.equalTo(569)
-            $0.top.equalTo(noticeStackView.snp.bottom).offset(48)
+            $0.width.equalTo(453)
+            $0.height.equalTo(540)
+        }
+        
+        customTextStackView.snp.makeConstraints {
+            $0.width.equalTo(80)
+            $0.height.equalTo(540)
+        }
+        
+        totalStackView.snp.makeConstraints {
+            $0.width.equalTo(533)
+            $0.height.equalTo(540)
+            $0.top.equalTo(mentionStackView.snp.bottom).offset(48)
             $0.centerX.equalTo(backgroundView)
         }
         
-        bottomButton.snp.makeConstraints {
+        backButton.snp.makeConstraints {
             $0.width.equalTo(370)
             $0.height.equalTo(76)
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().inset(53)
-        }
-        
-        topButton.snp.makeConstraints {
-            $0.width.equalTo(370)
-            $0.height.equalTo(76)
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(bottomButton.snp.top).inset(-20)
         }
     }
     
@@ -132,51 +126,63 @@ class UserCustomViewController: BaseViewController, View {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        noticeStackView.addArrangedSubviews([noticeTopLable, noticeBottomLable])
-        backgroundView.addSubviews([noticeStackView, collectionView, topButton, bottomButton])
+        mentionStackView.addArrangedSubviews([mentionTopLabel, mentionBottomLabel])
+        [firstTextLabel, secondTextLabel, thirdTextLabel, fourthTextLabel, fivthTextLabel].forEach {
+            customTextStackView.addArrangedSubview($0)
+        }
+        totalStackView.addArrangedSubviews([collectionView, customTextStackView])
+        backgroundView.addSubviews([mentionStackView, totalStackView, backButton])
         view.addSubviews([backgroundEffectView, backgroundView])
+    }
+    
+    override func setupProperty() {
+        super.setupProperty()
+
+        mentionTopLabel.attributedText = NSMutableAttributedString()
+            .bold(string: self.userName ?? "", fontSize: 36)
+            .regular(string: "의", fontSize: 36)
+        
+        [firstTextLabel, secondTextLabel, thirdTextLabel, fourthTextLabel, fivthTextLabel].forEach {
+            $0.font = .systemFont(ofSize: 20, weight: .light)
+            $0.textColor = .white.withAlphaComponent(0.5)
+        }
     }
     
     override func setupDelegate() {
         super.setupDelegate()
         
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.register(MusicPreviewCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MusicPreviewCollectionViewCell.self))
-        collectionView.register(EmptyMusicCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EmptyMusicCollectionViewCell.self))
     }
     
-    func bind(reactor: ConfirmMusicReactor) {
-        bottomButton.rx.tap
-            .bind { _ in
+    override func setupBind() {
+        super.setupBind()
+        
+        backButton.rx.tap
+            .bind(onNext: {
                 self.dismiss(animated: false)
-            }
+            })
             .disposed(by: disposeBag)
-        
-        topButton.rx.tap
-            .bind { _ in
-                guard let pvc = self.presentingViewController else { return }
-
-                self.dismiss(animated: false) {
-                    guard let navigation = self.navigation else { return }
-                    let infoViewController = InfoViewController(reactor: InfoReactor(), navigationController: navigation)
-                    infoViewController.modalPresentationStyle = .overCurrentContext
-                    
-                    pvc.present(infoViewController, animated: true, completion: nil)
-                    
-                    reactor.action.onNext(.update)
-                }
-            }
-            .disposed(by: disposeBag)
-        
-        reactor.state
-            .map(\.musicPreviewSection)
-            .bind(to: collectionView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-        
-        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
 }
 
-extension ConfirmMusicViewController: UICollectionViewDelegateFlowLayout {
+extension UserCustomViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = self.collectionView.dequeueReusableCell(
+            withReuseIdentifier: "MusicPreviewCollectionViewCell",
+            for: indexPath) as? MusicPreviewCollectionViewCell else { return UICollectionViewCell() }
+        
+        guard let songDTO = self.songDTO else { return UICollectionViewCell() }
+        cell.simpleConfigure(songDTO[indexPath.row])
+        
+        return cell
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.collectionView.frame.width
         let height = self.collectionView.frame.height / 5
