@@ -22,7 +22,7 @@ class CassetieBoxCollectionViewCell: BaseCollectionViewCell {
         $0.font = .systemFont(ofSize: 36, weight: .bold)
     }
     
-    let genreLabel = UILabel().then {
+    let mentionLabel = UILabel().then {
         $0.textColor = .white
         $0.font = .systemFont(ofSize: 28, weight: .light)
     }
@@ -45,8 +45,8 @@ class CassetieBoxCollectionViewCell: BaseCollectionViewCell {
             $0.centerX.equalToSuperview()
         }
         
-        genreLabel.snp.makeConstraints {
-            $0.top.equalTo(nameLabel.snp.bottom).offset(10)
+        mentionLabel.snp.makeConstraints {
+            $0.top.equalTo(nameLabel.snp.bottom).offset(15)
             $0.centerX.equalToSuperview()
         }
     }
@@ -54,14 +54,14 @@ class CassetieBoxCollectionViewCell: BaseCollectionViewCell {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        addSubviews([cassetieContainerView, cassetieImage, nameLabel, genreLabel])
+        addSubviews([cassetieContainerView, cassetieImage, nameLabel, mentionLabel])
     }
     
     func configure(_ model: CassetieInfoDTO) {
         let type: CassetieType = CassetieType.allCases.filter { $0.rawValue == Int(model.num) }.first ?? .defaultNum
         
         self.nameLabel.text = model.name
-        self.genreLabel.text = type.genre
+        self.mentionLabel.text = model.text
         self.cassetieImage.image = type.image
     }
 }

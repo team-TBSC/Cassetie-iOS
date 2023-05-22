@@ -16,8 +16,14 @@ struct FinalResponseDTO: Codable {
     }
 }
 
-// MARK: - DBDatum
+// MARK: - CassetieInfoDTO
 struct CassetieInfoDTO: Codable {
-    let name, num: String
-    
+    let name, num, text: String
+    let song1, song2, song3, song4, song5: Song
+}
+
+// MARK: - Song
+struct Song: Codable {
+    let track, artist: String
+    let image: String
 }
