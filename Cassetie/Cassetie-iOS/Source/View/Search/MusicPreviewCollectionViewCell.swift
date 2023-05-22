@@ -60,5 +60,12 @@ class MusicPreviewCollectionViewCell: BaseCollectionViewCell {
         self.titleLable.text = model.track
         self.singerLable.text = model.artist
     }
+    
+    func simpleConfigure(_ model: Song) {
+        let url = URL(string: model.image)
+        self.albumCoverImage.kf.setImage(with: url)
+        self.titleLable.text = model.track
+        self.singerLable.text = model.artist
+    }
 }
 

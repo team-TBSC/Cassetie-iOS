@@ -33,7 +33,6 @@ class FinalReactor: Reactor {
         case .refresh:
             NetworkService.shared.final.get()
             return .empty()
-//            return .just(.setFinalSection(createSection()))
         }
     }
     
@@ -65,7 +64,7 @@ class FinalReactor: Reactor {
     func createSection(data: FinalResponseDTO) -> [FinalSectionModel] {
         let cassetieData: [CassetieInfoDTO] = data.dbData.reversed().map { item in
             let genre = String(item.num[item.num.index(item.num.startIndex, offsetBy: 2)])
-            return .init(name: item.name, num: genre)
+            return .init(name: item.name, num: genre, text: item.text, song: item.song)
         }
 
         let items: [FinalItem] = cassetieData.map { item in
