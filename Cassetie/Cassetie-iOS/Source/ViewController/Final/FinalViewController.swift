@@ -123,11 +123,6 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
         view.addSubviews([backgroundImage,backgroundStarImg, noticeStackView, collectionView, refreshButton])
     }
     
-    override func setupProperty() {
-        super.setupProperty()
-        
-    }
-    
     override func setupDelegate() {
         super.setupDelegate()
         
@@ -138,6 +133,23 @@ class FinalViewController: BaseViewController, View, UIScrollViewDelegate {
         refreshButton.rx.tap
             .bind(onNext: {
                 reactor.action.onNext(.refresh)
+            })
+            .disposed(by: disposeBag)
+        
+        collectionView.rx.modelSelected(FinalItem.self)
+            .subscribe(onNext: { item in
+                guard case let .cassetieBox(item) = item else { return }
+                
+                let songList: [Song] = item.song.map { sing in
+                    Song(track: sing.track, artist: sing.artist, image: sing.image)
+                }
+                
+                let userCustomViewController = UserCustomViewController()
+                userCustomViewController.songDTO = songList
+                userCustomViewController.userName = item.name
+                userCustomViewController.modalPresentationStyle = .overCurrentContext
+                self.present(userCustomViewController, animated: false)
+                
             })
             .disposed(by: disposeBag)
         

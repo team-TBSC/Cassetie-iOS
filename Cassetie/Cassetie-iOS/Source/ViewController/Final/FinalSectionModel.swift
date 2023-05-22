@@ -23,6 +23,10 @@ struct FinalTestModel {
     }
 }
 
+struct SimpleMusicModel {
+    let track, artist, image: String
+}
+
 enum FinalSection {
     case cassetieBox([FinalItem])
 }

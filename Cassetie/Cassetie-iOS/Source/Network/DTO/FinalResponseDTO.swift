@@ -19,7 +19,7 @@ struct FinalResponseDTO: Codable {
 // MARK: - CassetieInfoDTO
 struct CassetieInfoDTO: Codable {
     let name, num, text: String
-    let song1, song2, song3, song4, song5: Song
+    let song: [Song]
 }
 
 // MARK: - Song
