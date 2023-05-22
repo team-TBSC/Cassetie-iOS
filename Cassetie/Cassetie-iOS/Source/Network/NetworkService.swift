@@ -13,4 +13,5 @@ final class NetworkService {
     let confirm = ConfirmMusicService()
     let final = FinalService()
     let loading = LoadingService()
+    let info = InfoService()
 }

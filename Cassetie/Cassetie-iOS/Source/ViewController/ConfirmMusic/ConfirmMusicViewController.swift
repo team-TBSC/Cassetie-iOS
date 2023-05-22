@@ -64,7 +64,7 @@ class ConfirmMusicViewController: BaseViewController, View {
         round: 40
     )
     private let topButton = RoundButton(
-        title: "카세티 보러가기!",
+        title: "다음 단계로",
         titleColor: .black,
         backColor: .white,
         round: 40
@@ -153,11 +153,17 @@ class ConfirmMusicViewController: BaseViewController, View {
         
         topButton.rx.tap
             .bind { _ in
-                reactor.action.onNext(.post)
-                
-                self.dismiss(animated: false)
-                let loadingViewController = RootSwitcher.loading.page
-                self.navigation?.pushViewController(loadingViewController, animated: true)
+                guard let pvc = self.presentingViewController else { return }
+
+                self.dismiss(animated: false) {
+                    guard let navigation = self.navigation else { return }
+                    let infoViewController = InfoViewController(reactor: InfoReactor(), navigationController: navigation)
+                    infoViewController.modalPresentationStyle = .overCurrentContext
+                    
+                    pvc.present(infoViewController, animated: true, completion: nil)
+                    
+                    reactor.action.onNext(.update)
+                }
             }
             .disposed(by: disposeBag)
         

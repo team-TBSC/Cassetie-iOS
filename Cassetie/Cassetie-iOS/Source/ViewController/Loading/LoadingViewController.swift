@@ -17,7 +17,7 @@ class LoadingViewController: BaseViewController, View {
     typealias Reactor = LoadingReactor
     
     var completedCassetie: ConfirmMusicResponseDTO?
-    
+    var navigation: UINavigationController?
     let backgroundView = UIImageView().then {
         $0.image = Image.backgroundImg
     }
@@ -177,12 +177,12 @@ class LoadingViewController: BaseViewController, View {
             $0.top.equalToSuperview().offset(300.adjustedHeight)
         }
         
-        UIView.animate(withDuration: 2.5, animations: {
+        UIView.animate(withDuration: 2, animations: {
             self.view.layoutIfNeeded()
             self.completedStackView.alpha = 1
         })
         
-        UIView.animate(withDuration: 4, animations: {
+        UIView.animate(withDuration: 3.5, animations: {
             self.completeButton.alpha = 1
         })
     }

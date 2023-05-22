@@ -54,8 +54,10 @@ enum CassetieType: Int, CaseIterable {
         case .four:
             return "힙합/R&B"
         case .five:
-            return "댄스/POP"
-        case .six, .seven, .eight, .defaultNum:
+            return "댄스"
+        case .six:
+            return "POP"
+        case .seven, .eight, .defaultNum:
             return "기타"
         }
     }
@@ -83,8 +85,8 @@ class CompletedCassetieViewController: BaseViewController {
         $0.textColor = .white
     }
     
-    let genreLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 24, weight: .light)
+    let textLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 32, weight: .light)
         $0.textColor = .gray
     }
     
@@ -114,13 +116,13 @@ class CompletedCassetieViewController: BaseViewController {
             $0.centerX.equalToSuperview()
         }
         
-        genreLabel.snp.makeConstraints {
-            $0.top.equalTo(cassetieNameLabel.snp.bottom)
+        textLabel.snp.makeConstraints {
+            $0.top.equalTo(cassetieNameLabel.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
         }
         
         goBackButton.snp.makeConstraints {
-            $0.top.equalTo(genreLabel.snp.bottom).offset(100)
+            $0.top.equalTo(textLabel.snp.bottom).offset(100)
             $0.width.equalTo(245)
             $0.height.equalTo(76)
             $0.centerX.equalToSuperview()
@@ -141,13 +143,14 @@ class CompletedCassetieViewController: BaseViewController {
     override func setupProperty() {
         super.setupProperty()
         
-        cassetieNameLabel.text = completedCassetie?.cassettiInfo.name
-        genreLabel.text = type.genre
+        guard let cassetieInfo = completedCassetie else { return }
+        cassetieNameLabel.text = cassetieInfo.cassettiInfo.name
+        textLabel.text = "\"" + cassetieInfo.cassettiInfo.text + "\""
     }
     
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([backgroundView, backgroundStarImg, cassetieImage, cassetieNameLabel, genreLabel, goBackButton])
+        view.addSubviews([backgroundView, backgroundStarImg, cassetieImage, cassetieNameLabel, textLabel, goBackButton])
     }
 }

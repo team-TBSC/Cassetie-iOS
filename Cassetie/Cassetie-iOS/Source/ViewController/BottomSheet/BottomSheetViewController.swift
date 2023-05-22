@@ -245,7 +245,6 @@ class BottomSheetViewController: BaseViewController, View {
             .withUnretained(self)
             .bind { this, _ in
                 self.selectedAlbumCoverView.alpha = 1
-                self.stopMusic()
                 reactor.action.onNext(.select(self.musicList, self.selectedIndex))
             }
             .disposed(by: disposeBag)

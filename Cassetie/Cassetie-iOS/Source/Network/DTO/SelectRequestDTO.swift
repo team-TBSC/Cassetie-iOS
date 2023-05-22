@@ -9,9 +9,9 @@ import Foundation
 
 // MARK: - SelectedRequestDTO
 struct SelectedRequestDTO: Codable {
-    let name, song1ID, song2ID, song3ID: String
+    let song1ID, song2ID, song3ID: String
     let song3Search, song4ID, song4Search, song5ID: String
-    let song5Search: String
+    var name, text: String
 
     enum CodingKeys: String, CodingKey {
         case name
@@ -22,14 +22,14 @@ struct SelectedRequestDTO: Codable {
         case song4ID = "song4_id"
         case song4Search = "song4_search"
         case song5ID = "song5_id"
-        case song5Search = "song5_search"
+        case text
     }
     
     init() {
         self.name = String()
+        self.text = String()
         self.song3Search = String()
         self.song4Search = String()
-        self.song5Search = String()
         self.song1ID = String()
         self.song2ID = String()
         self.song3ID = String()
@@ -37,11 +37,11 @@ struct SelectedRequestDTO: Codable {
         self.song5ID = String()
     }
     
-    init(name: String, song1ID: String, song2ID: String, song3ID: String, song3Search: String, song4ID: String, song4Search: String, song5ID: String, song5Search: String) {
+    init(name: String, song1ID: String, song2ID: String, song3ID: String, song3Search: String, song4ID: String, song4Search: String, song5ID: String, text: String) {
         self.name = name
+        self.text = text
         self.song3Search = song3Search
         self.song4Search = song4Search
-        self.song5Search = song5Search
         self.song1ID = song1ID
         self.song2ID = song2ID
         self.song3ID = song3ID
