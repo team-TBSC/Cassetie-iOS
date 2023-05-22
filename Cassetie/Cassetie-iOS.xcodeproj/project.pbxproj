@@ -51,6 +51,7 @@
 		235FD3EF29A5E1BC0073E91B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD3EE29A5E1BC0073E91B /* Image.swift */; };
 		235FD3F129A5E3B40073E91B /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD3F029A5E3B40073E91B /* UIView+.swift */; };
 		235FD3F329A5E5480073E91B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD3F229A5E5480073E91B /* Color.swift */; };
+		2360205A2A1B7F6200AC4E16 /* UserCustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236020592A1B7F6200AC4E16 /* UserCustomViewController.swift */; };
 		2361CB3729BAEDA200FC86C2 /* cassetie-third.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2361CB3629BAEDA200FC86C2 /* cassetie-third.gif */; };
 		2361CB3A29BAEE4800FC86C2 /* ConfirmMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361CB3929BAEE4800FC86C2 /* ConfirmMusicViewController.swift */; };
 		2361CB3D29BAF70600FC86C2 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361CB3C29BAF70600FC86C2 /* RoundButton.swift */; };
@@ -127,6 +128,7 @@
 		235FD3EE29A5E1BC0073E91B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		235FD3F029A5E3B40073E91B /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		235FD3F229A5E5480073E91B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		236020592A1B7F6200AC4E16 /* UserCustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCustomViewController.swift; sourceTree = "<group>"; };
 		2361CB3629BAEDA200FC86C2 /* cassetie-third.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "cassetie-third.gif"; sourceTree = "<group>"; };
 		2361CB3929BAEE4800FC86C2 /* ConfirmMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMusicViewController.swift; sourceTree = "<group>"; };
 		2361CB3C29BAF70600FC86C2 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 		235E1989296BDDBD004D18AB /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				236020582A1B7DD000AC4E16 /* UserCustom */,
 				2363FE752A1A06E90052EAC4 /* Info */,
 				236AA4FD29F9721D00CE02C7 /* CompletedCassetie */,
 				236AA4F629F9572300CE02C7 /* Start */,
@@ -398,6 +401,14 @@
 				236E1A3429DE922E00D8C0EA /* FivthStoryTutorialViewController.swift */,
 			);
 			path = StoryTutorial;
+			sourceTree = "<group>";
+		};
+		236020582A1B7DD000AC4E16 /* UserCustom */ = {
+			isa = PBXGroup;
+			children = (
+				236020592A1B7F6200AC4E16 /* UserCustomViewController.swift */,
+			);
+			path = UserCustom;
 			sourceTree = "<group>";
 		};
 		2361CB3829BAEE2900FC86C2 /* ConfirmMusic */ = {
@@ -639,6 +650,7 @@
 			files = (
 				236AA50129F9979700CE02C7 /* FinalService.swift in Sources */,
 				235EA28129C2EB53008E61CD /* FirstStoryTutorialViewController.swift in Sources */,
+				2360205A2A1B7F6200AC4E16 /* UserCustomViewController.swift in Sources */,
 				2317305729B1D6DF002CF0A6 /* NsMutableAttributedString+.swift in Sources */,
 				236E1A3529DE922E00D8C0EA /* FivthStoryTutorialViewController.swift in Sources */,
 				235FD3EF29A5E1BC0073E91B /* Image.swift in Sources */,
