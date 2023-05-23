@@ -63,6 +63,21 @@ enum QuestionType: CaseIterable {
         }
     }
     
+    var subText: String {
+        switch self {
+        case .first:
+            return "감정"
+        case .second:
+            return "텐션"
+        case .third:
+            return "외형"
+        case .fourth:
+            return "커스텀"
+        case .fivth:
+            return "대표 노래"
+        }
+    }
+    
     var gifImage: String {
         switch self {
         case .first:
@@ -92,6 +107,11 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
         $0.contentMode = .scaleToFill
     }
     
+    let subTextLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 22, weight: .light)
+        $0.textColor = .white.withAlphaComponent(0.5)
+    }
+    
     override func setupLayout() {
         super.setupLayout()
        
@@ -103,7 +123,12 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
         }
         
         questionLabel.snp.makeConstraints {
-            $0.top.equalTo(cassetieGifImageView.snp.bottom).offset(17.adjustedHeight)
+            $0.top.equalTo(cassetieGifImageView.snp.bottom).offset(5.adjustedHeight)
+            $0.centerX.equalToSuperview()
+        }
+        
+        subTextLabel.snp.makeConstraints {
+            $0.top.equalTo(questionLabel.snp.bottom).offset(5)
             $0.centerX.equalToSuperview()
         }
     }
@@ -111,7 +136,7 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        contentView.addSubviews([cassetieGifImageView, questionLabel])
+        contentView.addSubviews([cassetieGifImageView, questionLabel, subTextLabel])
     }
     
     func configure(_ type: QuestionType) {
@@ -121,5 +146,7 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
             .regular(string: type.thirdText, fontSize: 28)
         
         cassetieGifImageView.animate(withGIFNamed: type.gifImage)
+        
+        subTextLabel.text = type.subText
     }
 }

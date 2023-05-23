@@ -171,7 +171,7 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
         askQuestionCollectionView.snp.makeConstraints {
             $0.leading.equalTo(leftButton.snp.trailing)
             $0.trailing.equalTo(rightButton.snp.leading)
-            $0.height.equalTo(330.adjustedHeight)
+            $0.height.equalTo(360.adjustedHeight)
             $0.top.equalToSuperview().offset(45.adjustedHeight)
         }
         
@@ -357,7 +357,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
             }
         } else {
             let width = self.askQuestionCollectionView.frame.width
-            let height = 330.adjustedHeight
+            let height = 360.adjustedHeight
 
             return CGSize(width: width, height: height)
         }
