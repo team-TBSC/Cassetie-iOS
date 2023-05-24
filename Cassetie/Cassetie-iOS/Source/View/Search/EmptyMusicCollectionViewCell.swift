@@ -32,7 +32,7 @@ class EmptyMusicCollectionViewCell: BaseCollectionViewCell {
     }
     
     func configure(refresh: EmptyType) {
-        noticeLabel.text = refresh.self == .refresh ? "음악을 검색해주세요" : "찾으시는 음악이 없습니다"
+        noticeLabel.text = refresh.self == .refresh ? "음악을 검색해주세요" : "음악을 다시 검색해주세요"
     }
 }
 

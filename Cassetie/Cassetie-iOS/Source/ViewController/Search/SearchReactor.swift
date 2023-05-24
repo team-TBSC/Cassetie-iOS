@@ -147,8 +147,14 @@ class SearchReactor: Reactor {
     }
     
     func updateMusicPreviewSection(data: SearchResponseDTO) -> [SearchSectionModel] {
-        let items = data.musicList.map { item -> SearchItem in
-            return .musicPreview(item)
+        var items: [SearchItem] = []
+        
+        if data.musicList.isEmpty {
+            items.append(.emptyMusicPreview(.noMusic))
+        } else {
+            data.musicList.forEach { item in
+                items.append(.musicPreview(item))
+            }
         }
         
         let searchSection = SearchSectionModel(model: .musicPreview(items), items: items)

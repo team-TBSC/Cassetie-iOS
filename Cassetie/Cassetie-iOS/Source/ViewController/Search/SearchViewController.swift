@@ -187,12 +187,6 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
             $0.top.equalToSuperview().offset(45.adjustedHeight)
         }
         
-//        pageControl.snp.makeConstraints {
-//            $0.top.equalTo(askQuestionCollectionView.snp.bottom).offset(15)
-//            $0.centerX.equalToSuperview()
-//            $0.height.equalTo(13)
-//        }
-        
         progressBar.snp.makeConstraints {
             $0.width.equalTo(230)
             $0.height.equalTo(8)
@@ -281,6 +275,9 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
                     
                     reactor.action.onNext(.confirm)
                 }
+                
+                self.textField.text = ""
+                reactor.action.onNext(.update(""))
             }
             .disposed(by: disposeBag)
         
@@ -306,6 +303,9 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
                         self.rightButton.isEnabled = false
                     }
                 }
+                
+                self.textField.text = ""
+                reactor.action.onNext(.update(""))
             }
             .disposed(by: disposeBag)
         
@@ -359,6 +359,9 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
                         self.rightButton.isEnabled = false
                     }
                 }
+                
+                self.textField.text = ""
+                reactor.action.onNext(.update(""))
             }
             .disposed(by: disposeBag)
         
@@ -395,7 +398,6 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
         searchCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         askQuestionCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
-
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
