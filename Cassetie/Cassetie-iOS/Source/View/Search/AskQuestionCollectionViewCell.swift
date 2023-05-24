@@ -21,15 +21,15 @@ enum QuestionType: CaseIterable {
     var firstText: String {
         switch self {
         case .first:
-            return "나의"
+            return "당신의"
         case .second:
-            return "나의"
+            return "당신의"
         case .third:
-            return "나를 가장 잘"
+            return "당신을 가장 잘"
         case .fourth:
-            return "내"
+            return "당신이 가장"
         case .fivth:
-            return "가장"
+            return "당신을"
         }
     }
     
@@ -42,9 +42,9 @@ enum QuestionType: CaseIterable {
         case .third:
             return " 표현하는"
         case .fourth:
-            return " 관상"
+            return " 좋아하는"
         case .fivth:
-            return " 내 취향"
+            return " 대표하는"
         }
     }
     
@@ -57,9 +57,9 @@ enum QuestionType: CaseIterable {
         case .third:
             return " 음악은?"
         case .fourth:
-            return "을 음악으로 표현한다면?"
+            return " 음악은?"
         case .fivth:
-            return "인 노래는?"
+            return " 음악은?"
         }
     }
     
