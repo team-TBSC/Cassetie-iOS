@@ -218,7 +218,7 @@ class BottomSheetViewController: BaseViewController, View {
                 self.stopMusic()
                 self.disappearBottomSheet()
                 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                     this.dismiss(animated: true)
                 }
             }
@@ -253,7 +253,7 @@ class BottomSheetViewController: BaseViewController, View {
                 self.stopMusic()
                 self.disappearBottomSheet()
                 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                     self.dismiss(animated: true)
                 }
             }
@@ -270,7 +270,7 @@ class BottomSheetViewController: BaseViewController, View {
                 self.stopMusic()
                 self.disappearBottomSheet()
 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                     self.dismiss(animated: true)
                 }
             })
@@ -285,7 +285,7 @@ class BottomSheetViewController: BaseViewController, View {
         }
         
         UIView.animate(
-            withDuration: 0.5,
+            withDuration: 1,
             animations: self.view.layoutIfNeeded
         )
     }
@@ -298,7 +298,7 @@ class BottomSheetViewController: BaseViewController, View {
         }
         
         UIView.animate(
-            withDuration: 0.5,
+            withDuration: 1,
             animations: self.view.layoutIfNeeded
         )
     }

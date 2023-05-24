@@ -35,9 +35,11 @@ enum CassetieType: Int, CaseIterable {
         case .four:
             return Image.cassetieHiphop
         case .five:
+            return Image.cassetieDance
+        case .six:
             return Image.cassetiePop
-        case .six, .seven, .eight, .defaultNum:
-            return Image.cassetieDefault
+        case .seven, .eight, .defaultNum:
+            return Image.cassetieUndefined
         }
     }
     

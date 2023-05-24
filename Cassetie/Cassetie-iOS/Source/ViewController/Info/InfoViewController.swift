@@ -47,7 +47,7 @@ class InfoViewController: BaseViewController, View {
         $0.axis = .vertical
     }
     private let casseiteImage = UIImageView().then {
-        $0.image = Image.cassetieBallad
+        $0.image = Image.cassetieRandom
     }
     
     private let goToLoadingButton = RoundButton(
@@ -111,9 +111,10 @@ class InfoViewController: BaseViewController, View {
         }
         
         casseiteImage.snp.makeConstraints {
-            $0.width.height.equalTo(370)
+            $0.width.equalTo(350)
+            $0.height.equalTo(440)
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(mentionTextField.snp.bottom).offset(50)
+            $0.top.equalTo(mentionTextField.snp.bottom)
         }
     }
     
