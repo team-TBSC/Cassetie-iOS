@@ -218,7 +218,7 @@ class BottomSheetViewController: BaseViewController, View {
                 self.stopMusic()
                 self.disappearBottomSheet()
                 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
                     this.dismiss(animated: true)
                 }
             }
@@ -253,7 +253,7 @@ class BottomSheetViewController: BaseViewController, View {
                 self.stopMusic()
                 self.disappearBottomSheet()
                 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
                     self.dismiss(animated: true)
                 }
             }
@@ -270,21 +270,11 @@ class BottomSheetViewController: BaseViewController, View {
                 self.stopMusic()
                 self.disappearBottomSheet()
 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
                     self.dismiss(animated: true)
                 }
             })
             .disposed(by: disposeBag)
-      
-//        albumCoverImage.rx.tapGesture()
-//            .when(.recognized)
-//            .withUnretained(self)
-//            .bind { this, _ in
-//                self.selectedAlbumCoverView.alpha = 1
-//                reactor.action.onNext(.select(self.musicList, self.selectedIndex))
-//            }
-//            .disposed(by: disposeBag)
-        
     }
     
     // MARK: - 바텀시트 열릴 때

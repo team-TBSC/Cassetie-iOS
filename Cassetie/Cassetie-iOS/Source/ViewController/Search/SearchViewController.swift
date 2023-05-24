@@ -105,11 +105,6 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
         $0.isScrollEnabled = false
     }
     
-//    let pageControl = UIPageControl().then {
-//        $0.numberOfPages = 5
-//        $0.pageIndicatorTintColor = Color.grayDL.withAlphaComponent(0.2)
-//    }
-    
     lazy var progressBar = UIProgressView().then {
         $0.trackTintColor = .white.withAlphaComponent(0.5)
         $0.progressTintColor = .white
@@ -349,7 +344,6 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
             .filter { $0 }
             .withUnretained(self)
             .bind { this, state in
-                
                 let nextIndexPath = IndexPath(item: self.currentCell + 1, section: 0)
         
                 if nextIndexPath.item < self.askQuestionCollectionView.numberOfItems(inSection: nextIndexPath.section) {
@@ -391,10 +385,10 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
         
         reactor.state
             .map(\.selectedMusicIndex)
+            .distinctUntilChanged()
             .bind(onNext: { [weak self] index in
                 self?.percentLabel.text = String(index * 20) + "%"
                 self?.progressBar.setProgress(Float(Float(index) * 0.2), animated: true)
-                // 페이지 넘어가는거 구현 한다음에 코드 수정하기
             })
             .disposed(by: disposeBag)
 
