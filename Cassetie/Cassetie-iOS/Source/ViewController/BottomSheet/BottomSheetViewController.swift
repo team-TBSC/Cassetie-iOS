@@ -79,8 +79,17 @@ class BottomSheetViewController: BaseViewController, View {
         $0.backgroundColor = .black.withAlphaComponent(0.7)
     }
     
+    private let confirmButton = RoundButton(title: "확정하기", titleColor: .black, backColor: .white, round: 40).then {
+        $0.configureFont(font: .systemFont(ofSize: 24, weight: .light))
+    }
+    
     private let goBackButton = RoundButton(title: "돌아가기", titleColor: .black, backColor: .white, round: 40).then {
         $0.configureFont(font: .systemFont(ofSize: 24, weight: .light))
+    }
+    
+    private let buttonStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.distribution = .equalSpacing
     }
     
     init(reactor: Reactor) {
@@ -170,14 +179,23 @@ class BottomSheetViewController: BaseViewController, View {
             $0.top.equalTo(icSelectedImg.snp.bottom).offset(9)
             $0.centerX.equalToSuperview()
         }
+    
+        confirmButton.snp.makeConstraints {
+            $0.width.equalTo(243)
+            $0.height.equalTo(76)
+        }
         
         goBackButton.snp.makeConstraints {
             $0.width.equalTo(243)
             $0.height.equalTo(76)
+        }
+        
+        buttonStackView.snp.makeConstraints {
+            $0.width.equalTo(520)
+            $0.height.equalTo(76)
             $0.centerX.equalToSuperview()
             $0.top.equalTo(albumCoverImage.snp.bottom).offset(110.adjustedHeight)
         }
-        
     }
     
     override func setupHierarchy() {
@@ -185,7 +203,8 @@ class BottomSheetViewController: BaseViewController, View {
         
         musicDetailStackView.addArrangedSubviews([titleLable, singerLable])
         selectedAlbumCoverView.addSubviews([icSelectedImg, selectedLabel])
-        bottomSheetView.contentView.addSubviews([bottomSheetIcon, musicDetailStackView, albumCoverImage, goBackButton, selectedAlbumCoverView])
+        buttonStackView.addArrangedSubviews([confirmButton, goBackButton])
+        bottomSheetView.contentView.addSubviews([bottomSheetIcon, musicDetailStackView, albumCoverImage, buttonStackView, selectedAlbumCoverView])
         
         view.addSubviews([backgroundView, bottomSheetView])
     }
@@ -239,15 +258,32 @@ class BottomSheetViewController: BaseViewController, View {
                 }
             }
             .disposed(by: disposeBag)
-      
-        albumCoverImage.rx.tapGesture()
-            .when(.recognized)
+        
+        confirmButton.rx.tap
             .withUnretained(self)
-            .bind { this, _ in
+            .bind(onNext: { this, _ in
                 self.selectedAlbumCoverView.alpha = 1
                 reactor.action.onNext(.select(self.musicList, self.selectedIndex))
-            }
+                
+                NetworkService.shared.search.event.onNext(.closeBottomSheet)
+                
+                self.stopMusic()
+                self.disappearBottomSheet()
+
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                    self.dismiss(animated: true)
+                }
+            })
             .disposed(by: disposeBag)
+      
+//        albumCoverImage.rx.tapGesture()
+//            .when(.recognized)
+//            .withUnretained(self)
+//            .bind { this, _ in
+//                self.selectedAlbumCoverView.alpha = 1
+//                reactor.action.onNext(.select(self.musicList, self.selectedIndex))
+//            }
+//            .disposed(by: disposeBag)
         
     }
     

@@ -23,6 +23,8 @@ class SearchReactor: Reactor {
         case setSelectedMusicList(SelectedMusicList, Int)
         case setSearchIndexKeyword(String, Int)
         case setSearchKeyword(String)
+        case updateSelectedMusicIndex
+        case setBottomSheetState(Bool)
     }
     
     struct State {
@@ -39,6 +41,8 @@ class SearchReactor: Reactor {
         var thirdSearchKeyword: String = String()
         var fourthSearchKeyword: String = String()
         var fivthSearchKeyword: String = String()
+        var selectedMusicIndex: Int = 0
+        var bottomSheetState: Bool = false
     }
     
     var initialState: State
@@ -87,6 +91,10 @@ class SearchReactor: Reactor {
             }
         case let .setSearchKeyword(text):
             newState.searchKeyword = text
+        case .updateSelectedMusicIndex:
+            newState.selectedMusicIndex = newState.selectedMusicIndex + 1
+        case let .setBottomSheetState(status):
+            newState.bottomSheetState = status
         }
         
         return newState
@@ -112,7 +120,13 @@ class SearchReactor: Reactor {
                     
                     return Observable.concat([
                         .just(.setSelectedMusicList(self.updateSelectedMusicList(musicList: list), index)),
-                        updateKeywordMutation
+                        updateKeywordMutation,
+                        .just(.updateSelectedMusicIndex)
+                    ])
+                case .closeBottomSheet:
+                    return Observable.concat([
+                        .just(.setBottomSheetState(true)),
+                        .just(.setBottomSheetState(false))
                     ])
                 }
             })
