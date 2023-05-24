@@ -13,7 +13,6 @@ enum RootSwitcher {
     case final
     case storyTutorial
     case start
-    case info
     
     var page: UIViewController {
         switch self {
@@ -27,8 +26,6 @@ enum RootSwitcher {
             return FinalViewController(reactor: FinalReactor.init())
         case .storyTutorial:
             return FirstStoryTutorialViewController()
-        case .info:
-            return InfoViewController(reactor: InfoReactor.init())
         }
     }
 }
@@ -45,7 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let rootViewController = UINavigationController(rootViewController: RootSwitcher.search.page)
+        let rootViewController = UINavigationController(rootViewController: RootSwitcher.start.page)
         
         window.rootViewController = rootViewController
         
