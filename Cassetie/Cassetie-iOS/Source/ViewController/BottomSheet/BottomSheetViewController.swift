@@ -275,6 +275,13 @@ class BottomSheetViewController: BaseViewController, View {
                 }
             })
             .disposed(by: disposeBag)
+        
+        rx.viewWillDisappear
+            .bind(onNext: { [weak self] _ in
+                self?.stopMusic()
+                self?.disappearBottomSheet()
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - 바텀시트 열릴 때
