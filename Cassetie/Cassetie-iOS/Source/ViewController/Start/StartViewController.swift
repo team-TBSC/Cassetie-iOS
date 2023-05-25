@@ -50,8 +50,8 @@ class StartViewController: BaseViewController {
         }
         
         logoImg.snp.makeConstraints {
-            $0.width.equalTo(412.adjustedWidth)
-            $0.height.equalTo(380.adjustedWidth)
+            $0.width.equalTo(512.adjustedWidth)
+            $0.height.equalTo(512.adjustedWidth)
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(223.adjustedHeight)
         }
@@ -59,7 +59,7 @@ class StartViewController: BaseViewController {
         startButton.snp.makeConstraints {
             $0.width.equalTo(275)
             $0.height.equalTo(72)
-            $0.top.equalTo(logoImg.snp.bottom).offset(238)
+            $0.top.equalTo(logoImg.snp.bottom).offset(138)
             $0.centerX.equalToSuperview()
         }
         

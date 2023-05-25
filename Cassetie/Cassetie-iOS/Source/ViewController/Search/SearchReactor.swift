@@ -23,6 +23,8 @@ class SearchReactor: Reactor {
         case setSelectedMusicList(SelectedMusicList, Int)
         case setSearchIndexKeyword(String, Int)
         case setSearchKeyword(String)
+        case updateSelectedMusicIndex
+        case setBottomSheetState(Bool)
     }
     
     struct State {
@@ -39,6 +41,8 @@ class SearchReactor: Reactor {
         var thirdSearchKeyword: String = String()
         var fourthSearchKeyword: String = String()
         var fivthSearchKeyword: String = String()
+        var selectedMusicIndex: Int = 0         // progress view의 진행률을 나타내기 위한 index
+        var bottomSheetState: Bool = false      // bottom sheet 닫혔는지 아닌지의 여부
     }
     
     var initialState: State
@@ -87,6 +91,15 @@ class SearchReactor: Reactor {
             }
         case let .setSearchKeyword(text):
             newState.searchKeyword = text
+        case .updateSelectedMusicIndex:
+            var index: Int = 0
+            
+            newState.selectedMusicList.forEach { item in
+                if item.isSelected { index += 1 }
+            }
+            newState.selectedMusicIndex = index
+        case let .setBottomSheetState(status):
+            newState.bottomSheetState = status
         }
         
         return newState
@@ -112,7 +125,13 @@ class SearchReactor: Reactor {
                     
                     return Observable.concat([
                         .just(.setSelectedMusicList(self.updateSelectedMusicList(musicList: list), index)),
-                        updateKeywordMutation
+                        updateKeywordMutation,
+                        .just(.updateSelectedMusicIndex)
+                    ])
+                case .closeBottomSheet:
+                    return Observable.concat([
+                        .just(.setBottomSheetState(true)),
+                        .just(.setBottomSheetState(false))
                     ])
                 }
             })
@@ -128,8 +147,14 @@ class SearchReactor: Reactor {
     }
     
     func updateMusicPreviewSection(data: SearchResponseDTO) -> [SearchSectionModel] {
-        let items = data.musicList.map { item -> SearchItem in
-            return .musicPreview(item)
+        var items: [SearchItem] = []
+        
+        if data.musicList.isEmpty {
+            items.append(.emptyMusicPreview(.noMusic))
+        } else {
+            data.musicList.forEach { item in
+                items.append(.musicPreview(item))
+            }
         }
         
         let searchSection = SearchSectionModel(model: .musicPreview(items), items: items)

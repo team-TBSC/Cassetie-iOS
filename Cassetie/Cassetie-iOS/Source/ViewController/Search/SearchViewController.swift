@@ -105,9 +105,21 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
         $0.isScrollEnabled = false
     }
     
-    let pageControl = UIPageControl().then {
-        $0.numberOfPages = 5
-        $0.pageIndicatorTintColor = Color.grayDL.withAlphaComponent(0.2)
+    lazy var progressBar = UIProgressView().then {
+        $0.trackTintColor = .white.withAlphaComponent(0.5)
+        $0.progressTintColor = .white
+        $0.cornerRound(radius: 5)
+    }
+    
+    let percentLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 20, weight: .light)
+        $0.textColor = .white
+    }
+    
+    let progressStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.alignment = .center
+        $0.spacing = 10
     }
     
     var currentCell: Int = 0 {
@@ -171,14 +183,19 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
         askQuestionCollectionView.snp.makeConstraints {
             $0.leading.equalTo(leftButton.snp.trailing)
             $0.trailing.equalTo(rightButton.snp.leading)
-            $0.height.equalTo(330.adjustedHeight)
+            $0.height.equalTo(360.adjustedHeight)
             $0.top.equalToSuperview().offset(45.adjustedHeight)
         }
         
-        pageControl.snp.makeConstraints {
+        progressBar.snp.makeConstraints {
+            $0.width.equalTo(230)
+            $0.height.equalTo(8)
+        }
+        
+        progressStackView.snp.makeConstraints {
             $0.top.equalTo(askQuestionCollectionView.snp.bottom).offset(15)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(13)
+            $0.height.equalTo(20)
         }
         
         searchBackgroundView.snp.makeConstraints {
@@ -216,7 +233,8 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        view.addSubviews([backgroundView, backgroundStarImg, leftButton, rightButton, finalTextImage, askQuestionCollectionView, pageControl, searchBackgroundView, searchBarBackgroundView, searchIcon, textField, searchCollectionView])
+        progressStackView.addArrangedSubviews([progressBar, percentLabel])
+        view.addSubviews([backgroundView, backgroundStarImg, leftButton, rightButton, finalTextImage, askQuestionCollectionView, progressStackView, searchBackgroundView, searchBarBackgroundView, searchIcon, textField, searchCollectionView])
     }
     
     override func setupDelegate() {
@@ -227,7 +245,7 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
         searchCollectionView.register(EmptyMusicCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EmptyMusicCollectionViewCell.self))
         askQuestionCollectionView.register(AskQuestionCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: AskQuestionCollectionViewCell.self))
     }
-
+    
     func bind(reactor: SearchReactor) {
         rightButton.rx.tap
             .withUnretained(self)
@@ -235,6 +253,7 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
                 guard let currentIndexPath = self.askQuestionCollectionView.indexPathsForVisibleItems.first else {
                     return
                 }
+                
                 let nextIndexPath = IndexPath(item: currentIndexPath.item + 1, section: currentIndexPath.section)
                 
                 if nextIndexPath.item < self.askQuestionCollectionView.numberOfItems(inSection: nextIndexPath.section) {
@@ -242,7 +261,6 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
                         self?.askQuestionCollectionView.scrollToItem(at: nextIndexPath, at: .right, animated: true)
                     }
                     
-                    self.pageControl.currentPage = nextIndexPath.item
                     self.currentCell = nextIndexPath.item
                     
                     if reactor.currentState.selectedMusicList[self.currentCell].isSelected {
@@ -257,6 +275,9 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
                     
                     reactor.action.onNext(.confirm)
                 }
+                
+                self.textField.text = ""
+                reactor.action.onNext(.update(""))
             }
             .disposed(by: disposeBag)
         
@@ -266,6 +287,7 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
                 guard let currentIndexPath = self.askQuestionCollectionView.indexPathsForVisibleItems.first else {
                     return
                 }
+                
                 let nextIndexPath = IndexPath(item: currentIndexPath.item - 1, section: currentIndexPath.section)
                 
                 if nextIndexPath.item >= 0 {
@@ -273,7 +295,6 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
                         self?.askQuestionCollectionView.scrollToItem(at: nextIndexPath, at: .left, animated: true)
                     }
                     
-                    self.pageControl.currentPage = nextIndexPath.item
                     self.currentCell = nextIndexPath.item
                     
                     if reactor.currentState.selectedMusicList[self.currentCell].isSelected {
@@ -282,6 +303,9 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
                         self.rightButton.isEnabled = false
                     }
                 }
+                
+                self.textField.text = ""
+                reactor.action.onNext(.update(""))
             }
             .disposed(by: disposeBag)
         
@@ -313,7 +337,34 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
             .map { _ in Reactor.Action.refresh }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-
+        
+        reactor.state
+            .map(\.bottomSheetState)
+            .distinctUntilChanged()
+            .filter { $0 }
+            .withUnretained(self)
+            .bind { this, state in
+                let nextIndexPath = IndexPath(item: self.currentCell + 1, section: 0)
+        
+                if nextIndexPath.item < self.askQuestionCollectionView.numberOfItems(inSection: nextIndexPath.section) {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.askQuestionCollectionView.scrollToItem(at: nextIndexPath, at: .right, animated: true)
+                    }
+                    
+                    self.currentCell = nextIndexPath.item
+                    
+                    if reactor.currentState.selectedMusicList[self.currentCell].isSelected {
+                        self.rightButton.isEnabled = true
+                    } else {
+                        self.rightButton.isEnabled = false
+                    }
+                }
+                
+                self.textField.text = ""
+                reactor.action.onNext(.update(""))
+            }
+            .disposed(by: disposeBag)
+        
         reactor.state
             .map(\.musicPreviewSection)
             .bind(to: searchCollectionView.rx.items(dataSource: searchDataSource))
@@ -332,12 +383,21 @@ class SearchViewController: BaseViewController, View, UITextFieldDelegate {
                 } else {
                     self.rightButton.isEnabled = false
                 }
+                
             }.disposed(by: disposeBag)
+        
+        reactor.state
+            .map(\.selectedMusicIndex)
+            .distinctUntilChanged()
+            .bind(onNext: { [weak self] index in
+                self?.percentLabel.text = String(index * 20) + "%"
+                self?.progressBar.setProgress(Float(Float(index) * 0.2), animated: true)
+            })
+            .disposed(by: disposeBag)
 
         searchCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         askQuestionCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
-
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
@@ -357,7 +417,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
             }
         } else {
             let width = self.askQuestionCollectionView.frame.width
-            let height = 330.adjustedHeight
+            let height = 360.adjustedHeight
 
             return CGSize(width: width, height: height)
         }

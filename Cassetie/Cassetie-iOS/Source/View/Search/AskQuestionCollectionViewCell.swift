@@ -21,15 +21,15 @@ enum QuestionType: CaseIterable {
     var firstText: String {
         switch self {
         case .first:
-            return "나의"
+            return "당신의"
         case .second:
-            return "나의"
+            return "당신의"
         case .third:
-            return "나를 가장 잘"
+            return "당신을 가장 잘"
         case .fourth:
-            return "내"
+            return "당신이 가장"
         case .fivth:
-            return "가장"
+            return "당신을"
         }
     }
     
@@ -42,9 +42,9 @@ enum QuestionType: CaseIterable {
         case .third:
             return " 표현하는"
         case .fourth:
-            return " 관상"
+            return " 좋아하는"
         case .fivth:
-            return " 내 취향"
+            return " 대표하는"
         }
     }
     
@@ -57,9 +57,24 @@ enum QuestionType: CaseIterable {
         case .third:
             return " 음악은?"
         case .fourth:
-            return "을 음악으로 표현한다면?"
+            return " 음악은?"
         case .fivth:
-            return "인 노래는?"
+            return " 음악은?"
+        }
+    }
+    
+    var subText: String {
+        switch self {
+        case .first:
+            return "감정"
+        case .second:
+            return "텐션"
+        case .third:
+            return "외형"
+        case .fourth:
+            return "커스텀"
+        case .fivth:
+            return "대표 노래"
         }
     }
     
@@ -92,6 +107,11 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
         $0.contentMode = .scaleToFill
     }
     
+    let subTextLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 22, weight: .light)
+        $0.textColor = .white.withAlphaComponent(0.5)
+    }
+    
     override func setupLayout() {
         super.setupLayout()
        
@@ -103,7 +123,12 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
         }
         
         questionLabel.snp.makeConstraints {
-            $0.top.equalTo(cassetieGifImageView.snp.bottom).offset(17.adjustedHeight)
+            $0.top.equalTo(cassetieGifImageView.snp.bottom).offset(5.adjustedHeight)
+            $0.centerX.equalToSuperview()
+        }
+        
+        subTextLabel.snp.makeConstraints {
+            $0.top.equalTo(questionLabel.snp.bottom).offset(5)
             $0.centerX.equalToSuperview()
         }
     }
@@ -111,7 +136,7 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
     override func setupHierarchy() {
         super.setupHierarchy()
         
-        contentView.addSubviews([cassetieGifImageView, questionLabel])
+        contentView.addSubviews([cassetieGifImageView, questionLabel, subTextLabel])
     }
     
     func configure(_ type: QuestionType) {
@@ -121,5 +146,7 @@ class AskQuestionCollectionViewCell: BaseCollectionViewCell {
             .regular(string: type.thirdText, fontSize: 28)
         
         cassetieGifImageView.animate(withGIFNamed: type.gifImage)
+        
+        subTextLabel.text = type.subText
     }
 }

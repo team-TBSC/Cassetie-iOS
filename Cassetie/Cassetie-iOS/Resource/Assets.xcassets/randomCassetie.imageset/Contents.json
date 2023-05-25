@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "test_cassetie.png",
+      "filename" : "randomCassetie.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "test_cassetie@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -26,8 +26,6 @@ enum Image {
     static let icRefresh = UIImage(named: "ic_refresh")!
     static let icSelected = UIImage(named: "ic_selected")
     
-    static let testCassetieImg = UIImage(named: "test_cassetie")!
-    
     static let tutorialFirstImg = UIImage(named: "tutorial_first")!
     static let tutorialSecondImg = UIImage(named: "tutorial_second")!
     static let tutorialThirdImg = UIImage(named: "tutorial_third")!
@@ -42,4 +40,7 @@ enum Image {
     static let cassetieRock = UIImage(named: "Rock")!
     static let cassetieTrot = UIImage(named: "Trot")!
     static let cassetieDefault = UIImage(named: "default")!
+    static let cassetieDance = UIImage(named: "Dance")!
+    static let cassetieUndefined = UIImage(named: "Undefined")!
+    static let cassetieRandom = UIImage(named: "randomCassetie")!
 }
