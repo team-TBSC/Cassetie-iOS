@@ -279,7 +279,6 @@ class BottomSheetViewController: BaseViewController, View {
         rx.viewWillDisappear
             .bind(onNext: { [weak self] _ in
                 self?.stopMusic()
-                self?.disappearBottomSheet()
             })
             .disposed(by: disposeBag)
     }
