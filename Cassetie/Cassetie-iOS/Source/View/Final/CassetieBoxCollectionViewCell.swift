@@ -25,6 +25,8 @@ class CassetieBoxCollectionViewCell: BaseCollectionViewCell {
     let mentionLabel = UILabel().then {
         $0.textColor = .white
         $0.font = .systemFont(ofSize: 28, weight: .light)
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
     }
     
     override func setupLayout() {
@@ -48,6 +50,7 @@ class CassetieBoxCollectionViewCell: BaseCollectionViewCell {
         mentionLabel.snp.makeConstraints {
             $0.top.equalTo(nameLabel.snp.bottom).offset(15)
             $0.centerX.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(30)
         }
     }
     
