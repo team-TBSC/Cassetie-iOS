@@ -66,9 +66,9 @@ enum QuestionType: CaseIterable {
     var subText: String {
         switch self {
         case .first:
-            return "감정"
-        case .second:
             return "텐션"
+        case .second:
+            return "감정"
         case .third:
             return "외형"
         case .fourth:

@@ -79,7 +79,7 @@ class BottomSheetViewController: BaseViewController, View {
         $0.backgroundColor = .black.withAlphaComponent(0.7)
     }
     
-    private let confirmButton = RoundButton(title: "확정하기", titleColor: .black, backColor: .white, round: 40).then {
+    private let confirmButton = RoundButton(title: "선택하기", titleColor: .black, backColor: .white, round: 40).then {
         $0.configureFont(font: .systemFont(ofSize: 24, weight: .light))
     }
     

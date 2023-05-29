@@ -27,10 +27,10 @@ class UserCustomViewController: BaseViewController {
         $0.alignment = .center
     }
     private let firstTextLabel = UILabel().then {
-        $0.text = "감정"
+        $0.text = "텐션"
     }
     private let secondTextLabel = UILabel().then {
-        $0.text = "텐션"
+        $0.text = "감정"
     }
     private let thirdTextLabel = UILabel().then {
         $0.text = "외형"
